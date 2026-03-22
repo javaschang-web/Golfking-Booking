@@ -1,0 +1,145 @@
+# WORK_LOG - 골프왕부킹 초기 작업 로그
+
+## 2026-03-15 (세션 요약)
+- 프로젝트 생성 및 문서화
+  - `MVP_PRD.md` 작성 및 저장
+  - `DB_SCHEMA.md`, `ARCHITECTURE.md`, `INITIAL_DATA_SPEC.md`, `IA.md`, `ROADMAP.md`, `TASKS.md` 작성/저장
+- 코드 스캐폴딩
+  - package.json, tsconfig.json, next.config.js, README.md
+  - app/page.tsx, app/search/page.tsx, app/admin/page.tsx (기본 플레이스홀더)
+- 데이터베이스 작업
+  - Supabase 마이그레이션 초안 `migrations/001_init.sql` 생성
+  - 샘플 seed `migrations/002_seed_sample.sql` 생성
+  - RLS 정책 초안 `migrations/003_rls_policies.sql` 생성
+  - 배포 스크립트 `scripts/deploy_supabase.sh` 생성
+- GitHub Actions
+  - `.github/workflows/deploy-supabase.yml` 작성 (초기)
+  - GitHub Actions에서 실행 실패(이미지 풀 권한, psql 인자, apt 권한 문제 발견)
+  - 워크플로 패치 버전 준비(ghcr 인증, sudo 추가, DATABASE_URL 인용)
+- 인프라·운영
+  - Supabase 프로젝트 생성 및 연결 정보 공유(사용자 제공)
+  - Service Role Key 노출 문제 발생 → SECURITY.md에 교체 가이드 작성
+
+## 의사결정 및 권장사항
+- 모델 전략: 기획/검토(gpt-5.4), 구현/코드(gpt-5-mini). 이후 현재 세션은 다시 `gpt-5.4` 사용 중.
+- 운영 권장: 초기에는 수동/반수동 데이터 운영, 자동 크롤링은 후순위.
+- 보안 권장: 노출된 Service Role Key는 즉시 rotate 권장.
+
+## 2026-03-20 ~ 2026-03-21 (Supabase 실적용 및 점검)
+- Supabase 프로젝트 ref 확인 완료: `uuvzjaqbvpolqhxkqjzw`
+- `migrations/001_init.sql`, `002_seed_sample.sql`, `003_rls_policies.sql` 적용 진행
+- 003 RLS 적용 중 PostgreSQL 정책 문법 이슈 발견
+  - `WITH CHECK cannot be applied to SELECT or DELETE`
+  - `CREATE POLICY IF NOT EXISTS` 미지원 확인
+- 안전한 RLS 수정본 작성
+  - `migrations/003_rls_policies_safe.sql` 생성
+- 사용자가 Supabase SQL Editor에서 001 / 002 / 003 적용 완료 확인
+- 로컬/CLI 기반 direct psql 경로는 DNS/IPv6/포트 이슈로 반복 실패
+- service_role 기반 REST 검증 재시도 성공
+  - `golf_courses` 읽기 성공, 총 5건 확인
+  - `booking_policies` anon 읽기 성공, 총 5건 확인
+  - `user_reports` 테스트 insert 성공
+  - 생성 row id: `0145a649-4e92-4011-a927-d4b41fa3944d`
+- 테스트 `user_reports` row 삭제 완료
+- anon 기준 RLS 점검 결과
+  - `golf_courses` 읽기 허용 확인
+  - `booking_policies` 읽기 허용 확인
+  - `user_reports` insert는 `return=representation`일 때 실패했으나, `Prefer: return=minimal`로는 성공 확인
+  - 결론: anon insert 정책 자체는 동작하며, 실패 원인은 insert 후 반환(select) 권한 부재에 가까움
+- Supabase 클라이언트 초기화 파일 추가
+  - `lib/supabase/client.ts`
+  - `lib/supabase/server.ts`
+  - `lib/supabase/README.md`
+- 관리자 로그인 구조 1차 구현
+  - `/admin/login` 페이지 추가
+  - `AdminLoginForm`, `AdminLogoutButton`, `AdminGate` 추가
+  - `/admin` 대시보드에서 Supabase Auth + `admin_profiles` 기반 권한 확인 구조 반영
+- 관리자 계정 연결 템플릿 SQL 추가
+  - `migrations/005_link_admin_account_template.sql`
+- `/admin/courses` 기본 목록 페이지 구현
+  - `AdminCoursesTable` 추가
+  - Supabase에서 골프장 목록 조회/표시 구조 반영
+- `/admin/courses/new` 신규 등록 페이지 구현
+  - `AdminCourseCreateForm` 추가
+  - `golf_courses` insert 연결 완료
+- `/admin/reports` 제보 관리 목록 페이지 구현
+  - `AdminReportsTable` 추가
+- `/admin/courses/[id]` 수정 페이지 구현
+  - `AdminCourseEditForm` 추가
+  - `golf_courses` update 연결 완료
+  - `/admin/courses` 목록에서 수정 링크 연결
+- 예약 정책 CRUD 1차 구현
+  - `AdminPolicyManager` 추가
+  - `booking_policies` 목록 / 추가 / 수정 / 활성화 토글 연결 완료
+- 출처/source 입력 UI 구현
+  - `AdminSourceRecordManager` 추가
+  - `source_records` 목록 / 추가 / 현재 여부 토글 연결 완료
+- 공개 검색 MVP 1차 구현
+  - 홈 검색 폼(`SearchForm`) 추가
+  - `/search`에서 region 기준 DB 조회 연결
+  - `SearchResultsList`로 공개 골프장/활성 정책 기본 렌더링
+  - `/courses/[slug]` 상세 플레이스홀더 추가
+- 예약 오픈 계산 엔진 1차 구현
+  - `lib/utils/kst.ts` 추가
+  - `lib/booking-rules/calculate.ts` 추가
+  - `days_before`, `weekday_rule`, `monthly_batch`, `manual` 계산 지원
+  - `/search` 결과에 계산값 표시 연결
+- 공개 상세 페이지 구현
+  - `lib/queries/course-detail.ts` 추가
+  - `CourseDetailView` 추가
+  - `/courses/[slug]`에서 골프장/정책/출처 데이터 렌더링
+- 계산 결과 고도화 1차
+  - `weekday_rule` / `monthly_batch` 해석 보강
+  - `ResultStatusBadge` 추가
+  - 정책별 fixture 문서(`policy-cases.md`) 추가
+- 빌드 안정화 완료
+  - `app/layout.tsx` 추가
+  - Next/App Router 설정 정리
+  - 관리자 페이지의 Client Component 경계 문제 수정
+  - 브라우저 Supabase 클라이언트 lazy 초기화로 변경
+  - `npm run build` 성공 확인
+- dev 실행 점검 완료
+  - `/`, `/search`, `/courses/[slug]`, `/admin/login`, `/admin` 핵심 흐름 확인
+- 운영/배포 문서 보강
+  - `DEPLOY_CHECKLIST.md`
+  - `VERCEL_ENV_TEMPLATE.md`
+  - `VERCEL_DEPLOY_PLAN.md`
+  - `OPERATIONS.md`
+  - `ADMIN_SETUP.md`
+  - `RUNBOOK.md`
+  - `AUTH_UPGRADE_PLAN.md`
+- CI 빌드 체크 워크플로 추가
+  - `.github/workflows/build-check.yml`
+- 배포 직후 점검용 리소스 추가
+  - `app/api/health/route.ts`
+  - `POST_DEPLOY_CHECKS.md`
+  - `vercel.json`
+- 배포 준비 문서 추가 정리
+  - `.env.example` 최신화
+  - `DEPLOY_STATUS.md`
+  - `VERCEL_ENV_TEMPLATE.md` 보강
+  - `GITHUB_ACTIONS_README.md` 최신화
+  - `POST_DEPLOY_CHECKS.md` 보강
+- 배포 후 자동 점검용 스크립트 추가
+  - `scripts/smoke-check.ps1`
+- DB 비밀번호 rotate 완료(사용자 확인)
+
+## 현재 상태 요약
+- DB 스키마: 적용 완료
+- 샘플 데이터: 적용 완료
+- RLS: safe 버전 기준 적용 완료
+- 원격 service_role 작업: 부분 검증 성공
+- 남은 핵심 과제: RLS 정밀 검증, 테스트 row 정리, 앱 구현 시작
+
+## 다음 우선 작업 (갱신)
+- P0: anon / authenticated / admin 기준 RLS 시나리오 검증
+- P0: `user_reports` 테스트 row 유지/삭제 결정
+- P0: Supabase 클라이언트 초기화 및 환경변수 연결
+- P0: 관리자 로그인/인증 구조 구현
+- P0: 골프장 목록/상세/CRUD 기본 구현
+- P1: booking_policies / source_records 관리자 UI 연결
+- P1: 검색 MVP 화면과 DB 연동
+
+---
+
+(로그 자동 생성됨)

@@ -1,12 +1,13 @@
+import { SearchForm } from '@/components/search/SearchForm'
+
 export default function Home() {
   return (
-    <main style={{padding:40,fontFamily:'Arial, sans-serif'}}>
+    <main style={{ padding: 40, fontFamily: 'Arial, sans-serif', maxWidth: 960, margin: '0 auto' }}>
       <h1>골프왕부킹</h1>
-      <p>희망 라운딩 날짜를 입력하면 예약 오픈 일시를 확인할 수 있습니다.</p>
-      <div style={{marginTop:20}}>
-        <label htmlFor="date">플레이 날짜: </label>
-        <input id="date" type="date" />
-        <button style={{marginLeft:8}}>검색</button>
+      <p>희망 라운딩 날짜와 지역을 입력하면 예약 오픈 정책이 등록된 골프장을 찾아볼 수 있어.</p>
+
+      <div style={{ marginTop: 24 }}>
+        <SearchForm />
       </div>
     </main>
   )
