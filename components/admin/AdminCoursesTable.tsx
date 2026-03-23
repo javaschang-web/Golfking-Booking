@@ -69,12 +69,26 @@ export function AdminCoursesTable() {
     })
   }, [rows, query, statusFilter, verificationFilter, sortKey])
 
+  const summary = useMemo(() => ({
+    total: rows.length,
+    visible: filteredRows.length,
+    verified: rows.filter((row) => row.verification_status === 'verified').length,
+    needsReview: rows.filter((row) => row.verification_status === 'needs_review').length,
+  }), [rows, filteredRows])
+
   if (loading) return <p>골프장 목록 불러오는 중...</p>
   if (error) return <p style={{ color: 'crimson' }}>불러오기 실패: {error}</p>
   if (rows.length === 0) return <p>등록된 골프장이 아직 없어.</p>
 
   return (
     <div style={{ display: 'grid', gap: 12 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 12 }}>
+        <SummaryCard label="전체" value={summary.total} />
+        <SummaryCard label="현재 표시" value={summary.visible} />
+        <SummaryCard label="verified" value={summary.verified} />
+        <SummaryCard label="needs_review" value={summary.needsReview} />
+      </div>
+
       <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
         <input
           value={query}
@@ -103,8 +117,6 @@ export function AdminCoursesTable() {
         </select>
       </div>
 
-      <div style={{ fontSize: 14, color: '#666' }}>표시 중: {filteredRows.length} / 전체 {rows.length}</div>
-
       <div style={{ overflowX: 'auto' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 16 }}>
           <thead>
@@ -128,13 +140,25 @@ export function AdminCoursesTable() {
                 <td style={td}>{row.verification_status}</td>
                 <td style={td}>{row.last_verified_at ? new Date(row.last_verified_at).toLocaleString('ko-KR') : '-'}</td>
                 <td style={td}>
-                  <Link href={`/admin/courses/${row.id}`}>수정</Link>
+                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                    <Link href={`/admin/courses/${row.id}`}>수정</Link>
+                    <a href={`/courses/${row.slug}`} target="_blank" rel="noreferrer">공개 보기</a>
+                  </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+    </div>
+  )
+}
+
+function SummaryCard({ label, value }: { label: string; value: number }) {
+  return (
+    <div style={{ padding: 12, border: '1px solid #eee', borderRadius: 8, background: '#fafafa' }}>
+      <div style={{ fontSize: 12, color: '#666' }}>{label}</div>
+      <div style={{ marginTop: 6, fontWeight: 700, fontSize: 20 }}>{value}</div>
     </div>
   )
 }

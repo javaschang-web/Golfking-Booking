@@ -129,6 +129,13 @@ export function AdminReportsTable() {
     })
   }, [rows, query, statusFilter, sortKey])
 
+  const summary = useMemo(() => ({
+    total: rows.length,
+    visible: filteredRows.length,
+    newCount: rows.filter((row) => row.status === 'new').length,
+    reviewingCount: rows.filter((row) => row.status === 'reviewing').length,
+  }), [rows, filteredRows])
+
   if (loading) return <p>제보 목록 불러오는 중...</p>
   if (error) return <p style={{ color: 'crimson' }}>불러오기 실패: {error}</p>
   if (rows.length === 0) return <p>들어온 제보가 아직 없어.</p>
@@ -136,6 +143,13 @@ export function AdminReportsTable() {
   return (
     <div style={{ display: 'grid', gap: 12 }}>
       {success ? <p style={{ color: 'green', margin: 0 }}>{success}</p> : null}
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 12 }}>
+        <SummaryCard label="전체" value={summary.total} />
+        <SummaryCard label="현재 표시" value={summary.visible} />
+        <SummaryCard label="new" value={summary.newCount} />
+        <SummaryCard label="reviewing" value={summary.reviewingCount} />
+      </div>
 
       <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
         <input
@@ -155,8 +169,6 @@ export function AdminReportsTable() {
           <option value="resolved_desc">최근 처리순</option>
         </select>
       </div>
-
-      <div style={{ fontSize: 14, color: '#666' }}>표시 중: {filteredRows.length} / 전체 {rows.length}</div>
 
       <div style={{ overflowX: 'auto' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 16 }}>
@@ -204,6 +216,15 @@ export function AdminReportsTable() {
           </tbody>
         </table>
       </div>
+    </div>
+  )
+}
+
+function SummaryCard({ label, value }: { label: string; value: number }) {
+  return (
+    <div style={{ padding: 12, border: '1px solid #eee', borderRadius: 8, background: '#fafafa' }}>
+      <div style={{ fontSize: 12, color: '#666' }}>{label}</div>
+      <div style={{ marginTop: 6, fontWeight: 700, fontSize: 20 }}>{value}</div>
     </div>
   )
 }
