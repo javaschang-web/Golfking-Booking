@@ -20,7 +20,7 @@ export async function middleware(request: NextRequest) {
           return request.cookies.getAll().map((c) => ({ name: c.name, value: c.value }))
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
+          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
           response = NextResponse.next({ request })
           cookiesToSet.forEach(({ name, value, options }) => response.cookies.set(name, value, options))
         },
@@ -28,7 +28,24 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  const pathname = request.nextUrl.pathname
+  const isAdminRoute = pathname.startsWith('/admin')
+  const isAdminLogin = pathname === '/admin/login'
+
+  if (isAdminRoute && !isAdminLogin && !user) {
+    const loginUrl = new URL('/admin/login', request.url)
+    return NextResponse.redirect(loginUrl)
+  }
+
+  if (isAdminLogin && user) {
+    const adminUrl = new URL('/admin', request.url)
+    return NextResponse.redirect(adminUrl)
+  }
+
   return response
 }
 

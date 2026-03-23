@@ -122,6 +122,16 @@
   - `POST_DEPLOY_CHECKS.md` 보강
 - 배포 후 자동 점검용 스크립트 추가
   - `scripts/smoke-check.ps1`
+- 운영 후속 개선 진행
+  - `AdminReportsTable`에 제보 상태 변경 / 처리 메모 추가
+  - `AdminCourseVerificationPanel` 추가로 검수 상태/최근 확인일 관리 UI 보강
+  - `AdminChangeLogsTable` 및 `/admin/logs` 추가로 변경 이력 조회 UI 구현
+  - 관리자 목록 검색/필터 추가
+- 데이터 입력 효율 보강
+  - `data/templates/*.csv` 템플릿 추가
+  - `BULK_INPUT_GUIDE.md` 추가
+  - `scripts/bulk-import.mjs` 추가
+  - `npm run bulk:check` dry-run 검증 통과
 - DB 비밀번호 rotate 완료(사용자 확인)
 
 ## 현재 상태 요약

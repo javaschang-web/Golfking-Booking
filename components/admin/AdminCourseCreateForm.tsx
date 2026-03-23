@@ -64,7 +64,7 @@ export function AdminCourseCreateForm() {
     }
 
     const supabase = getBrowserSupabaseClient()
-    const { error } = await supabase.from('golf_courses').insert(payload)
+    const { data, error } = await supabase.from('golf_courses').insert(payload).select('id').single()
 
     setLoading(false)
 

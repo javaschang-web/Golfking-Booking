@@ -20,7 +20,14 @@ export function SearchForm({ initialDate = '', initialRegion = '' }: Props) {
     if (playDate) params.set('date', playDate)
     if (region) params.set('region', region)
 
-    router.push(`/search?${params.toString()}`)
+    const query = params.toString()
+    router.push(query ? `/search?${query}` : '/search')
+  }
+
+  function handleReset() {
+    setPlayDate('')
+    setRegion('')
+    router.push('/search')
   }
 
   return (
@@ -35,7 +42,10 @@ export function SearchForm({ initialDate = '', initialRegion = '' }: Props) {
         <input id="region" value={region} onChange={(e) => setRegion(e.target.value)} placeholder="예: 경기, 강원, 제주" style={{ padding: 10 }} />
       </div>
 
-      <button type="submit" style={{ padding: 12, width: 180 }}>검색</button>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <button type="submit" style={{ padding: 12, width: 180 }}>검색</button>
+        <button type="button" onClick={handleReset} style={{ padding: 12, width: 120 }}>초기화</button>
+      </div>
     </form>
   )
 }

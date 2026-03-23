@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .ts,.tsx"
+    "lint": "eslint . --ext .ts,.tsx",
+    "bulk:import": "node ./scripts/bulk-import.mjs",
+    "bulk:check": "node ./scripts/bulk-import.mjs ./data/templates --dry-run"
   },
   "dependencies": {
     "@supabase/ssr": "^0.9.0",

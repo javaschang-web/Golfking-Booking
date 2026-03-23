@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
+import { logAdminChange } from '@/lib/admin/change-log'
 
 type CourseForm = {
   slug: string

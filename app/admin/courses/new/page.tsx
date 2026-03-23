@@ -1,12 +1,14 @@
-'use client'
-
 import { AdminGate } from '@/components/admin/AdminGate'
 import { AdminCourseCreateForm } from '@/components/admin/AdminCourseCreateForm'
 import { AdminSectionCard } from '@/components/admin/AdminSectionCard'
+import { requireAdminFromServer } from '@/lib/auth/ssr-admin'
 
-export default function AdminCourseNewPage() {
+export default async function AdminCourseNewPage() {
+  const profile = await requireAdminFromServer(['owner', 'admin', 'editor'])
+
   return (
     <AdminGate
+      initialProfile={profile}
       title="골프장 신규 등록"
       navLinks={[
         { href: '/admin', label: '대시보드' },

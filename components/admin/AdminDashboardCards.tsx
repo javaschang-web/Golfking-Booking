@@ -17,6 +17,11 @@ export function AdminDashboardCards() {
       desc: '새 골프장을 빠르게 등록해 운영 데이터셋을 늘릴 수 있어.',
       href: '/admin/courses/new',
     },
+    {
+      title: '변경 이력',
+      desc: '최근 변경 기록을 보고 운영 히스토리를 확인할 수 있어.',
+      href: '/admin/logs',
+    },
   ]
 
   return (

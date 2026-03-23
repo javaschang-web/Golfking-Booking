@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { PublicCourseDetail } from '@/lib/queries/course-detail'
 import { CourseOpenSummary } from '@/components/search/CourseOpenSummary'
 import { DetailInfoGrid } from '@/components/search/DetailInfoGrid'
@@ -61,6 +62,14 @@ export function CourseDetailView({ course, playDate }: Props) {
             {record.note ? <p style={p}>메모: {record.note}</p> : null}
           </div>
         ))}
+      </section>
+
+      <section style={card}>
+        <h2 style={h2}>다음 이동</h2>
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+          <Link href="/search">검색으로 돌아가기</Link>
+          <Link href="/">홈으로 이동</Link>
+        </div>
       </section>
     </div>
   )

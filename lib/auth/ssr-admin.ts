@@ -1,6 +1,17 @@
 import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 import { createSupabaseServerClient } from '@/lib/supabase/ssr'
 import { createServiceRoleSupabaseClient } from '@/lib/supabase/server'
+
+export type AdminRole = 'owner' | 'admin' | 'editor' | 'viewer'
+
+export type AdminProfile = {
+  id: string
+  email: string
+  role: AdminRole
+  display_name: string | null
+  is_active: boolean
+}
 
 export async function getCurrentUserFromServer() {
   const cookieStore = cookies()
@@ -15,7 +26,7 @@ export async function getCurrentUserFromServer() {
   return user
 }
 
-export async function getCurrentAdminProfileFromServer() {
+export async function getCurrentAdminProfileFromServer(): Promise<AdminProfile | null> {
   const user = await getCurrentUserFromServer()
   if (!user) return null
 
@@ -27,5 +38,16 @@ export async function getCurrentAdminProfileFromServer() {
     .maybeSingle()
 
   if (error || !data || !data.is_active) return null
-  return data
+  return data as AdminProfile
+}
+
+export async function requireAdminFromServer(allowedRoles?: AdminRole[]) {
+  const profile = await getCurrentAdminProfileFromServer()
+  if (!profile) redirect('/admin/login')
+
+  if (allowedRoles && !allowedRoles.includes(profile.role)) {
+    redirect('/admin')
+  }
+
+  return profile
 }

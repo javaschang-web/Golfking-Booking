@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
+import { logAdminChange } from '@/lib/admin/change-log'
 
 type PolicyOption = {
   id: string
@@ -117,6 +118,14 @@ export function AdminSourceRecordManager({ courseId }: { courseId: string }) {
       return
     }
 
+    await logAdminChange({
+      entityType: 'source_record',
+      entityId: courseId,
+      actionType: 'create',
+      changedFields: payload,
+      note: '출처 기록 추가',
+    })
+
     setForm(initialForm)
     setSuccess('출처 기록을 추가했어.')
     await load()
@@ -136,6 +145,14 @@ export function AdminSourceRecordManager({ courseId }: { courseId: string }) {
       setError(error.message)
       return
     }
+
+    await logAdminChange({
+      entityType: 'source_record',
+      entityId: row.id,
+      actionType: 'toggle_current',
+      changedFields: { is_current: !row.is_current },
+      note: row.is_current ? '출처 현재 상태 해제' : '출처 현재 상태 지정',
+    })
 
     setSuccess('출처 현재 상태를 변경했어.')
     await load()

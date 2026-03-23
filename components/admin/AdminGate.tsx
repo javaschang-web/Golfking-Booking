@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
 import { AdminLogoutButton } from '@/components/admin/AdminLogoutButton'
 
-type AdminProfile = {
+export type AdminProfile = {
   id: string
   email: string
   role: 'owner' | 'admin' | 'editor' | 'viewer'
@@ -23,15 +23,18 @@ type Props = {
   title: string
   children: React.ReactNode
   navLinks?: NavLink[]
+  initialProfile?: AdminProfile | null
 }
 
-export function AdminGate({ title, children, navLinks = [] }: Props) {
+export function AdminGate({ title, children, navLinks = [], initialProfile = null }: Props) {
   const router = useRouter()
-  const [loading, setLoading] = useState(true)
-  const [profile, setProfile] = useState<AdminProfile | null>(null)
+  const [loading, setLoading] = useState(!initialProfile)
+  const [profile, setProfile] = useState<AdminProfile | null>(initialProfile)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    if (initialProfile) return
+
     async function load() {
       const supabase = getBrowserSupabaseClient()
       const { data: sessionData } = await supabase.auth.getUser()
@@ -59,7 +62,7 @@ export function AdminGate({ title, children, navLinks = [] }: Props) {
     }
 
     load()
-  }, [router])
+  }, [router, initialProfile])
 
   if (loading) return <main style={{ padding: 40 }}><p>관리자 세션 확인 중...</p></main>
   if (error || !profile) return <main style={{ padding: 40 }}><p style={{ color: 'crimson' }}>{error ?? '관리자 접근 권한이 없어.'}</p></main>

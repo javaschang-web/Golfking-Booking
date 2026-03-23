@@ -1,12 +1,14 @@
-'use client'
-
 import { AdminGate } from '@/components/admin/AdminGate'
 import { AdminReportsTable } from '@/components/admin/AdminReportsTable'
 import { AdminSectionCard } from '@/components/admin/AdminSectionCard'
+import { requireAdminFromServer } from '@/lib/auth/ssr-admin'
 
-export default function AdminReportsPage() {
+export default async function AdminReportsPage() {
+  const profile = await requireAdminFromServer(['owner', 'admin'])
+
   return (
     <AdminGate
+      initialProfile={profile}
       title="사용자 제보 관리"
       navLinks={[
         { href: '/admin', label: '대시보드' },

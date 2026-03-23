@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
+import { logAdminChange } from '@/lib/admin/change-log'
 
 type PolicyRow = {
   id: string
@@ -154,6 +155,14 @@ export function AdminPolicyManager({ courseId }: { courseId: string }) {
       return
     }
 
+    await logAdminChange({
+      entityType: 'booking_policy',
+      entityId: form.id ?? courseId,
+      actionType: form.id ? 'update' : 'create',
+      changedFields: payload,
+      note: form.id ? '예약 정책 수정' : '예약 정책 추가',
+    })
+
     setSuccess(form.id ? '정책을 수정했어.' : '정책을 추가했어.')
     resetForm()
     await load()
@@ -172,6 +181,14 @@ export function AdminPolicyManager({ courseId }: { courseId: string }) {
       setError(error.message)
       return
     }
+
+    await logAdminChange({
+      entityType: 'booking_policy',
+      entityId: row.id,
+      actionType: 'toggle_active',
+      changedFields: { is_active: !row.is_active },
+      note: row.is_active ? '정책 비활성화' : '정책 활성화',
+    })
 
     setSuccess('정책 활성 상태를 바꿨어.')
     await load()
@@ -354,3 +371,4 @@ const td: React.CSSProperties = {
   padding: '10px 8px',
   verticalAlign: 'top',
 }
+
