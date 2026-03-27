@@ -151,6 +151,60 @@
 - P1: booking_policies / source_records 관리자 UI 연결
 - P1: 검색 MVP 화면과 DB 연동
 
+## 2026-03-25 ~ 2026-03-27 (데이터 확장 / 디자인 리디자인 / staging 전체 반영)
+- 공공데이터포털(odcloud) 전국 골프장 현황 API 기반으로 원자료 525행 확보.
+- dedup 규칙을 `업소명 + 소재지` 정규화 기준으로 적용해 고유 업소 496건으로 정리.
+- 대중제 포함 업소 수 367건 1차 산출.
+- 산출 파일 생성:
+  - `data/golf_ks_dedup.csv`
+  - `data/golf_ks_summary.json`
+- bulk import 준비용 변환 파일/정책 초안/리포트 생성:
+  - `data/bulk_import_ready.csv`
+  - `data/sample_for_review.csv`
+  - `docs/upsert_policy_draft.md`
+  - `reports/dry_run_report.json`
+- staging existing 23건을 export하고 mismatch 분석 수행.
+- strict key만으로는 0 update였으나 fallback 매칭을 추가해:
+  - auto match 11건
+  - manual review 6건
+  - no match 6건으로 분류.
+- staging pilot 20 구성 및 적용:
+  - 15 update / 5 insert
+  - source_records / change_logs 생성까지 검증 성공.
+- slug 자동 생성 충돌 문제 발견:
+  - `course`, `c-c`, `g-c` 등 다수 충돌 발생.
+- safe slug 규칙 도입:
+  - `regionCode + normalized base + short hash`
+  - safe slug map 기준 중복 0건 확인.
+- 오염된 batch100 collision slug 정리 후 safe slug 기준 재실행.
+- staging safe batch 100 적용 및 샘플 spot-check 성공.
+- 전체 safe batch를 5개로 분할하여 staging 전체 반영 완료.
+- 최종 staging 검증 결과:
+  - 전체 `golf_courses`: 503
+  - 공공데이터 기반 반영 코스: 495
+  - 공공데이터 import source_records: 546
+  - staging change_logs: 546
+  - imported rows 기준 public-like count: 371
+- 지역 분포까지 최종 집계 확인 완료.
+- 디자인 리디자인 진행:
+  - 전체 다크모드 + 밝은 그린 포인트 + 흰색 텍스트 기준 도입
+  - `lib/design.ts`, `lib/status-badge.ts` 추가
+  - 홈/검색/상세/admin 전반 리디자인
+  - admin login, 정책/출처/검수 패널, 리스트/테이블 스타일 통일
+  - 모바일 QA 후 검색 결과 카드 CTA/button형 polish 수행
+- 검색 폼 UX 변경:
+  - 날짜는 브라우저 달력 picker가 뜨도록 버튼/포커스 처리
+  - 지역 입력은 드롭다운으로 변경
+- 관련 UI 변경분 `main`에 push 완료:
+  - 커밋 `a47f86c` (`feat: use calendar picker and region dropdown on search form`)
+- 데이터/디자인 대규모 변경 커밋 및 push 기록:
+  - `1761884` (`feat: dark theme redesign and staging dry-run tooling`)
+  - 이후 `main` merge commit 포함 반영 완료.
+- 현재 판단:
+  - staging 기준 데이터 파이프라인은 실사용 가능한 수준에 도달.
+  - 현재 Supabase/Vercel env가 같은 프로젝트를 바라보므로, 별도 production DB 분리가 없는 상태로 보임.
+  - 남은 핵심은 운영 정책 정리 및 최종 실화면 QA.
+
 ---
 
 (로그 자동 생성됨)
