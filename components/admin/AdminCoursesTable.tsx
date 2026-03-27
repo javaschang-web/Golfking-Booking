@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
+import { colors, ui } from '@/lib/design'
 
 type CourseRow = {
   id: string
@@ -77,7 +78,7 @@ export function AdminCoursesTable() {
   }), [rows, filteredRows])
 
   if (loading) return <p>골프장 목록 불러오는 중...</p>
-  if (error) return <p style={{ color: 'crimson' }}>불러오기 실패: {error}</p>
+  if (error) return <p style={{ color: colors.danger }}>불러오기 실패: {error}</p>
   if (rows.length === 0) return <p>등록된 골프장이 아직 없어.</p>
 
   return (
@@ -94,31 +95,31 @@ export function AdminCoursesTable() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="이름 / 슬러그 / 지역 검색"
-          style={{ padding: 10, minWidth: 260 }}
+          style={{ ...ui.input, minWidth: 260, maxWidth: 320 }}
         />
-        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} style={{ padding: 10 }}>
+        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} style={ui.input}>
           <option value="all">전체 상태</option>
           <option value="active">active</option>
           <option value="inactive">inactive</option>
           <option value="seasonal_closed">seasonal_closed</option>
           <option value="maintenance">maintenance</option>
         </select>
-        <select value={verificationFilter} onChange={(e) => setVerificationFilter(e.target.value)} style={{ padding: 10 }}>
+        <select value={verificationFilter} onChange={(e) => setVerificationFilter(e.target.value)} style={ui.input}>
           <option value="all">전체 검수 상태</option>
           <option value="draft">draft</option>
           <option value="verified">verified</option>
           <option value="needs_review">needs_review</option>
           <option value="hidden">hidden</option>
         </select>
-        <select value={sortKey} onChange={(e) => setSortKey(e.target.value)} style={{ padding: 10 }}>
+        <select value={sortKey} onChange={(e) => setSortKey(e.target.value)} style={ui.input}>
           <option value="created_desc">기본 정렬</option>
           <option value="name_asc">이름순</option>
           <option value="verified_desc">최근 확인일순</option>
         </select>
       </div>
 
-      <div style={{ overflowX: 'auto' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 16 }}>
+      <div style={{ overflowX: 'auto', ...ui.card }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr>
               <th style={th}>이름</th>
@@ -141,8 +142,8 @@ export function AdminCoursesTable() {
                 <td style={td}>{row.last_verified_at ? new Date(row.last_verified_at).toLocaleString('ko-KR') : '-'}</td>
                 <td style={td}>
                   <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                    <Link href={`/admin/courses/${row.id}`}>수정</Link>
-                    <a href={`/courses/${row.slug}`} target="_blank" rel="noreferrer">공개 보기</a>
+                    <Link href={`/admin/courses/${row.id}`} style={ui.link}>수정</Link>
+                    <a href={`/courses/${row.slug}`} target="_blank" rel="noreferrer" style={ui.link}>공개 보기</a>
                   </div>
                 </td>
               </tr>
@@ -156,8 +157,8 @@ export function AdminCoursesTable() {
 
 function SummaryCard({ label, value }: { label: string; value: number }) {
   return (
-    <div style={{ padding: 12, border: '1px solid #eee', borderRadius: 8, background: '#fafafa' }}>
-      <div style={{ fontSize: 12, color: '#666' }}>{label}</div>
+    <div style={ui.subCard}>
+      <div style={{ fontSize: 12, color: colors.textSoft }}>{label}</div>
       <div style={{ marginTop: 6, fontWeight: 700, fontSize: 20 }}>{value}</div>
     </div>
   )
@@ -165,12 +166,12 @@ function SummaryCard({ label, value }: { label: string; value: number }) {
 
 const th: React.CSSProperties = {
   textAlign: 'left',
-  borderBottom: '1px solid #ddd',
+  borderBottom: `1px solid ${colors.border}`,
   padding: '10px 8px',
-  background: '#fafafa',
+  color: colors.textSoft,
 }
 
 const td: React.CSSProperties = {
-  borderBottom: '1px solid #eee',
+  borderBottom: `1px solid ${colors.border}`,
   padding: '10px 8px',
 }

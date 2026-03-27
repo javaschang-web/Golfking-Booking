@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
 import { logAdminChange } from '@/lib/admin/change-log'
+import { colors, ui } from '@/lib/design'
 
 const statuses = ['draft', 'verified', 'needs_review', 'hidden'] as const
 
@@ -66,31 +67,31 @@ export function AdminCourseVerificationPanel({ courseId }: { courseId: string })
   if (loading) return <p>검수 정보 불러오는 중...</p>
 
   return (
-    <div style={{ display: 'grid', gap: 12 }}>
-      <div style={{ display: 'grid', gap: 6 }}>
-        <label>검수 상태</label>
-        <select value={status} onChange={(e) => setStatus(e.target.value)} style={{ padding: 10, maxWidth: 240 }}>
+    <div style={{ display: 'grid', gap: 12, maxWidth: 420 }}>
+      <div style={{ display: 'grid', gap: 8 }}>
+        <label style={{ color: colors.textSoft, fontWeight: 700 }}>검수 상태</label>
+        <select value={status} onChange={(e) => setStatus(e.target.value)} style={{ ...ui.input, maxWidth: 240 }}>
           {statuses.map((item) => (
             <option key={item} value={item}>{item}</option>
           ))}
         </select>
       </div>
 
-      <div style={{ display: 'grid', gap: 6 }}>
-        <label>최근 확인일</label>
+      <div style={{ display: 'grid', gap: 8 }}>
+        <label style={{ color: colors.textSoft, fontWeight: 700 }}>최근 확인일</label>
         <input
           type="datetime-local"
           value={verifiedAt}
           onChange={(e) => setVerifiedAt(e.target.value)}
-          style={{ padding: 10, maxWidth: 280 }}
+          style={{ ...ui.input, maxWidth: 280 }}
         />
       </div>
 
-      <button type="button" onClick={save} disabled={saving} style={{ padding: 10, width: 180 }}>
+      <button type="button" onClick={save} disabled={saving} style={{ ...ui.buttonPrimary, width: 180 }}>
         {saving ? '저장 중...' : '검수 정보 저장'}
       </button>
 
-      {message ? <p style={{ margin: 0, color: message.includes('저장') ? 'green' : 'crimson' }}>{message}</p> : null}
+      {message ? <p style={{ margin: 0, color: message.includes('저장') ? colors.primaryStrong : colors.danger }}>{message}</p> : null}
     </div>
   )
 }

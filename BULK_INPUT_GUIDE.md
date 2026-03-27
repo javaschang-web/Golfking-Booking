@@ -6,12 +6,16 @@
 - `data/templates/golf_courses_sample.csv`
 - `data/templates/booking_policies_sample.csv`
 - `data/templates/source_records_sample.csv`
+- `data/templates/golf_courses_20_template.csv`
+- `data/templates/booking_policies_20_template.csv`
+- `data/templates/source_records_20_template.csv`
 
 ## 권장 입력 순서
-1. `golf_courses_sample.csv` 기준으로 골프장 기본 정보 정리
-2. `booking_policies_sample.csv` 기준으로 정책 정리
-3. `source_records_sample.csv` 기준으로 출처 기록 정리
-4. 이후 관리자 UI에서 하나씩 반영하거나, 다음 단계에서 bulk import 스크립트로 연결
+1. `golf_courses_20_template.csv` 기준으로 골프장 기본 정보 정리
+2. `booking_policies_20_template.csv` 기준으로 각 골프장 정책 정리
+3. `source_records_20_template.csv` 기준으로 출처 기록 정리
+4. `npm run bulk:check`
+5. `npm run bulk:import`
 
 ## 최소 필수 컬럼
 ### golf_courses

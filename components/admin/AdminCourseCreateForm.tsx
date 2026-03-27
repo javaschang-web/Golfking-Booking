@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
+import { colors, ui } from '@/lib/design'
 
 const initialForm = {
   slug: '',
@@ -143,7 +144,7 @@ export function AdminCourseCreateForm() {
         </Field>
       </div>
 
-      <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+      <label style={{ display: 'flex', alignItems: 'center', gap: 8, color: colors.textSoft }}>
         <input
           type="checkbox"
           checked={form.membership_required}
@@ -160,10 +161,10 @@ export function AdminCourseCreateForm() {
         <textarea value={form.booking_note} onChange={(e) => update('booking_note', e.target.value)} rows={4} style={textareaStyle} />
       </Field>
 
-      {error ? <p style={{ color: 'crimson', margin: 0 }}>등록 실패: {error}</p> : null}
-      {success ? <p style={{ color: 'green', margin: 0 }}>{success}</p> : null}
+      {error ? <p style={{ color: colors.danger, margin: 0 }}>등록 실패: {error}</p> : null}
+      {success ? <p style={{ color: colors.primaryStrong, margin: 0 }}>{success}</p> : null}
 
-      <button type="submit" disabled={!canSubmit || loading} style={{ padding: 12, width: 220 }}>
+      <button type="submit" disabled={!canSubmit || loading} style={{ ...ui.buttonPrimary, width: 220 }}>
         {loading ? '등록 중...' : '골프장 등록'}
       </button>
     </form>
@@ -172,8 +173,8 @@ export function AdminCourseCreateForm() {
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <label style={{ display: 'grid', gap: 6 }}>
-      <span>{label}</span>
+    <label style={{ display: 'grid', gap: 8 }}>
+      <span style={{ color: colors.textSoft, fontWeight: 700 }}>{label}</span>
       {children}
     </label>
   )
@@ -186,17 +187,15 @@ function emptyToNull(value: string) {
 
 const grid2: React.CSSProperties = {
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
   gap: 16,
 }
 
 const inputStyle: React.CSSProperties = {
-  width: '100%',
-  padding: 10,
+  ...ui.input,
 }
 
 const textareaStyle: React.CSSProperties = {
-  width: '100%',
-  padding: 10,
+  ...ui.input,
   resize: 'vertical',
 }

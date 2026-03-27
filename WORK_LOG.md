@@ -132,6 +132,7 @@
   - `BULK_INPUT_GUIDE.md` 추가
   - `scripts/bulk-import.mjs` 추가
   - `npm run bulk:check` dry-run 검증 통과
+  - `golf_courses_20_template.csv`로 20개 확장 입력 템플릿 추가
 - DB 비밀번호 rotate 완료(사용자 확인)
 
 ## 현재 상태 요약

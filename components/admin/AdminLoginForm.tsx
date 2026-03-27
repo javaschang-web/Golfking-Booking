@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
+import { colors, ui } from '@/lib/design'
 
 export function AdminLoginForm() {
   const router = useRouter()
@@ -34,32 +35,32 @@ export function AdminLoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 12, maxWidth: 360 }}>
-      <label>
-        <div style={{ marginBottom: 6 }}>이메일</div>
+    <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 14, maxWidth: 360 }}>
+      <label style={{ display: 'grid', gap: 8 }}>
+        <div style={{ color: colors.textSoft, fontWeight: 700 }}>이메일</div>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          style={{ width: '100%', padding: 10 }}
+          style={ui.input}
         />
       </label>
 
-      <label>
-        <div style={{ marginBottom: 6 }}>비밀번호</div>
+      <label style={{ display: 'grid', gap: 8 }}>
+        <div style={{ color: colors.textSoft, fontWeight: 700 }}>비밀번호</div>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          style={{ width: '100%', padding: 10 }}
+          style={ui.input}
         />
       </label>
 
-      {error ? <p style={{ color: 'crimson', margin: 0 }}>{error}</p> : null}
+      {error ? <p style={{ color: colors.danger, margin: 0 }}>{error}</p> : null}
 
-      <button type="submit" disabled={loading} style={{ padding: 12 }}>
+      <button type="submit" disabled={loading} style={ui.buttonPrimary}>
         {loading ? '로그인 중...' : '관리자 로그인'}
       </button>
     </form>
