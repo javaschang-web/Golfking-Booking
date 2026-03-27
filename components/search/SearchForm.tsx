@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { colors, ui } from '@/lib/design'
 
 type Props = {
@@ -9,8 +9,30 @@ type Props = {
   initialRegion?: string
 }
 
+const REGION_OPTIONS = [
+  '',
+  '경기',
+  '강원',
+  '충북',
+  '충남',
+  '경북',
+  '경남',
+  '전북',
+  '전남',
+  '제주',
+  '서울',
+  '부산',
+  '인천',
+  '대구',
+  '광주',
+  '대전',
+  '울산',
+  '세종',
+] as const
+
 export function SearchForm({ initialDate = '', initialRegion = '' }: Props) {
   const router = useRouter()
+  const dateRef = useRef<HTMLInputElement | null>(null)
   const [playDate, setPlayDate] = useState(initialDate)
   const [region, setRegion] = useState(initialRegion)
 
@@ -31,17 +53,32 @@ export function SearchForm({ initialDate = '', initialRegion = '' }: Props) {
     router.push('/search')
   }
 
+  function openCalendar() {
+    const input = dateRef.current
+    if (!input) return
+    input.focus()
+    if (typeof input.showPicker === 'function') input.showPicker()
+  }
+
   return (
     <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 16, maxWidth: 720 }}>
       <div style={{ display: 'grid', gap: 14, gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
         <div style={{ display: 'grid', gap: 8 }}>
           <label htmlFor="date" style={{ color: colors.textSoft, fontWeight: 700 }}>플레이 날짜</label>
-          <input id="date" type="date" value={playDate} onChange={(e) => setPlayDate(e.target.value)} style={ui.input} />
+          <div style={{ display: 'grid', gap: 8 }}>
+            <input ref={dateRef} id="date" type="date" value={playDate} onChange={(e) => setPlayDate(e.target.value)} onClick={openCalendar} style={ui.input} />
+            <button type="button" onClick={openCalendar} style={{ ...ui.buttonSecondary, width: '100%' }}>달력으로 선택</button>
+          </div>
         </div>
 
         <div style={{ display: 'grid', gap: 8 }}>
           <label htmlFor="region" style={{ color: colors.textSoft, fontWeight: 700 }}>지역(시/도)</label>
-          <input id="region" value={region} onChange={(e) => setRegion(e.target.value)} placeholder="예: 경기, 강원, 제주" style={ui.input} />
+          <select id="region" value={region} onChange={(e) => setRegion(e.target.value)} style={ui.input}>
+            <option value="">전체</option>
+            {REGION_OPTIONS.filter(Boolean).map((item) => (
+              <option key={item} value={item}>{item}</option>
+            ))}
+          </select>
         </div>
       </div>
 
