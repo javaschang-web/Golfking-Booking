@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
 import { logAdminChange } from '@/lib/admin/change-log'
+import { colors, ui } from '@/lib/design'
 
 type ReportRow = {
   id: string
@@ -137,12 +138,12 @@ export function AdminReportsTable() {
   }), [rows, filteredRows])
 
   if (loading) return <p>제보 목록 불러오는 중...</p>
-  if (error) return <p style={{ color: 'crimson' }}>불러오기 실패: {error}</p>
+  if (error) return <p style={{ color: colors.danger }}>불러오기 실패: {error}</p>
   if (rows.length === 0) return <p>들어온 제보가 아직 없어.</p>
 
   return (
     <div style={{ display: 'grid', gap: 12 }}>
-      {success ? <p style={{ color: 'green', margin: 0 }}>{success}</p> : null}
+      {success ? <p style={{ color: colors.primaryStrong, margin: 0 }}>{success}</p> : null}
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 12 }}>
         <SummaryCard label="전체" value={summary.total} />
@@ -156,22 +157,22 @@ export function AdminReportsTable() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="유형 / 이메일 / 내용 검색"
-          style={{ padding: 10, minWidth: 260 }}
+          style={{ ...ui.input, minWidth: 260, maxWidth: 320 }}
         />
-        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} style={{ padding: 10 }}>
+        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} style={ui.input}>
           <option value="all">전체 상태</option>
           {statusOptions.map((status) => (
             <option key={status} value={status}>{status}</option>
           ))}
         </select>
-        <select value={sortKey} onChange={(e) => setSortKey(e.target.value)} style={{ padding: 10 }}>
+        <select value={sortKey} onChange={(e) => setSortKey(e.target.value)} style={ui.input}>
           <option value="created_desc">최신 생성순</option>
           <option value="resolved_desc">최근 처리순</option>
         </select>
       </div>
 
-      <div style={{ overflowX: 'auto' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 16 }}>
+      <div style={{ overflowX: 'auto', ...ui.card }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr>
               <th style={th}>유형</th>
@@ -192,7 +193,7 @@ export function AdminReportsTable() {
                     value={row.status}
                     disabled={savingId === row.id}
                     onChange={(e) => updateStatus(row, e.target.value)}
-                    style={{ padding: 8 }}
+                    style={{ ...ui.input, padding: '8px 10px', minWidth: 120 }}
                   >
                     {statusOptions.map((status) => (
                       <option key={status} value={status}>{status}</option>
@@ -205,7 +206,7 @@ export function AdminReportsTable() {
                   <textarea
                     defaultValue={row.resolved_note ?? ''}
                     rows={3}
-                    style={{ width: 220, padding: 8 }}
+                    style={{ ...ui.input, width: 220, padding: 8 }}
                     onBlur={(e) => updateResolvedNote(row, e.target.value)}
                   />
                 </td>
@@ -222,8 +223,8 @@ export function AdminReportsTable() {
 
 function SummaryCard({ label, value }: { label: string; value: number }) {
   return (
-    <div style={{ padding: 12, border: '1px solid #eee', borderRadius: 8, background: '#fafafa' }}>
-      <div style={{ fontSize: 12, color: '#666' }}>{label}</div>
+    <div style={ui.subCard}>
+      <div style={{ fontSize: 12, color: colors.textSoft }}>{label}</div>
       <div style={{ marginTop: 6, fontWeight: 700, fontSize: 20 }}>{value}</div>
     </div>
   )
@@ -231,13 +232,13 @@ function SummaryCard({ label, value }: { label: string; value: number }) {
 
 const th: React.CSSProperties = {
   textAlign: 'left',
-  borderBottom: '1px solid #ddd',
+  borderBottom: `1px solid ${colors.border}`,
   padding: '10px 8px',
-  background: '#fafafa',
+  color: colors.textSoft,
 }
 
 const td: React.CSSProperties = {
-  borderBottom: '1px solid #eee',
+  borderBottom: `1px solid ${colors.border}`,
   padding: '10px 8px',
   verticalAlign: 'top',
 }

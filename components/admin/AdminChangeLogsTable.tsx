@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
+import { colors, ui } from '@/lib/design'
 
 type ChangeLogRow = {
   id: string
@@ -62,7 +63,7 @@ export function AdminChangeLogsTable() {
   }, [rows.length, filteredRows.length, entityOptions.length, actionOptions.length])
 
   if (loading) return <p>변경 이력 불러오는 중...</p>
-  if (error) return <p style={{ color: 'crimson' }}>불러오기 실패: {error}</p>
+  if (error) return <p style={{ color: colors.danger }}>불러오기 실패: {error}</p>
   if (rows.length === 0) return <p>아직 기록된 변경 이력이 없어.</p>
 
   return (
@@ -75,20 +76,20 @@ export function AdminChangeLogsTable() {
       </div>
 
       <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-        <select value={entityFilter} onChange={(e) => setEntityFilter(e.target.value)} style={{ padding: 8 }}>
+        <select value={entityFilter} onChange={(e) => setEntityFilter(e.target.value)} style={ui.input}>
           {entityOptions.map((item) => (
             <option key={item} value={item}>{item}</option>
           ))}
         </select>
-        <select value={actionFilter} onChange={(e) => setActionFilter(e.target.value)} style={{ padding: 8 }}>
+        <select value={actionFilter} onChange={(e) => setActionFilter(e.target.value)} style={ui.input}>
           {actionOptions.map((item) => (
             <option key={item} value={item}>{item}</option>
           ))}
         </select>
       </div>
 
-      <div style={{ overflowX: 'auto' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: 16 }}>
+      <div style={{ overflowX: 'auto', ...ui.card }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr>
               <th style={th}>시각</th>
@@ -121,8 +122,8 @@ export function AdminChangeLogsTable() {
 
 function SummaryCard({ label, value }: { label: string; value: number }) {
   return (
-    <div style={{ padding: 12, border: '1px solid #eee', borderRadius: 8, background: '#fafafa' }}>
-      <div style={{ fontSize: 12, color: '#666' }}>{label}</div>
+    <div style={ui.subCard}>
+      <div style={{ fontSize: 12, color: colors.textSoft }}>{label}</div>
       <div style={{ marginTop: 6, fontWeight: 700, fontSize: 20 }}>{value}</div>
     </div>
   )
@@ -130,14 +131,14 @@ function SummaryCard({ label, value }: { label: string; value: number }) {
 
 const th: React.CSSProperties = {
   textAlign: 'left',
-  borderBottom: '1px solid #ddd',
+  borderBottom: `1px solid ${colors.border}`,
   padding: '10px 8px',
-  background: '#fafafa',
+  color: colors.textSoft,
   verticalAlign: 'top',
 }
 
 const td: React.CSSProperties = {
-  borderBottom: '1px solid #eee',
+  borderBottom: `1px solid ${colors.border}`,
   padding: '10px 8px',
   verticalAlign: 'top',
 }
@@ -147,4 +148,5 @@ const pre: React.CSSProperties = {
   whiteSpace: 'pre-wrap',
   wordBreak: 'break-word',
   fontSize: 12,
+  color: colors.textSoft,
 }

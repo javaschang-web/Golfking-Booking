@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
 import { logAdminChange } from '@/lib/admin/change-log'
+import { colors, ui } from '@/lib/design'
 
 type PolicyOption = {
   id: string
@@ -159,13 +160,13 @@ export function AdminSourceRecordManager({ courseId }: { courseId: string }) {
   }
 
   return (
-    <section style={{ marginTop: 32, display: 'grid', gap: 24 }}>
+    <section style={{ display: 'grid', gap: 24 }}>
       <div>
         <h2>출처 / 검수 기록</h2>
-        <p style={{ marginTop: 8 }}>정책의 출처 링크와 원문을 관리할 수 있어.</p>
+        <p style={{ marginTop: 8, color: colors.textSoft }}>정책의 출처 링크와 원문을 관리할 수 있어.</p>
       </div>
 
-      <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 16, maxWidth: 960, padding: 16, border: '1px solid #eee', background: '#fafafa' }}>
+      <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 16, maxWidth: 960, ...ui.card }}>
         <div style={grid2}>
           <Field label="출처 타입 *">
             <select value={form.source_type} onChange={(e) => update('source_type', e.target.value)} style={inputStyle}>
@@ -208,21 +209,21 @@ export function AdminSourceRecordManager({ courseId }: { courseId: string }) {
           <textarea value={form.note} onChange={(e) => update('note', e.target.value)} rows={3} style={textareaStyle} />
         </Field>
 
-        <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <label style={{ display: 'flex', alignItems: 'center', gap: 8, color: colors.textSoft }}>
           <input type="checkbox" checked={form.is_current} onChange={(e) => update('is_current', e.target.checked)} />
           현재 유효한 출처로 표시
         </label>
 
-        {error ? <p style={{ color: 'crimson', margin: 0 }}>{error}</p> : null}
-        {success ? <p style={{ color: 'green', margin: 0 }}>{success}</p> : null}
+        {error ? <p style={{ color: colors.danger, margin: 0 }}>{error}</p> : null}
+        {success ? <p style={{ color: colors.primaryStrong, margin: 0 }}>{success}</p> : null}
 
-        <button type="submit" disabled={!canSubmit || saving} style={{ padding: 12, width: 220 }}>
+        <button type="submit" disabled={!canSubmit || saving} style={{ ...ui.buttonPrimary, width: 220 }}>
           {saving ? '저장 중...' : '출처 기록 추가'}
         </button>
       </form>
 
-      <div>
-        <h3>등록된 출처 기록</h3>
+      <div style={ui.card}>
+        <h3 style={{ marginTop: 0 }}>등록된 출처 기록</h3>
         {loading ? <p>출처 기록 불러오는 중...</p> : null}
         {!loading && rows.length === 0 ? <p>등록된 출처 기록이 아직 없어.</p> : null}
         {!loading && rows.length > 0 ? (
@@ -243,11 +244,11 @@ export function AdminSourceRecordManager({ courseId }: { courseId: string }) {
                   <tr key={row.id}>
                     <td style={td}>{row.source_type}</td>
                     <td style={td}>{row.source_title ?? '-'}</td>
-                    <td style={td}>{row.source_url ? <a href={row.source_url} target="_blank" rel="noreferrer">열기</a> : '-'}</td>
+                    <td style={td}>{row.source_url ? <a href={row.source_url} target="_blank" rel="noreferrer" style={ui.link}>열기</a> : '-'}</td>
                     <td style={td}>{row.is_current ? 'Y' : 'N'}</td>
                     <td style={td}>{new Date(row.checked_at).toLocaleString('ko-KR')}</td>
                     <td style={td}>
-                      <button type="button" onClick={() => toggleCurrent(row)} style={{ padding: '6px 10px' }}>
+                      <button type="button" onClick={() => toggleCurrent(row)} style={{ ...ui.buttonSecondary, padding: '8px 12px' }}>
                         {row.is_current ? '현재 해제' : '현재로 지정'}
                       </button>
                     </td>
@@ -264,8 +265,8 @@ export function AdminSourceRecordManager({ courseId }: { courseId: string }) {
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <label style={{ display: 'grid', gap: 6 }}>
-      <span>{label}</span>
+    <label style={{ display: 'grid', gap: 8 }}>
+      <span style={{ color: colors.textSoft, fontWeight: 700 }}>{label}</span>
       {children}
     </label>
   )
@@ -278,30 +279,28 @@ function emptyToNull(value: string) {
 
 const grid2: React.CSSProperties = {
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
   gap: 16,
 }
 
 const inputStyle: React.CSSProperties = {
-  width: '100%',
-  padding: 10,
+  ...ui.input,
 }
 
 const textareaStyle: React.CSSProperties = {
-  width: '100%',
-  padding: 10,
+  ...ui.input,
   resize: 'vertical',
 }
 
 const th: React.CSSProperties = {
   textAlign: 'left',
-  borderBottom: '1px solid #ddd',
+  borderBottom: `1px solid ${colors.border}`,
   padding: '10px 8px',
-  background: '#fafafa',
+  color: colors.textSoft,
 }
 
 const td: React.CSSProperties = {
-  borderBottom: '1px solid #eee',
+  borderBottom: `1px solid ${colors.border}`,
   padding: '10px 8px',
   verticalAlign: 'top',
 }

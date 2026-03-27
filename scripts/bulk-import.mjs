@@ -25,9 +25,17 @@ async function main() {
   console.log(`[bulk-import] baseDir=${baseDir}`)
   console.log(`[bulk-import] mode=${dryRun ? 'dry-run' : 'apply'}`)
 
-  const courses = parseCsv(path.join(baseDir, 'golf_courses_sample.csv'))
-  const policies = parseCsv(path.join(baseDir, 'booking_policies_sample.csv'))
-  const sources = parseCsv(path.join(baseDir, 'source_records_sample.csv'))
+  const coursesFile = resolveTemplatePath(baseDir, 'golf_courses_20_template.csv', 'golf_courses_sample.csv')
+  const policiesFile = resolveTemplatePath(baseDir, 'booking_policies_20_template.csv', 'booking_policies_sample.csv')
+  const sourcesFile = resolveTemplatePath(baseDir, 'source_records_20_template.csv', 'source_records_sample.csv')
+
+  console.log(`[bulk-import] coursesFile=${path.basename(coursesFile)}`)
+  console.log(`[bulk-import] policiesFile=${path.basename(policiesFile)}`)
+  console.log(`[bulk-import] sourcesFile=${path.basename(sourcesFile)}`)
+
+  const courses = parseCsv(coursesFile)
+  const policies = parseCsv(policiesFile)
+  const sources = parseCsv(sourcesFile)
 
   validateCourses(courses)
   validatePolicies(policies)
@@ -44,6 +52,12 @@ async function main() {
   await importSources(sources)
 
   console.log('[bulk-import] done')
+}
+
+function resolveTemplatePath(baseDir, preferredName, fallbackName) {
+  const preferred = path.join(baseDir, preferredName)
+  if (fs.existsSync(preferred)) return preferred
+  return path.join(baseDir, fallbackName)
 }
 
 function parseCsv(filePath) {

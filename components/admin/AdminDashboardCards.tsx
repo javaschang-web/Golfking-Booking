@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { colors, ui } from '@/lib/design'
 
 export function AdminDashboardCards() {
   const items = [
@@ -28,9 +29,9 @@ export function AdminDashboardCards() {
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
       {items.map((item) => (
         <Link key={item.href} href={item.href} style={{ textDecoration: 'none', color: 'inherit' }}>
-          <div style={{ border: '1px solid #e5e5e5', borderRadius: 10, padding: 16, background: '#fff' }}>
+          <div style={ui.card}>
             <strong>{item.title}</strong>
-            <p style={{ margin: '10px 0 0 0', color: '#555' }}>{item.desc}</p>
+            <p style={{ margin: '10px 0 0 0', color: colors.textSoft }}>{item.desc}</p>
           </div>
         </Link>
       ))}

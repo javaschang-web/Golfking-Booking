@@ -1,0 +1,96 @@
+import type { CSSProperties } from 'react'
+
+export const colors = {
+  bg: '#07140d',
+  bgSoft: '#0d1f15',
+  panel: '#11261a',
+  panelAlt: '#163121',
+  border: '#29543c',
+  text: '#f3fff6',
+  textSoft: '#b8d6c0',
+  primary: '#65d46e',
+  primaryStrong: '#7ef08a',
+  primaryMuted: '#21492d',
+  danger: '#ff7b7b',
+  warning: '#f6d365',
+}
+
+export const ui = {
+  page: {
+    minHeight: '100vh',
+    background: `linear-gradient(180deg, ${colors.bg} 0%, #0a1810 100%)`,
+    color: colors.text,
+  } satisfies CSSProperties,
+  shell: {
+    maxWidth: 1120,
+    margin: '0 auto',
+    padding: '32px 20px 64px',
+  } satisfies CSSProperties,
+  hero: {
+    border: `1px solid ${colors.border}`,
+    background: `linear-gradient(135deg, ${colors.panelAlt} 0%, ${colors.panel} 100%)`,
+    borderRadius: 24,
+    padding: 28,
+    boxShadow: '0 18px 50px rgba(0,0,0,0.28)',
+  } satisfies CSSProperties,
+  card: {
+    border: `1px solid ${colors.border}`,
+    background: colors.panel,
+    borderRadius: 20,
+    padding: 20,
+    boxShadow: '0 12px 32px rgba(0,0,0,0.22)',
+  } satisfies CSSProperties,
+  subCard: {
+    border: `1px solid ${colors.border}`,
+    background: colors.bgSoft,
+    borderRadius: 16,
+    padding: 16,
+  } satisfies CSSProperties,
+  input: {
+    width: '100%',
+    padding: '14px 16px',
+    borderRadius: 14,
+    border: `1px solid ${colors.border}`,
+    background: '#0c1b12',
+    color: colors.text,
+    outline: 'none',
+  } satisfies CSSProperties,
+  buttonPrimary: {
+    padding: '14px 18px',
+    borderRadius: 14,
+    border: 'none',
+    background: colors.primary,
+    color: '#06240e',
+    fontWeight: 800,
+    cursor: 'pointer',
+  } satisfies CSSProperties,
+  buttonSecondary: {
+    padding: '14px 18px',
+    borderRadius: 14,
+    border: `1px solid ${colors.border}`,
+    background: colors.primaryMuted,
+    color: colors.text,
+    fontWeight: 700,
+    cursor: 'pointer',
+  } satisfies CSSProperties,
+  badge: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 6,
+    padding: '6px 10px',
+    borderRadius: 999,
+    background: colors.primaryMuted,
+    border: `1px solid ${colors.border}`,
+    color: colors.text,
+    fontSize: 12,
+    fontWeight: 700,
+  } satisfies CSSProperties,
+  link: {
+    color: colors.primaryStrong,
+    textDecoration: 'none',
+    fontWeight: 700,
+  } satisfies CSSProperties,
+  muted: {
+    color: colors.textSoft,
+  } satisfies CSSProperties,
+}

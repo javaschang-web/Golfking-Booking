@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { colors, ui } from '@/lib/design'
 
 type Props = {
   initialDate?: string
@@ -31,20 +32,22 @@ export function SearchForm({ initialDate = '', initialRegion = '' }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 12, maxWidth: 520 }}>
-      <div style={{ display: 'grid', gap: 6 }}>
-        <label htmlFor="date">플레이 날짜</label>
-        <input id="date" type="date" value={playDate} onChange={(e) => setPlayDate(e.target.value)} style={{ padding: 10 }} />
+    <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 16, maxWidth: 720 }}>
+      <div style={{ display: 'grid', gap: 14, gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
+        <div style={{ display: 'grid', gap: 8 }}>
+          <label htmlFor="date" style={{ color: colors.textSoft, fontWeight: 700 }}>플레이 날짜</label>
+          <input id="date" type="date" value={playDate} onChange={(e) => setPlayDate(e.target.value)} style={ui.input} />
+        </div>
+
+        <div style={{ display: 'grid', gap: 8 }}>
+          <label htmlFor="region" style={{ color: colors.textSoft, fontWeight: 700 }}>지역(시/도)</label>
+          <input id="region" value={region} onChange={(e) => setRegion(e.target.value)} placeholder="예: 경기, 강원, 제주" style={ui.input} />
+        </div>
       </div>
 
-      <div style={{ display: 'grid', gap: 6 }}>
-        <label htmlFor="region">지역(시/도)</label>
-        <input id="region" value={region} onChange={(e) => setRegion(e.target.value)} placeholder="예: 경기, 강원, 제주" style={{ padding: 10 }} />
-      </div>
-
-      <div style={{ display: 'flex', gap: 12 }}>
-        <button type="submit" style={{ padding: 12, width: 180 }}>검색</button>
-        <button type="button" onClick={handleReset} style={{ padding: 12, width: 120 }}>초기화</button>
+      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+        <button type="submit" style={{ ...ui.buttonPrimary, minWidth: 180 }}>검색</button>
+        <button type="button" onClick={handleReset} style={{ ...ui.buttonSecondary, minWidth: 120 }}>초기화</button>
       </div>
     </form>
   )

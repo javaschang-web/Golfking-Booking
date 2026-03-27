@@ -1,0 +1,21 @@
+course_slug,policy_type,source_type,source_url,source_title,captured_text,is_current,note
+seowon-hills,days_before,homepage,https://legacy.seowongolf.co.kr/hills/guide/useGuide.do,서원힐스 이용안내,"주중 타임오픈: 해당일 기준 3주 전 10:00",true,legacy 이용안내에서 규칙 추출
+hanlim-yongin,days_before,homepage,https://yongin.hanlimgolf.co.kr/,한림용인 컨트리클럽,공식 사이트 식별 완료(예약 오픈 규칙 문구 추가 수집 필요),true,실코스 치환 완료
+pinevalley,days_before,homepage,https://www.tyleisure.co.kr/,TONGYANG Leisure(파인밸리 운영사),동양레저 통합 사이트에서 파인밸리 운영 정보 확인,true,검색기반 1차 수집
+golfzon-county-cheonan,days_before,homepage,https://www.golfzoncounty.com/,골프존카운티 천안,공식 예약 화면에서 코스/날짜 선택 가능(오픈 수치 미노출),true,실코스 치환 완료
+castlex-jeju,days_before,homepage,https://castlexjj.com/,캐슬렉스 제주,공식 사이트에서 연락처/사업장 정보 확인(오픈 수치 미노출),true,실코스 치환 완료
+namseoul-cc,days_before,homepage,https://nscc.co.kr/,남서울 컨트리클럽,"실시간예약 및 안내 제공",true,2차 보강(오픈 수치 미확정)
+lakewood,days_before,homepage,https://lakewood.co.kr/swp/reserve_guide,레이크우드 예약안내,"일반회원: 20일전 10시 예약 / Privilege: 25일전 10시",true,예약안내에서 오픈 규칙 추출
+blueone-yongin,days_before,homepage,https://yi.blueone.com/content/03use/02_01.jsp,블루원 용인 예약안내,"회원제 이용방법 및 예약안내 메뉴 제공",true,2차 보강(오픈 수치 미확정)
+oak-valley,days_before,homepage,https://reservation.oakvalley.co.kr/,오크밸리 예약시스템,"오크밸리 별도 인터넷 예약 시스템 확인",true,2차 보강(규칙 문구 추가 필요)
+belles-forest,days_before,homepage,http://www.bellastonecc.com/,벨라스톤 컨트리클럽,예약/일자 선택 화면 제공,true,검색기반 1차 수집
+ansung-benest,days_before,homepage,https://www.benestgolf.com/,베네스트골프 통합예약,"안성베네스트 포함 통합 예약 홈페이지",true,2차 보강(오픈 수치 미확정)
+south-springs,days_before,homepage,http://www.sscc.co.kr/mobile/reservation_date.asp,사우스스프링스 모바일 예약,"실시간예약은 라운드일 기준 4주전 월요일 9시부터 가능",true,검색 스니펫 기준 2차 보강
+sky72-ocean,days_before,homepage,https://www.onetheclub.com/club72/main,원더클럽 클럽72,"클럽72 공지: 레이크/클래식코스 예약 오픈일자 변경안내",true,2차 보강(오션코스 수치 미확정)
+solmoro,days_before,homepage,https://www.solmoro.com/guide/reservinfo,솔모로 예약방법 안내,"희망 예약일의 예약 접수일 10일 이전 회원관리과 신청",true,검색 스니펫 기준 2차 보강
+gold-cc,days_before,homepage,https://gakorea.com/,GA KOREA(골드CC),골드CC 연락처 및 예약실 안내,true,2차 보강(오픈 수치 미확정)
+jade-palace,days_before,homepage,https://m.jadepalacegc.com/kr/main.do,제이드팰리스 골프클럽(모바일),"공식 사이트 접근 확인(예약 오픈 규칙 문구 별도 수집 필요)",true,2차 보강
+lotte-skyhill-jeju,days_before,homepage,https://www.lotteskyhill.com,롯데스카이힐CC,"제주CC 예약 오픈일 기준 변경 안내 공지 노출 확인",true,공식 메인 공지 기반 2차 보강
+haesley-nine-bridges,days_before,homepage,https://www.ninebridges.co.kr/index.asp,나인브릿지,"프라이빗 멤버스 클럽/골프클럽 안내",true,검색기반 1차 수집
+clubd-geumgang,days_before,homepage,https://www.clubd.com/geumgang/member/login.do,클럽디 금강 로그인/예약,"취소규정: 주중 3일전, 휴일 4일전 이후 취소는 이용약관에 따라 전화문의",true,검색결과 문구 기준 2차 보강
+blackstone-icheon,days_before,homepage,https://www.blackstoneresort.com/ic/,블랙스톤 이천,"상반기 주말·공휴일 예약일정표 업로드 안내 공지",true,2차 보강

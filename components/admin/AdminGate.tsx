@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
 import { AdminLogoutButton } from '@/components/admin/AdminLogoutButton'
+import { colors, ui } from '@/lib/design'
 
 export type AdminProfile = {
   id: string
@@ -64,28 +65,33 @@ export function AdminGate({ title, children, navLinks = [], initialProfile = nul
     load()
   }, [router, initialProfile])
 
-  if (loading) return <main style={{ padding: 40 }}><p>관리자 세션 확인 중...</p></main>
-  if (error || !profile) return <main style={{ padding: 40 }}><p style={{ color: 'crimson' }}>{error ?? '관리자 접근 권한이 없어.'}</p></main>
+  if (loading) return <main style={ui.page}><div style={ui.shell}><p>관리자 세션 확인 중...</p></div></main>
+  if (error || !profile) return <main style={ui.page}><div style={ui.shell}><p style={{ color: colors.danger }}>{error ?? '관리자 접근 권한이 없어.'}</p></div></main>
 
   return (
-    <main style={{ padding: 40 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div>
-          <h1>{title}</h1>
-          <p style={{ margin: 0 }}>관리자: {profile.email} ({profile.role})</p>
-        </div>
-        <AdminLogoutButton />
+    <main style={ui.page}>
+      <div style={ui.shell}>
+        <section style={ui.hero}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16, flexWrap: 'wrap' }}>
+            <div>
+              <div style={{ ...ui.badge, width: 'fit-content', marginBottom: 10 }}>Admin</div>
+              <h1 style={{ margin: 0 }}>{title}</h1>
+              <p style={{ margin: '8px 0 0 0', color: colors.textSoft }}>관리자: {profile.email} ({profile.role})</p>
+            </div>
+            <AdminLogoutButton />
+          </div>
+
+          {navLinks.length > 0 ? (
+            <div style={{ marginTop: 16, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              {navLinks.map((link) => (
+                <Link key={link.href} href={link.href} style={ui.link}>{link.label}</Link>
+              ))}
+            </div>
+          ) : null}
+        </section>
+
+        <div style={{ marginTop: 24 }}>{children}</div>
       </div>
-
-      {navLinks.length > 0 ? (
-        <div style={{ marginTop: 16, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href}>{link.label}</Link>
-          ))}
-        </div>
-      ) : null}
-
-      <div style={{ marginTop: 24 }}>{children}</div>
     </main>
   )
 }

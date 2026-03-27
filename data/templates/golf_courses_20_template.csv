@@ -1,0 +1,21 @@
+slug,name,english_name,region_primary,region_secondary,address,phone,homepage_url,booking_url,map_url,membership_required,membership_note,booking_note,status,verification_status
+seowon-hills,서원힐스,,경기,파주,,,,,,false,,,active,verified
+hanlim-yongin,한림용인CC,,경기,용인,,,https://yongin.hanlimgolf.co.kr/,,,,false,,,active,draft
+pinevalley,파인밸리,,강원,춘천,,,,,,true,회원제,,active,verified
+golfzon-county-cheonan,골프존카운티 천안,,충남,천안,,,https://www.golfzoncounty.com/,,,,false,,,active,draft
+castlex-jeju,캐슬렉스 제주,,제주,서귀포,,,https://castlexjj.com/,,,,false,,,active,draft
+namseoul-cc,남서울CC,,경기,성남,,,,,,true,회원제,,active,draft
+lakewood,레이크우드,,경기,양주,,,,,,false,,,active,draft
+blueone-yongin,블루원 용인,,경기,용인,,,,,,false,,,active,draft
+oak-valley,오크밸리,,강원,원주,,,,,,false,,,active,draft
+belles-forest,벨라스톤,,강원,홍천,,,,,,false,,,active,draft
+ansung-benest,안성베네스트,,경기,안성,,,,,,true,회원/초청 중심,,active,draft
+south-springs,사우스스프링스,,경기,이천,,,,,,false,,,active,draft
+sky72-ocean,스카이72 오션,,인천,영종,,,,,,false,,,active,draft
+solmoro,솔모로,,경기,여주,,,,,,false,,,active,draft
+gold-cc,골드CC,,경기,용인,,,,,,false,,,active,draft
+jade-palace,제이드팰리스,,강원,춘천,,,,,,true,회원제,,active,draft
+lotte-skyhill-jeju,롯데스카이힐 제주,,제주,서귀포,,,,,,false,,,active,draft
+haesley-nine-bridges,해슬리 나인브릿지,,경기,여주,,,,,,true,회원제,,active,draft
+clubd-geumgang,클럽디 금강,,충북,충주,,,,,,false,,,active,draft
+blackstone-icheon,블랙스톤 이천,,경기,이천,,,,,,true,회원제,,active,draft

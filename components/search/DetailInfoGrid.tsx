@@ -1,4 +1,5 @@
 import type { PublicCourseDetail } from '@/lib/queries/course-detail'
+import { colors, ui } from '@/lib/design'
 
 export function DetailInfoGrid({ course }: { course: PublicCourseDetail }) {
   const items = [
@@ -12,8 +13,8 @@ export function DetailInfoGrid({ course }: { course: PublicCourseDetail }) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12, marginTop: 16 }}>
       {items.map(([label, value]) => (
-        <div key={label} style={{ padding: 12, border: '1px solid #eee', borderRadius: 8, background: '#fafafa' }}>
-          <div style={{ fontSize: 12, color: '#666' }}>{label}</div>
+        <div key={label} style={ui.subCard}>
+          <div style={{ fontSize: 12, color: colors.textSoft }}>{label}</div>
           <div style={{ marginTop: 6 }}>{value}</div>
         </div>
       ))}
