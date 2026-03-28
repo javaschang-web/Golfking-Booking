@@ -1,6 +1,7 @@
 import { SearchForm } from '@/components/search/SearchForm'
 import { SearchResultsList } from '@/components/search/SearchResultsList'
 import { SearchSummary } from '@/components/search/SearchSummary'
+import { calculateOpenDatetime } from '@/lib/booking-rules/calculate'
 import { getPublicCourses } from '@/lib/queries/courses'
 import { colors, ui } from '@/lib/design'
 
@@ -14,6 +15,49 @@ export default async function SearchPage({
   const playDate = searchParams.date ?? ''
   const region = searchParams.region ?? ''
   const courses = await getPublicCourses(region)
+
+  const groupedOpenDates = playDate
+    ? courses.reduce<Record<string, { label: string; names: string[] }>>((acc, course) => {
+        const activePolicy = course.booking_policies?.find((policy) => policy.is_active)
+        const calculated = calculateOpenDatetime(playDate, activePolicy)
+
+        if (calculated.status !== 'ok' || !calculated.openDatetime) {
+          return acc
+        }
+
+        const openDate = new Date(calculated.openDatetime)
+        const dateKey = new Intl.DateTimeFormat('sv-SE', {
+          timeZone: 'Asia/Seoul',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+        }).format(openDate)
+
+        const label = new Intl.DateTimeFormat('ko-KR', {
+          timeZone: 'Asia/Seoul',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          weekday: 'short',
+        }).format(openDate)
+
+        if (!acc[dateKey]) {
+          acc[dateKey] = { label, names: [] }
+        }
+
+        acc[dateKey].names.push(course.name)
+        return acc
+      }, {})
+    : {}
+
+  const calendarEntries = Object.entries(groupedOpenDates)
+    .map(([dateKey, value]) => ({
+      dateKey,
+      label: value.label,
+      count: value.names.length,
+      names: value.names.sort((a, b) => a.localeCompare(b, 'ko-KR')),
+    }))
+    .sort((a, b) => a.dateKey.localeCompare(b.dateKey))
 
   return (
     <main style={ui.page}>
@@ -34,7 +78,7 @@ export default async function SearchPage({
         </section>
 
         <div style={{ marginTop: 24 }}>
-          <SearchSummary total={courses.length} region={region} playDate={playDate} />
+          <SearchSummary total={courses.length} region={region} playDate={playDate} entries={calendarEntries} />
         </div>
 
         <div style={{ marginTop: 24 }}>
