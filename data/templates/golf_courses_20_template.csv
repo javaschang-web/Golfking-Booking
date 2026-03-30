@@ -1,21 +1,21 @@
 slug,name,english_name,region_primary,region_secondary,address,phone,homepage_url,booking_url,map_url,membership_required,membership_note,booking_note,status,verification_status
-seowon-hills,서원힐스,,경기,파주,,,,,,false,,,active,verified
-hanlim-yongin,한림용인CC,,경기,용인,,,https://yongin.hanlimgolf.co.kr/,,,,false,,,active,draft
-pinevalley,파인밸리,,강원,춘천,,,,,,true,회원제,,active,verified
-golfzon-county-cheonan,골프존카운티 천안,,충남,천안,,,https://www.golfzoncounty.com/,,,,false,,,active,draft
-castlex-jeju,캐슬렉스 제주,,제주,서귀포,,,https://castlexjj.com/,,,,false,,,active,draft
-namseoul-cc,남서울CC,,경기,성남,,,,,,true,회원제,,active,draft
-lakewood,레이크우드,,경기,양주,,,,,,false,,,active,draft
-blueone-yongin,블루원 용인,,경기,용인,,,,,,false,,,active,draft
-oak-valley,오크밸리,,강원,원주,,,,,,false,,,active,draft
-belles-forest,벨라스톤,,강원,홍천,,,,,,false,,,active,draft
-ansung-benest,안성베네스트,,경기,안성,,,,,,true,회원/초청 중심,,active,draft
-south-springs,사우스스프링스,,경기,이천,,,,,,false,,,active,draft
-sky72-ocean,스카이72 오션,,인천,영종,,,,,,false,,,active,draft
-solmoro,솔모로,,경기,여주,,,,,,false,,,active,draft
-gold-cc,골드CC,,경기,용인,,,,,,false,,,active,draft
-jade-palace,제이드팰리스,,강원,춘천,,,,,,true,회원제,,active,draft
-lotte-skyhill-jeju,롯데스카이힐 제주,,제주,서귀포,,,,,,false,,,active,draft
-haesley-nine-bridges,해슬리 나인브릿지,,경기,여주,,,,,,true,회원제,,active,draft
-clubd-geumgang,클럽디 금강,,충북,충주,,,,,,false,,,active,draft
-blackstone-icheon,블랙스톤 이천,,경기,이천,,,,,,true,회원제,,active,draft
+"seowon-hills","서원힐스","","경기","파주","","","","","","false","","","active","verified"
+"hanlim-yongin","한림용인CC","","경기","용인","용인시 처인구 남사읍 경기동로 628","","https://yongin.hanlimgolf.co.kr/","","","","false","","","active"
+"pinevalley","파인밸리","","강원","춘천","","","","","","true","회원제","","active","verified"
+"golfzon-county-cheonan","골프존카운티 천안","","충남","천안","천안시 동남구 병천면 매성2길 103","","https://www.golfzoncounty.com/","","","","false","","","active"
+"castlex-jeju","캐슬렉스 제주","","제주","서귀포","서귀포시 평화로 1241","","https://castlexjj.com/","","","","false","","","active"
+"namseoul-cc","남서울컨트리클럽","","경기","성남","성남시 분당구 안양판교로1201번길 1201","","","","","true","회원제","","active","draft"
+"lakewood","레이크우드 골프장","","경기","양주","양주시 만송로 244","","","","","false","","","active","draft"
+"blueone-yongin","블루원 용인","","경기","용인","용인시 처인구 원삼면 보개원삼로 1534번길 40","","","","","false","","","active","draft"
+"oak-valley","오크밸리회원제골프장","","강원","원주","강원도 원주시 지정면 오크밸리1길 66","","","","","false","","","active","draft"
+"belles-forest","벨라스톤컨트리클럽","","강원","횡성","강원도 횡성군 서원면 옥계9길 124","","","","","false","","","active","draft"
+"ansung-benest","안성베네스트","","경기","안성","","","","","","true","회원/초청 중심","","active","draft"
+"south-springs","사우스스프링스C.C.","","경기","이천","이천시 모가면 공원로 64","","","","","false","","","active","draft"
+"sky72-ocean","스카이72 오션","","인천","영종","","","","","","false","","","active","draft"
+"solmoro","솔모로","","경기","여주","여주시 가남읍 솔모로그린길 171(가남면 양귀리 산69)","","","","","false","","","active","draft"
+"gold-cc","골드CC","","경기","용인","용인시 기흥구 기흥단지로 398","","","","","false","","","active","draft"
+"jade-palace","제이드팰리스 골프클럽","","강원","춘천","강원도 춘천시 남산면 경춘로 212-30","","","","","true","회원제","","active","draft"
+"lotte-skyhill-jeju","㈜호텔롯데스카이힐제주CC","","제주","서귀포","서귀포시 상예로 530","","","","","false","","","active","draft"
+"haesley-nine-bridges","해슬리 나인브릿지","","경기","여주","여주시 명품1로 76(여주읍 연라리 산67-1 일원)","","","","","true","회원제","","active","draft"
+"clubd-geumgang","클럽디 금강","","충북","충주","","","","","","false","","","active","draft"
+"blackstone-icheon","블랙스톤리조트이천","","경기","이천","이천시 장호원읍 장여로 459-160","","","","","true","회원제","","active","draft"
