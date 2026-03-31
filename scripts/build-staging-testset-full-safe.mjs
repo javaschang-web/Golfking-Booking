@@ -46,10 +46,14 @@ const safeSlugMap = JSON.parse(fs.readFileSync('C:/Users/javas/.openclaw/workspa
 const byName = new Map(input.map((r) => [r.name, r]))
 
 const manualApproved = new Map([
+  // G.C is just an abbreviation of 골프클럽; prefer public-course records when both exist.
   ['롯데스카이힐 제주', '㈜호텔롯데스카이힐제주CC'],
   ['제이드팰리스', '제이드팰리스 골프클럽'],
   ['벨라스톤', '벨라스톤컨트리클럽'],
-  ['오크밸리', '오크밸리회원제골프장'],
+  ['오크밸리', '오크밸리 대중골프장'],
+  // Added from fallback manual review
+  ['안성베네스트', '안성베네스트G.C'],
+  ['파인밸리', '파인밸리컨트리클럽'],
 ])
 
 const selected = []
