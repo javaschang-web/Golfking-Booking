@@ -1,0 +1,91 @@
+slug,name,english_name,region_primary,region_secondary,address,phone,homepage_url,booking_url,map_url,membership_required,membership_note,booking_note,status,verification_status
+jb-course-30bf2f77,웅포컨트리클럽,,전북,익산,전라북도 익산시 웅포면 강변로 130,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jb-clubd-9a21ebf2,CLUBD 금강,,전북,익산,전라북도 익산시 웅포면 강변로 130,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jb-course-46306884,태인CC,,전북,정읍,전라북도 정읍시 태인면 상증길 28,,,,,false,대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+jb-and-46c270e7,내장산골프&리조트,,전북,정읍,전라북도 정읍시 첨단과학로 476,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jb-course-537207f9,남원상록골프장,,전북,남원,전라북도 남원시 대산면 월계길 11,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jb-course-7723e606,골프존 카운티 드래곤,,전북,남원,전라북도 남원시 대산면 대사로 498,,,,,false,대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+jb-course-2c2622d8,아네스빌CC,,전북,김제,전라북도 김제시 황산면 높은메길 160-39,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jb-course-9ecef69a,에스페란사GC,,전북,김제,전라북도 김제시 금구면 낙산로 120,,,,,false,대중제,odcloud batch import / holes=10 / source_count=1,active,draft
+jb-course-88734f77,김제스파힐스CC,,전북,김제,전라북도 김제시 온천길 37,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jb-course-6aff61de,더나인골프클럽,,전북,김제,전라북도 김제시 금구면 대화1길 8-75,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jb-okcc-c3915bac,OKCC,,전북,완주,전라북도 완주군 소양면 화심리 300,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jb-course-831b8ac6,케이밸리컨트리클럽,,전북,완주,전라북도 완주군 운주면 산북리 65-4,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jb-course-d2195764,써미트CC,,전북,진안,전라북도 진안군 부귀면 부귀로 72-161,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+jb-course-4ef7415e,무주덕유산CC,,전북,무주,전라북도 무주군 설천면 만선로 185,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+jb-course-0430266b,골프존카운티무주,,전북,무주,전라북도 무주군 안성면 장무로 1537-21,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jb-course-0d8b0623,장수골프리조트,,전북,장수,전라북도 장수군 계남면 장안산로 303,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jb-course-20ef661a,전주샹그릴라CC,,전북,임실,전라북도 임실군 신덕면 수지로 559-90,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+jb-course-ae8048e1,금과골프장,,전북,순창,전라북도 순창군 금과면 담순로 716,,,,,false,대중제,odcloud batch import / holes=6 / source_count=1,active,draft
+jb-course-a9da744b,디케이레저,,전북,순창,전라북도 순창군 순창읍 금산로 152,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jb-course-0be0e149,고창CC,,전북,고창,전라북도 고창군 심원면 애향갯벌로 70,,,,,false,대중제,odcloud batch import / holes=21 / source_count=1,active,draft
+jb-course-f324085d,골프존카운티선운,,전북,고창,전라북도 고창군 아산면 운곡로 418,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jb-course-763d9a1a,석정힐CC,,전북,고창,전라북도 고창군 고창읍 석정2로 192,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jn-and-07543a3a,여수시티파크골프&호텔,,전남,여수,여수시 좌수영로 641,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jn-course-d1cb7309,디오션CC,,전남,여수,여수시 화양면 장수 암포로 142,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jn-course-79fd4827,세이지우드여수경도,,전남,여수,여수시 대경도길 33,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+jn-course-64d4c20c,승주CC,,전남,순천,순천시 상사면 오실길 333,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+jn-course-2fd094cd,파인힐스CC,,전남,순천,순천시 주암면 송광사길 99,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+jn-course-2351a44a,순천CC,,전남,순천,순천시 별량면 동화사길 85,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jn-course-1aa97daf,골프존카운티 순천,,전남,순천,순천시 주암면 행정1길 77,,,,,false,대중제,odcloud batch import / holes=36 / source_count=1,active,draft
+jn-course-f29c3688,순천부영CC,,전남,순천,순천시 해룡면 신대로 188,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jn-course-ecd5edbb,골드레이크CC,,전남,나주,나주시 남평읍 나주호로 442-129,,,,,false,대중제/회원제,odcloud batch import / holes=18 / source_count=2,active,draft
+jn-course-52a41abe,해피니스CC,,전남,나주,나주시 다도면 다도로 171-60,,,,,false,대중제/회원제,odcloud batch import / holes=18 / source_count=2,active,draft
+jn-course-923b8177,나주CC,,전남,나주,나주시 공산면 상방신포길 154-32,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jn-course-ca9550d0,나주힐스CC,,전남,나주,나주시 공산면 삼방신포길 160-27,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jn-course-d62c065a,광양CC,,전남,광양,광양시 가야로 223,,,,,false,대중제,odcloud batch import / holes=6 / source_count=1,active,draft
+jn-course-21f7987b,창평CC,,전남,담양,담양군 창평면 오산길 100,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jn-course-df0ee7a8,담양레이나CC,,전남,담양,담양군 금성면 깊은실길 169,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jn-course-808bbab3,죽향CC,,전남,담양,담양군 창평면 창평로 159,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jn-course-ab26b7b0,광주CC,,전남,곡성,곡성군 옥과면 입면로 455,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+jn-course-47956ef6,옥과기안CC,,전남,곡성,곡성군 옥과면 입면로 197,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jn-course-103ae246,보성CC,,전남,보성,보성군 조성면 조성3길 338,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jn-course-be4146f6,보성에덴CC,,전남,보성,보성군 보성읍 원봉리 498,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jn-course-59ed89d9,화순엘리체CC,,전남,화순,화순군 춘양면 장곡길 55,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+jn-course-47115664,화순CC,,전남,화순,화순군 도곡면 천태로 1000-151,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+jn-course-292ec24e,조아밸리CC,,전남,화순,화순군 도곡면 고인돌2로 450,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jn-course-f5dd3df2,무등산CC,,전남,화순,화순군 화순읍 오성로 292-90,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+jn-jnj-36a59994,JNJ골프리조트,,전남,장흥,장흥군 장평면 제산기동로 326,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+jn-course-3646db4d,다산베아채 골프앤리조트,,전남,강진,강진군 도암면 학장리 87-1,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+jn-course-74137a01,오시아노골프클럽,,전남,해남,해남군 화원면 시아로 224,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jn-course-89579e66,파인비치골프링크스,,전남,해남,해남군 화원면 시아로 224,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jn-course-3dc24e76,솔라시도CC,,전남,해남,해남군 산이면 산이로 2247,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jn-course-f1afee76,아크로CC,,전남,영암,영암군 금정면 안적동길 403,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+jn-course-f786dacd,사우스링스영암cc,,전남,영암,영암군 삼호읍 에프원로 121-1,,,,,false,대중제,odcloud batch import / holes=45 / source_count=1,active,draft
+jn-course-56fd6154,무안CC,,전남,무안,무안군 청계면 서호로 162,,,,,false,대중제,odcloud batch import / holes=54 / source_count=1,active,draft
+jn-course-636ade63,클린밸리CC,,전남,무안,무안군 청계면 동암길 2-200,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jn-course-7832a9b7,함평엘리체CC,,전남,함평,함평군 학교면 서당매길 242,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+jn-course-5316ecc1,함평천지CC,,전남,함평,함평군 함평읍 함장로 889-11,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jn-course-711cbd5b,웨스트오션CC,,전남,영광,영광군 백수읍 해안로 1362-70,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jn-course-16f5e1d2,에콜리안영광골프장,,전남,영광,영광군 영광읍 월현로 1길 40,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jn-course-c38bfab2,푸른솔골프클럽,,전남,장성,장성군 동화면 임정로 155,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+jn-course-3d9e97ef,백양우리CC,,전남,장성,장성군 북이면 봉암로 1574,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jj-course-b04bc897,블랙스톤리조트,,제주,제주,제주시 한림읍 한창로 925-122,,,,,false,회원제/대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+jj-course-3d9055cf,테디밸리골프앤리조트,,제주,서귀포,제주 서귀포시 안덕면 한창로 365,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+jj-course-1485c0ba,에버리스골프리조트,,제주,제주,제주시 애월읍 평화로 1693-75,,,,,false,회원제/대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+jj-course-8e36ad97,그린필드골프장,,제주,제주,제주시 조천읍 번영로1040-70,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+jj-course-33ec2855,라온골프클럽,,제주,제주,제주도 제주시 한경면 용금로 998,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+jj-course-e8d7928e,사이프러스,,제주,서귀포,서귀포시 표선면 번영로 2300,,,,,false,회원제/대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+jj-course-47c2418b,엘리시안 제주cc,,제주,제주,제주시 애월읍 평화로 1738-116,,,,,false,회원제/대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+jj-sk-d8cbf28a,sk핀크스골프장,,제주,서귀포,서귀포시 안덕면 산록남로 863,,,,,false,회원제/대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+jj-course-59d259ef,골프존카운티오라,,제주,제주,제주도 제주시 오라남로 130-16(오라이동),,,,,false,회원제/대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+jj-course-5964f97c,㈜우리들리조트 제주,,제주,서귀포,제주특별자치도 서귀포시 산록남로 2914,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jj-course-a3fc8467,플라자CC 제주,,제주,제주,제주특별자치도 제주시 명림로 575-107,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jj-course-b468e6fc,㈜부영CC,,제주,서귀포,서귀포시 남원읍 남조로 960,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+jj-course-ecdcd433,레이크힐스,,제주,서귀포,제주특별자치도 서귀포시 중문동 산5,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+jj-course-e4ff45d1,클럽나인브릿지,,제주,서귀포,제주특별자치도 서귀포시 안덕면 광평로34-156,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+jj-course-78a4ff34,나인브릿지 퍼블릭,,제주,서귀포,제주특별자치도 서귀포시 안덕면 광평로34-156,,,,,false,대중제,odcloud batch import / holes=6 / source_count=1,active,draft
+jj-course-aa005659,제주CC,,제주,제주,제주특별자치도 제주시 516로 2695번지,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jj-c-c-0111e1d4,샤인빌파크C.C.,,제주,서귀포,서귀포시 표선면 가시로 384,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jj-course-c54bbfa4,세인트포CC,,제주,제주,제주시 구좌읍 선유로 445-55,,,,,false,회원제/대중제,odcloud batch import / holes=27 / source_count=2,active,draft
+jj-course-ad7cd8fa,제주힐CC,,제주,제주,제주시 516로 2696-117,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jj-course-49f66eaf,중문GC,,제주,서귀포,서귀포시 중문관광로 72버길 60,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jj-course-f679c2bb,크라운CC,,제주,제주,제주시 북선로 125,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+jj-course-f4b0dfd6,해비치CC,,제주,서귀포,서귀포시 원님로 399번길 319,,,,,false,회원제/대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+jj-course-c9ea5b65,타미우스CC,,제주,제주,제주시 화전길 201,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+jj-course-de2a2507,라헨느,,제주,제주,제주시 명림로 375,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+jj-course-f56a5822,한라산CC,,제주,제주,제주시 선돌목동길 56-46,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jj-course-34870e8b,더클래식CC,,제주,서귀포,서귀포시 남조로 1105,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jj-course-ce59014b,스프링데일,,제주,서귀포,서귀포시 서성로 459,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jj-course-13f087b1,에코랜드,,제주,제주,제주시 번영로 1278-169,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+jj-course-54848b16,아덴힐,,제주,제주,제주시 화전길 82,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft

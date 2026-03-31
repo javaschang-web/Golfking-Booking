@@ -93,7 +93,7 @@ const dryRun = process.argv.includes('--dry-run')
 const inputArgIndex = process.argv.indexOf('--input-json')
 const reportArgIndex = process.argv.indexOf('--report-prefix')
 const testsetPath = inputArgIndex >= 0 ? process.argv[inputArgIndex + 1] : 'C:/Users/javas/.openclaw/workspace-javes/reports/staging_testset_20.json'
-const reportPrefix = reportArgIndex >= 0 ? process.argv[reportArgIndex + 1] : 'staging_pilot20'
+const reportPrefix = reportArgIndex >= 0 ? process.argv[reportArgIndex + 1] : path.basename(testsetPath).replace(/\.json$/i, '')
 const env = loadEnvFile(path.resolve('.env.local'))
 const supabase = createClient(env.NEXT_PUBLIC_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY, {
   auth: { autoRefreshToken: false, persistSession: false },

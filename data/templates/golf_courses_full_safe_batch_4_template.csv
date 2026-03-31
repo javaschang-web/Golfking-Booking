@@ -1,0 +1,101 @@
+slug,name,english_name,region_primary,region_secondary,address,phone,homepage_url,booking_url,map_url,membership_required,membership_note,booking_note,status,verification_status
+cn-1-5e78f516,로얄링스1,,충남,태안,태안군 태안읍 반곡길 284,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cn-2-4d283443,로얄링스2,,충남,태안,태안군 태안읍 반곡길 284,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cn-cc1-2f9359fd,솔라고CC1,,충남,태안,태안군 태안읍 소곳이길 92-234,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cn-cc2-c3d41cc5,솔라고CC2,,충남,태안,태안군 태안읍 소곳이길 92-234,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-c-c-a20194c5,오션힐스포항C.C(회),,경북,포항,포항시 북구 송라면 대전길 7,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-c-c-9f2363db,오션힐스포항C.C(대),,경북,포항,포항시 북구 송라면 대전길 7,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gb-c-c-813917dd,청하이스턴C.C,,경북,포항,포항시 청하면 용산길 94,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gb-c-c-d417b4fb,포항C.C,,경북,포항,포항시 송라면 동해대로 2751번길 123,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-c-c-ebef110c,경주신라C.C,,경북,경주,경주시 보문로 319,,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+gb-g-c-e672ffdc,보문G.C,,경북,경주,경주시 보문로 182-14,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-c-c-d4184431,경주C.C,,경북,경주,경주시 보문로 182-98,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gb-c-c-fded3591,마우나오션C.C,,경북,경주,경주시 양남면 동남로 982,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-course-6c9a5eb1,마우나오션블루,,경북,경주,경주시 양남면 동남로 982,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gb-course-fad5cd06,가든골프클럽,,경북,경주,경주시 불국로 289-17(마동),,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gb-g-c-10e7573f,우리G.C,,경북,경주,경주시 양남면 동남로 972,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gb-g-c-2c2368d9,서라벌G.C,,경북,경주,경주시 외동읍 내외로 577-189,,,,,false,대중제,odcloud batch import / holes=36 / source_count=1,active,draft
+gb-course-9f8e7265,골프존카운티 감포,,경북,경주,경주시 감포읍 동해안로 1819-59,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-c-c-736163bf,디아너스C.C,,경북,경주,경주시 보불로 391(천군동),,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gb-g-c-f5382b37,선리치G.C,,경북,경주,경주시 안강읍 검단장골길 181-17,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gb-g-c-dd794364,안강레전드G.C,,경북,경주,경주시 안강읍 낙산길 85,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gb-c-c-563dcbb0,이스트힐C.C,,경북,경주,경주시 양남면 외남로 1377,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-c-c-cbe1fa91,루나엑스C.C,,경북,경주,경주시 천북면 천강로 412-299,,,,,false,대중제,odcloud batch import / holes=24 / source_count=1,active,draft
+gb-c-c-79faaa09,애플밸리C.C,,경북,김천,김천시 어모면 작점로 606,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gb-c-c-05cc08d4,포도C.C,,경북,김천,김천시 구성면 남김천대로 2532,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gb-c-c-88d914d7,남안동C.C,,경북,안동,안동시 일직면 풍일로 1887,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-c-c-1f25ec74,안동리버힐C.C,,경북,안동,안동시 풍천면 풍일로 1572,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-course-d9e74f32,안동레이크골프클럽,,경북,안동,안동시 관광단지로 316,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-course-9edc6ef0,골프존카운티 선산,,경북,구미,구미시 산동면 강동로 953-73,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-course-76cf04f3,골프존카운티 구미,,경북,구미,구미시 산동면 강동로 953-74,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-c-c-f04000cd,구미C.C,,경북,구미,구미시 장천면 송백로 229,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gb-g-c-fabaeb70,오펠G.C,,경북,영천,영천시 고경면 호국로 1221-24,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gb-c-c-46be2af7,영천C.C,,경북,영천,영천시 임고면 방목길 34-2,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gb-g-c-1ba5cc5b,시엘G.C,,경북,영천,영천시 청통면 청통로 334-41,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gb-course-30b079c2,청통골프장,,경북,영천,영천시 청통면 청통로 733,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-course-5bf73394,블루원상주골프리조트,,경북,상주,상주시 모서면 화현3길 127,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-ii-db71420d,뉴스프링빌Ⅱ,,경북,상주,상주시 모서면 백화로 40,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-course-cee6a48d,문경레저타운골프장,,경북,문경,문경시 마성면 문경골프장길 240,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-c-c-e29b3857,대구C.C,,경북,경산,경산시 진량읍 일연로 718-42,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gb-course-3714471d,인터불고컨트리클럽,,경북,경산,경산시 삼성현로 614-26,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gb-c-c-a2e747ab,구니C.C,,경북,군위,군위군 군위읍 도군로 2450,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-g-c-19609616,군위오펠G.C,,경북,군위,군위군 산성면 부흥로 227,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-course-539deb35,이지스카이CC,,경북,군위,군위군 군위읍 대흥1길 48-148,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-course-2d2d4767,엠스클럽의성,,경북,의성,의성군 봉양면 농공마전길 125-78,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-c-c-2506a322,파라지오C.C,,경북,의성,의성군 봉양면 신평리 산50,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-c-c-a6a36dde,오션비치C.C,,경북,영덕,영덕군 강구면 동해대로 4265-43,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gb-c-c-11685c7f,그레이스C.C,,경북,청도,청도군 이서면 서녁길 91,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gb-g-c-0ad6ac6f,오션힐스청도G.C,,경북,청도,청도군 매전면 곰티로 370-204,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-course-42c3af81,펜타뷰골프클럽,,경북,청도,청도군 금천면 금천로 709,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gb-c-c-e5a7f9a0,유니밸리C.C,,경북,고령,고령군 고령읍 일량로 588,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gb-course-42136a3b,마스터피스CC,,경북,고령,고령군 쌍림면 산막길 47-80,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-course-8c2b6734,대가야CC,,경북,고령,고령군 대가야읍 대가야로 1103,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gb-course-9170b1a2,다산 샤인힐CC,,경북,고령,고령군 다산면 벌지로 175-115,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-c-c-fc2eb127,파미힐스C.C,,경북,칠곡,칠곡군 왜관읍 봉계로 263,,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+gb-course-25adc2d8,마이다스 구미 골프아카데미,,경북,칠곡,칠곡군 가산면 학하2길 54-171,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gb-c-c-61c31fbc,세븐밸리C.C,,경북,칠곡,칠곡군 왜관읍 봉계3길 180,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-c-c-5f133081,칠곡아이위시C.C,,경북,칠곡,칠곡군 기산면 노석1길 49-112,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gb-c-c-and-02ddeb8a,한맥C.C&노블리아,,경북,예천,예천군 호명면 한맥 골프장길 72,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gb-course-d2b02799,원남골프장,,경북,울진,울진군 매화면 오산리 산26,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-9910ed73,창원컨트리클럽,,경남,창원,창원시 의창구 대봉로 137,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-a4c88ee2,용원컨트리클럽,,경남,창원,창원시 진해구 가주로 133,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gn-course-2f6576f9,아라미르골프앤리조트,,경남,창원,창원시 진해구 수제로 36,,,,,false,대중제,odcloud batch import / holes=36 / source_count=1,active,draft
+gn-course-8036bac7,진주컨트리클럽,,경남,진주,진주시 진성면 진성로 464번길 82,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-794006c6,통영동원로얄컨트리클럽,,경남,통영,통영시 산양읍 담안길 240,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-243b2e46,서경타니CC,,경남,사천,사천시 곤양면 흥신로 210,,,,,false,대중제,odcloud batch import / holes=27 / source_count=2,active,draft
+gn-course-2f10c02b,삼삼컨트리클럽,,경남,사천,사천시 축동면 화당산로 224,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gn-course-3edb5585,골프존카운티 사천,,경남,사천,사천시 서포면 구송로 151,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gn-course-e7f0bd83,가야컨트리클럽,,경남,김해,김해시 인제로 495,,,,,false,회원제/대중제,odcloud batch import / holes=45 / source_count=2,active,draft
+gn-course-5e32a251,김해정산컨트리클럽,,경남,김해,김해시 주촌면 서부로 1637번길 299-194,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gn-course-0285d1bb,롯데스카이힐김해컨트리클럽,,경남,김해,김해시 진례면 고모로 134번길 54-49,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-a487f341,김해상록컨트리클럽,,경남,김해,김해시 한림면 김해대로 974번길 198,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-dc794129,리더스컨트리클럽,,경남,밀양,밀양시 활성로 455,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gn-course-4bc9510b,밀양컨트리클럽,,경남,밀양,밀양시 부북면 전사포리 832,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gn-course-abe03406,거제드비치골프클럽,,경남,거제,거제시 장목면 거제북로 1573,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-4e91060a,거제뷰컨트리클럽,,경남,거제,거제시 거제면 옥산리 285-3,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-dbd27493,통도파인이스트컨트리클럽,,경남,양산,양산시 하북면 신평남부길 29-12,,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+gn-course-ed9aaa94,동부산컨트리클럽,,경남,양산,양산시 매곡외산로 282,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gn-course-7fe2afda,에이원컨트리클럽,,경남,양산,양산시 덕명로 190,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gn-course-8e0c8451,에덴밸리컨트리클럽,,경남,양산,양산시 원동면 어실로 910,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-dd269d3b,양산컨트리클럽,,경남,양산,양산시 상북면 충렬로 687,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gn-course-dfcc7b14,다이아몬드컨트리클럽,,경남,양산,양산시 상북면 공원로 305-391,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-69382c40,의령친환경골프장,,경남,의령,의령군 의령읍 남강로 417,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gn-course-d5bbb580,의령 리온컨트리클럽,,경남,의령,의령군 칠곡면 내조리 산113,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gn-course-dc790ebf,골프존카운티 경남,,경남,함안,함안군 칠원면 운무로 470,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-ab44cef1,부곡컨트리클럽,,경남,창녕,창녕군 부곡면 온천로 445,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-34ecdb6c,힐마루컨트리클럽,,경남,창녕,창녕군 장마면 영산계성로 469-195,,,,,false,회원제/대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+gn-course-09186409,고성노벨컨트리클럽,,경남,고성,고성군 회화면 회진로 567,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gn-course-b09b2f57,고성컨트리클럽,,경남,고성,고성군 고성읍 월평3길 250,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gn-course-b3a23c87,아난티남해CC,,경남,남해,남해군 남면 남서대로 1179번길 40-109,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gn-course-7a5d409d,아난티남해GC,,경남,남해,남해군 남면 남서대로 1179번길 40-109,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gn-course-b53adc29,사우스케이프오너스클럽,,경남,남해,남해군 창선면 흥선로 1505번길 95,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-5d80a4e9,경남스카이뷰CC,,경남,함양,함양군 서상면 소로길 207,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-acc9787b,아델스코트 컨트리클럽,,경남,합천,합천군 가야면 가조가야로 1916-35,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gn-course-0653b7e3,거창친환경대중골프장,,경남,거창,거창군 가조면 우륵길 410-284,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gn-course-8581297c,양산동원로얄CC,,경남,양산,양산시 어곡동 산283번지,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-039ac908,밀양노벨컨트리클럽,,경남,밀양,밀양시 단장면 단장로 946,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gn-course-bf9f03fa,클럽디거창,,경남,거창,거창군 신원면 덕산리 산 13번지,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+jb-course-8024415b,전주월드컵골프장,,전북,전주,전라북도 전주시 덕진구 온고을로 672,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+jb-course-5d6767dc,군산CC,,전북,군산,전라북도 군산시 옥서면 남산군로 1685,,,,,false,대중제,odcloud batch import / holes=81 / source_count=1,active,draft
+jb-course-e805758a,익산컨트리클럽,,전북,익산,전라북도 익산시 무왕로38길 111,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+jb-course-b8ecc17f,상떼힐CC,,전북,익산,전라북도 익산시 무왕로38길 111,,,,,false,대중제,odcloud batch import / holes=6 / source_count=1,active,draft

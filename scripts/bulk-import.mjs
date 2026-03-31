@@ -63,7 +63,7 @@ function resolveTemplatePath(baseDir, preferredName, fallbackName) {
 function parseCsv(filePath) {
   const raw = fs.readFileSync(filePath, 'utf8').trim()
   const lines = raw.split(/\r?\n/)
-  const headers = lines[0].split(',')
+  const headers = lines[0].split(',').map((h) => h.replace(/^"|"$/g, ''))
   return lines.slice(1).filter(Boolean).map((line) => {
     const cols = splitCsvLine(line)
     const row = {}

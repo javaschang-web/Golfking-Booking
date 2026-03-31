@@ -1,0 +1,101 @@
+slug,name,english_name,region_primary,region_secondary,address,phone,homepage_url,booking_url,map_url,membership_required,membership_note,booking_note,status,verification_status
+blackstone-icheon,블랙스톤리조트이천,,경기,이천,이천시 장호원읍 장여로 459-160,,,,,false,회원제/대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+haesley-nine-bridges,해슬리나인브릿지,,경기,여주,여주시 명품1로 76(여주읍 연라리 산67-1 일원),,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gold-cc,골드CC,,경기,용인,용인시 기흥구 기흥단지로 398,,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+solmoro,솔모로,,경기,여주,여주시 가남읍 솔모로그린길 171(가남면 양귀리 산69),,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+south-springs,사우스스프링스C.C.,,경기,이천,이천시 모가면 공원로 64,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+blueone-yongin,블루원용인CC,,경기,용인,용인시 처인구 원삼면 보개원삼로 1534번길 40,,,,,false,회원제/대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+lakewood,레이크우드 골프장,,경기,양주,양주시 만송로 244,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+namseoul-cc,남서울컨트리클럽,,경기,성남,성남시 분당구 안양판교로1201번길 1201,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+castlex-jeju,캐슬렉스제주GC,,제주,서귀포,서귀포시 평화로 1241,,,,,false,회원제/대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+golfzon-county-cheonan,골프존카운티 천안,,충남,천안,천안시 동남구 병천면 매성2길 103,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+hanlim-yongin,한림용인CC,,경기,용인,용인시 처인구 남사읍 경기동로 628,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+lotte-skyhill-jeju,㈜호텔롯데스카이힐제주CC,,제주,서귀포,서귀포시 상예로 530,,,,,false,회원제/대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+jade-palace,제이드팰리스 골프클럽,,강원,춘천,강원도 춘천시 남산면 경춘로 212-30,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+belles-forest,벨라스톤컨트리클럽,,강원,횡성,강원도 횡성군 서원면 옥계9길 124,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+oak-valley,오크밸리회원제골프장,,강원,원주,강원도 원주시 지정면 오크밸리1길 66,,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+gg-course-cea02618,한양컨트리클럽,,경기,고양,고양시 덕양구 고양대로1643번길 164,,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+gg-course-14e7130a,뉴코리아 컨트리클럽,,경기,고양,고양시 덕양구 신원2로 57,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-881db865,고양컨트리클럽,,경기,고양,고양시 덕양구 흥도로 304-23,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-1-2-3-8f7515a7,1.2.3,,경기,고양,고양시 덕양구 통일로 43-168,,,,,false,대중제,odcloud batch import / holes=6 / source_count=1,active,draft
+gg-course-1c81528e,올림픽 골프장,,경기,고양,고양시 덕양구 혜음로 301,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-course-8401df7b,일산스프링힐스 컨트리클럽,,경기,고양,고양시 일산동구 산황로 108,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-9-8f6d2a79,한양컨트리클럽 대중제 9홀 골프장,,경기,고양,고양시 덕양구 고양대로 1591,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-course-a2a6fe90,한원CC,,경기,용인,용인시 처인구 남사읍 전나무골길 2번길 94,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-course-16de998b,양지파인CC,,경기,용인,용인시 처인구 양지면 남평로 112,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-course-953888ae,수원CC,,경기,용인,용인시 기흥구 중부대로 495,,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+gg-course-182e182e,플라자CC,,경기,용인,용인시 처인구 남사읍 봉무로 153번길 79,,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+gg-course-7578bc98,태광CC,,경기,용인,용인시 기흥구 흥덕4로 77,,,,,false,회원제/대중제,odcloud batch import / holes=27 / source_count=2,active,draft
+gg-course-683511a8,한성CC,,경기,용인,용인시 기흥구 구교동로 151,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-88cc-e0cc87c1,88CC,,경기,용인,용인시 기흥구 석성로 521번길 169,,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+gg-course-2d7aa27c,레이크사이드CC,,경기,용인,용인시 처인구 모현읍 능원로 181,,,,,false,대중제/회원제,odcloud batch import / holes=36 / source_count=2,active,draft
+gg-course-1b363423,남부CC,,경기,용인,용인시 기흥구 사은로 163,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-065e3297,신원CC,,경기,용인,용인시 이동읍 이원로 225,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-course-0dea8d8e,은화삼CC,,경기,용인,용인시 처인구 백옥대로 860-38,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-b78a8a7b,아시아나CC,,경기,용인,용인시 처인구 양지면 양대로 290,,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+gg-course-0c8e9bf0,코리아CC,,경기,용인,용인시 처인구 이동읍 기흥단지로 579,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-course-1fa6b53f,코리아퍼브릭,,경기,용인,용인시 기흥구 기흥단지로 224,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-course-6c9b2318,지산CC,,경기,용인,용인시 처인구 원삼면 죽양대로 2100번길 60,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-course-180565f4,화산CC,,경기,용인,용인시 처인구 이동읍 화산로 239,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-c1624630,글렌로스골프클럽,,경기,용인,용인시 처인구 포곡읍 에버랜드로 562번길 69,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-course-ae4add4f,용인CC,,경기,용인,용인시 처인구 백암면 황새울로 255,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-course-0c285f92,석천CC,,경기,용인,용인시 처인구 백암면 황새울로 255,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-course-8a5ace50,써닝포인트CC,,경기,용인,용인시 처인구 백암면 고안로 51번길 205,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-838a197e,해솔리아CC,,경기,용인,용인시 처인구 이동읍 백자로 297번길 74,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-course-e1f9eeca,세현CC,,경기,용인,용인시 처인구 이동읍 백자로 450,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-c9aca9fc,리베라CC,,경기,화성,화성시 동탄면 중리길 183,,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+gg-course-87c56001,기흥CC,,경기,화성,화성시 동탄면 풀무골로106번길 244,,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+gg-course-bc144d5c,발리오스CC,,경기,화성,화성시 팔탄면 3.1만세로 641-28,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-d89b3f65,발리오스대중,,경기,화성,화성시 팔탄면 3.1만세로 641-28,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-course-dd87b6c7,라비돌대중,,경기,화성,화성시 정남면 세자로 286,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-course-33d3ad4b,상록GC,,경기,화성,화성시 동탄면 풀무골로60번길 80,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-course-2a0ca6e5,화성골프클럽,,경기,화성,화성시 남양읍 화성로 1393-27,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-course-9a70fd2f,링크나인골프클럽,,경기,화성,화성시 마도면 해운로630번길 49,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-course-415f04f4,아일랜드㈜,,경기,안산,안산시 단원구 대선로466(대부남동),,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-course-a399b04c,제일스포츠센타,,경기,안산,안산시 상록구 태마당로28(부곡동),,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-c-c-8ca0b3e5,양주C.C,,경기,남양주,남양주시 화도읍 북한강로 1525-52,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-c-c-82c8d9a6,한림광릉C.C,,경기,남양주,남양주시 진접읍 팔야로 280,,,,,false,회원제/대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+gg-c-c-76eb2414,비전힐스C.C,,경기,남양주,남양주시 화도읍 마치로 226-220,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-c-c-0045c7f2,해비치C.C,,경기,남양주,남양주시 화도읍 재재기로 190번길 160,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-c-c-656781c7,남양주C.C,,경기,남양주,남양주시 오남읍 진건오남로536번길 44,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-course-b8d4a768,솔트베이 골프클럽,,경기,시흥,시흥시 마유로 987 (장곡동),,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-23c4a399,아세코밸리골프클럽,,경기,시흥,시흥시 마전로 307 (거모동),,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-course-a95cb618,서서울,,경기,파주,파주시 광탄면 혜음로 324,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-ee165b3b,서원밸리,,경기,파주,파주시 광탄면 서원길 333,,,,,false,회원제/대중제,odcloud batch import / holes=27 / source_count=2,active,draft
+gg-j-7f1b2bd6,J-PUBLIC,,경기,파주,파주시 조리읍 장곡로 100,,,,,false,대중제,odcloud batch import / holes=6 / source_count=1,active,draft
+gg-course-571994d6,파주CC,,경기,파주,파주시 법원읍 화합로 306,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-d3af7584,베스트밸리,,경기,파주,파주시 광탄면 장지산로200번길 32-41,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-course-be13bc3d,노스팜,,경기,파주,파주시 광탄면 쇠장이길 227,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-ku-e4380e76,스마트KU골프 파빌리온,,경기,파주,파주시 법원읍 보광로 1616,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-course-d2c85d75,타이거CC 골프장,,경기,파주,파주시 파평면 덕천리 산1-4번지,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-seaside-23f433d6,김포 SEASIDE 컨트리클럽,,경기,김포,김포시 월곶면 김포대로 2081번길 219,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-37c9fd2d,남촌컨트리클럽,,경기,광주,광주시 곤지암읍 부항길 135-38,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-153f54b8,이스트밸리컨트리클럽,,경기,광주,광주시 곤지암읍 건업리 4-43,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-course-84e0db6f,그린힐컨트리클럽,,경기,광주,광주시 곤지암읍 내선길 176,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-300-0ab92dd1,강남300컨트리클럽,,경기,광주,광주시 새말길 353(목동),,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-83f3b811,큐로CC,,경기,광주,광주시 곤지암읍 오항길 180,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-course-340af91b,곤지암GC,,경기,광주,광주시 도척면 도척윗로 280,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-2f95d0d5,중부컨트리클럽,,경기,광주,광주시 곤지암읍 경충대로 451,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-e3ce3a71,뉴서울컨트리클럽,,경기,광주,광주시 삼지곡길 95(삼동),,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+gg-course-50020c4c,삼성물산(주)안양컨트리클럽,,경기,군포,군포시 군포로364(부곡동),,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-b004cfaa,㈜캐슬렉스서울 캐슬렉스골프클럽,,경기,하남,하남시 감이로 317(감이동),,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-d7e0ec42,로얄개발㈜ 레이크우드 골프장,,경기,양주,양주시 만송로 244,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-course-5e5cb750,송추cc,,경기,양주,양주시 광적면 쇠장이길 435,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-bd67231f,에이치원클럽,,경기,이천,이천시 호법면 장자터로 115,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-c-c-84870639,뉴스프링빌C.C.,,경기,이천,이천시 모가면 사실로 527번길 158,,,,,false,회원제/대중제,odcloud batch import / holes=36 / source_count=2,active,draft
+gg-c-c-ba32aabb,비에이비스타C.C.,,경기,이천,이천시 모가면 어농로 272,,,,,false,회원제/대중제,odcloud batch import / holes=36 / source_count=2,active,draft
+gg-g-c-d49fad8a,더반G.C.,,경기,이천,이천시 대월면 대월로 627-141,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gg-g-c-be0c5e22,실크밸리G.C.,,경기,이천,이천시 율면 임오산로 200번길 56-222,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-course-ac0ee080,이천마이다스골프앤리조트,,경기,이천,이천시 설성면 설가로 602,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-c-c-a88c077f,웰링턴C.C.,,경기,이천,이천시 모가면 사실로 725번길 119-73,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-course-2b07f1bc,더크로스비골프클럽,,경기,이천,이천시 호법면 중부대로798번길 177,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-c-c-c2a5216c,파인크리크C.C,,경기,안성,안성시 양성면 안성맞춤대로 2417-13,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-q-336ce75b,골프클럽Q,,경기,안성,안성시 죽산면 장계길 20-229,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-h-0075edd6,골프존카운티 안성H,,경기,안성,안성시 보개면 보삼로 302,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-56f759d0,마에스트로 CC,,경기,안성,안성시 양성면 안성맞춤대로 2134-36,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-48d7c23e,안성컨트리클럽,,경기,안성,안성시 죽산면 장계길 134,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-g-c-c291230f,안성베네스트G.C,,경기,안성,안성시 금광면 삼흥로 660,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gg-course-aa1f712f,신안컨트리클럽,,경기,안성,안성시 고삼면 개울말길 149,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-b8b176fd,윈체스트 골프클럽 대중,,경기,안성,안성시 서운면 오촌길 97-31,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-06313490,루나힐스 안성컨트리클럽,,경기,안성,안성시 양성면 약산길 67-6,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gg-course-02e5323a,신안 퍼블릭 CC,,경기,안성,안성시 고삼면 개울말길 149,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft

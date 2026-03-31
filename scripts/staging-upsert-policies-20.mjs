@@ -75,9 +75,11 @@ function intOrNull(value) {
 }
 
 const dryRun = process.argv.includes('--dry-run')
+const policiesArgIndex = process.argv.indexOf('--policies-csv')
 const templatesDir = process.env.TEMPLATES_DIR
   ? path.resolve(process.cwd(), process.env.TEMPLATES_DIR)
   : path.resolve(process.cwd(), 'data', 'templates')
+const policiesCsv = policiesArgIndex >= 0 ? process.argv[policiesArgIndex + 1] : path.join(templatesDir, 'booking_policies_20_template.csv')
 
 const env = loadEnvFile(path.resolve('.env.local'))
 const supabase = createClient(env.NEXT_PUBLIC_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY, {
@@ -85,7 +87,7 @@ const supabase = createClient(env.NEXT_PUBLIC_SUPABASE_URL, env.SUPABASE_SERVICE
 })
 
 async function main() {
-  const policiesPath = path.join(templatesDir, 'booking_policies_20_template.csv')
+  const policiesPath = policiesCsv
   if (!fs.existsSync(policiesPath)) {
     console.error('[staging-upsert-policies-20] missing template file:', policiesPath)
     process.exit(1)

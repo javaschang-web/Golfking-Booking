@@ -1,0 +1,101 @@
+slug,name,english_name,region_primary,region_secondary,address,phone,homepage_url,booking_url,map_url,membership_required,membership_note,booking_note,status,verification_status
+gw-21-daf11173,센추리21컨트리클럽,,강원,원주,강원도 원주시 문막읍 궁말길 193,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-21-ii-58fb5f24,센추리21컨트리클럽Ⅱ,,강원,원주,강원도 원주시 문막읍 궁말길 193,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-21-9606815a,센추리21퍼블릭,,강원,원주,강원도 원주시 문막읍 궁말길 193,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gw-course-cd1d7a17,파크밸리골프클럽,,강원,원주,강원도 원주시 소초면 바우실길 281,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-1de52941,동서울레스피아,,강원,원주,강원도 원주시 지정면 신평석화로 236,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gw-course-5e8eeece,인터불고원주골프클럽,,강원,원주,강원도 원주시 동부순환로 200,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gw-course-c92fa6aa,샌드파인골프클럽,,강원,강릉,강원도 강릉시 저동등길 53,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-and-d7fdf935,메이플비치골프&리조트,,강원,강릉,강원도 강릉시 강동면 새목이길 110,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-c-c-a3c6adee,오투리조트 C.C,,강원,태백,강원도 태백시 서학로 861,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-4ca7b4de,오투리조트 골프,,강원,태백,강원도 태백시 서학로 861,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gw-course-e5d00329,설악프라자컨트리클럽,,강원,속초,강원도 속초시 미시령로 2983번길 56-20,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-005c60c6,영랑호컨트리클럽,,강원,속초,강원도 속초시 영랑호반길 170,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gw-course-e8bc54a7,파인밸리컨트리클럽,,강원,삼척,강원도 삼척시 근덕면 미근로 1629,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-8545fd51,블랙밸리컨트리클럽,,강원,삼척,강원도 삼척시 도계읍 도상로 307-84,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-f61e5a1c,소노펠리체 컨트리클럽 비발디파크 웨스트,,강원,홍천,강원도 홍천군 서면 한치골길 200,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-a9b8a351,소노펠리체 컨트리클럽 비발디파크 마운틴,,강원,홍천,강원도 홍천군 서면 한치골길 262,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gw-course-257b401e,소노펠리체 컨트리클럽 비발디파크 이스트,,강원,홍천,강원도 홍천군 서면 한치골길 541-123,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-2fafafde,비콘힐스골프클럽,,강원,홍천,강원도 홍천군 홍천읍 높은터로 533,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-e70d7204,힐드로사이컨트리클럽,,강원,홍천,강원도 홍천군 남면 한서로 2840,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-and-c2f470eb,클럽모우골프 &라이프스타일,,강원,홍천,강원도 홍천군 서면 장락동길66번길 51,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gw-course-9ceea4b4,세이지우드CC홍천,,강원,홍천,강원도 홍천군 두촌면 광석로 898-160,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gw-and-3bb6b29a,샤인데일골프&리조트,,강원,홍천,강원도 홍천군 서면 한서로 247-156,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gw-course-d16f2530,웰리힐리컨트리클럽,,강원,횡성,강원도 횡성군 둔내면 고원로 451,,,,,true,회원제,odcloud batch import / holes=36 / source_count=1,active,draft
+gw-course-9ebbd422,웰리힐리퍼블릭골프장,,강원,횡성,강원도 횡성군 둔내면 고원로 451,,,,,false,대중제,odcloud batch import / holes=10 / source_count=1,active,draft
+gw-course-fe9c891d,동원썬밸리컨트리클럽,,강원,횡성,강원도 횡성군 서원면 서원서로339번길 90,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-dee572a5,알프스대영컨트리클럽,,강원,횡성,강원도 횡성군 우천면 하우로 1295,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-5bf10d8c,에스엘세레스 옥스필드 CC,,강원,횡성,강원도 횡성군 서원면 경강로 유현6길 28,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-0575927b,동강시스타대중골프장,,강원,영월,강원도 영월군 영월읍 사지막길 160,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gw-course-8e0c13e9,용평리조트골프클럽,,강원,평창,강원도 평창군 대관령면 올림픽로 715,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-549a493a,용평버치힐골프클럽,,강원,평창,강원도 평창군 대관령면 올림픽로 715,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-c069f64a,용평리조트대중골프장,,강원,평창,강원도 평창군 대관령면 올림픽로 715,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gw-course-ba05b062,휘닉스 컨트리클럽,,강원,평창,강원도 평창군 봉평면 태기로 227-84,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-5fc22ddb,휘닉스대중골프장,,강원,평창,강원도 평창군 봉평면 태기로 227-84,,,,,false,대중제,odcloud batch import / holes=6 / source_count=1,active,draft
+gw-course-c212c325,알펜시아컨트리클럽,,강원,평창,강원도 평창군 대관령면 솔봉로 325,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+gw-700-7527699e,알펜시아 700골프클럽,,강원,평창,강원도 평창군 대관령면 솔봉로 325,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-2965e0de,하이원컨트리클럽,,강원,정선,강원도 정선군 고한읍 하이원길 265,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-1ff7dd03,에콜리안정선골프장,,강원,정선,강원도 정선군 신동읍 새골길 112-49,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+gw-course-29cb8e09,한탄강컨트리클럽,,강원,철원,강원도 철원군 갈말읍 순담길 59,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-98372db4,설악썬밸리컨트리클럽,,강원,고성,강원도 고성군 죽왕면 순포로 188,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gw-course-cc9c46d3,소노펠리체 컨트리클럽 델피노,,강원,고성,강원도 고성군 토성면 미시령옛길 1153,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+gw-course-a95c5afd,파인리즈컨트리클럽,,강원,고성,강원도 고성군 토성면 잼버리동로 267,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gw-course-15f415f0,설해원,,강원,양양,강원도 양양군 손양면 공항로 230,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+gw-course-f1247706,설해원 더 레전드 코스,,강원,양양,강원도 양양군 손양면 공항로 230,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-7317092f,그랜드,,충북,청주,청주시 청원군 오창읍 꽃화산길 14,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+cb-course-fe5a12fe,에스엘세레스임페리얼레이크,,충북,충주,충주시 금가면 다래울길 52,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-6ffed520,"아난티 중앙골프클럽(구,디에머슨)",,충북,진천,진천군 백곡면 배티로 818-105,,,,,true,회원제,odcloud batch import / holes=27 / source_count=1,active,draft
+cb-course-9a37332e,천룡,,충북,진천,진천군 이월면 진안로 425,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+cb-course-ec098c8c,시그너스,,충북,충주,충주시 앙성면 중방곡길 57-44,,,,,false,대중제,odcloud batch import / holes=18 / source_count=2,active,draft
+cb-course-08417dc6,떼제베,,충북,청주,청주시 흥덕구 옥산면 동림2길 149,,,,,false,대중제,odcloud batch import / holes=36 / source_count=1,active,draft
+cb-course-c99791c3,썬밸리,,충북,음성,음성군 삼성면 법말길 49,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-3124ecd8,"세레니티cc(구, 실크리버)",,충북,청주,청주시 서원구 남이면 문곡구절골길 236,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+cb-course-cceb7e5d,중원,,충북,충주,충주시 산척면 인등로 392,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+cb-course-a4706ad8,레인보우힐스,,충북,음성,음성군 생극면 차생로 168,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+cb-course-fee4bcd8,스타cc,,충북,충주,충주시 앙성면 상대촌1길 198,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-c376ccf6,아름다운cc,,충북,진천,진천군 백곡면 소토골길 61,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+cb-course-d3185305,골드나인,,충북,청주,청주시 청원구 낭성면 산성로 1520-17,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+cb-course-7612c73e,센테리움,,충북,충주,충주시 노은면 솔고개로 750,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+cb-course-6ae4a810,대호단양,,충북,단양,단양군 매포읍 고양5길 43,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-a9857544,대영베이스,,충북,충주,충주시 대소원면 성종두담길 113,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-4ceb9722,골프존카운티 진천,,충북,진천,진천군 진천읍 송강로 783-51,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+cb-course-e7f0426f,오창에딘버러,,충북,청주,청주시 청원구 오창읍 두릉유리로 846,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+cb-course-3be57936,이븐데일,,충북,청주,청주시 상당구 미원면 대신2길 31,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-1e6fc0c5,킹즈락,,충북,제천,제천시 천남동 내토로7길 136,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+cb-course-d404ff1c,골프존카운티화랑,,충북,진천,진천군 문백면 농다리로 809,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-f4d8e7ca,젠스필드,,충북,음성,음성군 삼성면 덕호로 382,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-ec307536,로얄포레,,충북,충주,충주시 신니면 화치3길 35,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-c02e34e9,대영힐스,,충북,충주,충주시 대소원면 성종두담길 114,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+cb-course-4da07be7,진양밸리,,충북,음성,음성군 삼성면 금일로 1195,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+cb-course-5ad33c88,에콜리안제천,,충북,제천,제천시 고암동 송학 주천로 102,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+cb-course-ba7c8fd5,코스카,,충북,음성,음성군 음성읍 동음로 318,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+cb-course-5a90ea37,클럽디속리산,,충북,보은,보은군 탄부면 평각상장로 230,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-a81b2d0b,킹스데일,,충북,충주,충주시 주덕면 기업도시3로 2,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-0dcccb74,동촌,,충북,충주,충주시 노은면 감노로 1327,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-e3a7cd7e,세일,,충북,충주,충주시 신니면 동락길 207,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-44b3377c,클럽디보은,,충북,보은,보은군 보은읍 장속중초로 386,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-3a454984,감곡cc,,충북,음성,음성군 감곡면 문촌리 산81-6,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-dbc52705,영동일라이트컨트리클럽,,충북,영동,영동군 영동읍 매천리 산35-1,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-973eaaa4,올데이골프앤리조트,,충북,충주,충주시 앙성면 조천리 350,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+cb-course-8b712b5d,일레븐,,충북,충주,충주시 앙성면 본평리 산 43-1,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cb-course-875d640d,블랙스톤,,충북,증평,증평군 도안면 벼루재길 334,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cn-course-633cb18f,우정힐스 컨트리클럽,,충남,천안,천안시 동남구 목천읍 충정로 1048-68,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+cn-course-3644beff,천안상록골프장,,충남,천안,천안시 동남구 수신면 수신로 576,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+cn-course-af5e82a1,뉴데이컨트리클럽,,충남,천안,천안시 동남구 북면 납안5길 74,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+cn-course-f547ebb9,프린세스 골프클럽,,충남,공주,공주시 정안면 방자들길 81-50(인풍리),,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cn-course-35936ed9,골드리버CC,,충남,공주,공주시 의당면 신정말길 67-133(청룡리),,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+cn-course-a00762ea,계룡산골프장,,충남,공주,공주시 계룡면 아랫난댕이길 17(내흥리),,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+cn-course-d9954bcb,보령베이스CC,,충남,보령,보령시 옥마벚길 10,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+cn-course-7b7e3739,에스앤 골프리조트,,충남,보령,보령시 남포면 양항리 650-2,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+cn-course-73e45064,도고컨트리구락부,,충남,아산,아산시 선장면 삼봉산길 188,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+cn-and-62b36d36,에스지아름다운골프&리조트,,충남,아산,아산시 영인면 영인산로 440,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+cn-course-c7a4e26a,서산수 골프앤리조트,,충남,서산,서산시 대산읍 삼길포7로 8,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cn-course-d0622a1e,더힐 컨트리클럽,,충남,논산,논산시 상월면 선비로 1079,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+cn-course-2da0fb85,아리스타 CC,,충남,연무읍,연무읍 황화정리 산100,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cn-course-4093cbff,파인스톤 컨트리클럽,,충남,당진,당진시 송산면 무수들길 90,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cn-course-5f4e6137,파나시아 골프클럽,,충남,당진,당진시 신평면 계명길 33,,,,,false,대중제,odcloud batch import / holes=9 / source_count=1,active,draft
+cn-course-e9100428,에딘버러 컨트리클럽,,충남,금산,금산군 진산면 살구정길 167,,,,,true,회원제,odcloud batch import / holes=18 / source_count=1,active,draft
+cn-course-3754b263,백제컨트리클럽,,충남,부여,부여군 은산면 충절로 3734-82,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+cn-course-5a38e286,㈜호텔롯데 스카이힐 부여CC,,충남,부여,부여군 규암면 백제문로 470,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
+cn-and-d6fea224,골든베이골프&리조트,,충남,태안,태안군 근흥면 정선포로 217,,,,,false,대중제,odcloud batch import / holes=27 / source_count=1,active,draft
+cn-course-31d1ed89,스톤비치컨트리클럽,,충남,태안,태안군 근흥면 갈음이길 88,,,,,false,대중제,odcloud batch import / holes=18 / source_count=1,active,draft
