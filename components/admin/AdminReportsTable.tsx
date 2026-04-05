@@ -3,7 +3,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
 import { logAdminChange } from '@/lib/admin/change-log'
-import { colors, ui } from '@/lib/design'
+import { Input } from '@/components/ui/input'
+import { Select } from '@/components/ui/select'
+import { Textarea } from '@/components/ui/textarea'
 
 type ReportRow = {
   id: string
@@ -130,88 +132,96 @@ export function AdminReportsTable() {
     })
   }, [rows, query, statusFilter, sortKey])
 
-  const summary = useMemo(() => ({
-    total: rows.length,
-    visible: filteredRows.length,
-    newCount: rows.filter((row) => row.status === 'new').length,
-    reviewingCount: rows.filter((row) => row.status === 'reviewing').length,
-  }), [rows, filteredRows])
+  const summary = useMemo(
+    () => ({
+      total: rows.length,
+      visible: filteredRows.length,
+      newCount: rows.filter((row) => row.status === 'new').length,
+      reviewingCount: rows.filter((row) => row.status === 'reviewing').length,
+    }),
+    [rows, filteredRows]
+  )
 
-  if (loading) return <p>제보 목록 불러오는 중...</p>
-  if (error) return <p style={{ color: colors.danger }}>불러오기 실패: {error}</p>
-  if (rows.length === 0) return <p>들어온 제보가 아직 없어.</p>
+  if (loading) return <p className="text-sm text-text-soft">제보 목록 불러오는 중...</p>
+  if (error) return <p className="text-sm font-semibold text-danger">불러오기 실패: {error}</p>
+  if (rows.length === 0) return <p className="text-sm text-text-soft">들어온 제보가 아직 없어.</p>
 
   return (
-    <div style={{ display: 'grid', gap: 12 }}>
-      {success ? <p style={{ color: colors.primaryStrong, margin: 0 }}>{success}</p> : null}
+    <div className="grid gap-4">
+      {success ? <p className="m-0 text-sm font-semibold text-primary-strong">{success}</p> : null}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 12 }}>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <SummaryCard label="전체" value={summary.total} />
         <SummaryCard label="현재 표시" value={summary.visible} />
         <SummaryCard label="new" value={summary.newCount} />
         <SummaryCard label="reviewing" value={summary.reviewingCount} />
       </div>
 
-      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="유형 / 이메일 / 내용 검색"
-          style={{ ...ui.input, minWidth: 260, maxWidth: 320 }}
-        />
-        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} style={ui.input}>
+      <div className="grid gap-3 lg:grid-cols-[1fr_160px_160px]">
+        <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="유형 / 이메일 / 내용 검색" />
+
+        <Select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
           <option value="all">전체 상태</option>
           {statusOptions.map((status) => (
-            <option key={status} value={status}>{status}</option>
+            <option key={status} value={status}>
+              {status}
+            </option>
           ))}
-        </select>
-        <select value={sortKey} onChange={(e) => setSortKey(e.target.value)} style={ui.input}>
+        </Select>
+
+        <Select value={sortKey} onChange={(e) => setSortKey(e.target.value)}>
           <option value="created_desc">최신 생성순</option>
           <option value="resolved_desc">최근 처리순</option>
-        </select>
+        </Select>
       </div>
 
-      <div style={{ overflowX: 'auto', ...ui.card }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <div className="overflow-x-auto rounded-2xl border border-border bg-panel">
+        <table className="min-w-[980px] w-full border-collapse text-sm">
           <thead>
-            <tr>
-              <th style={th}>유형</th>
-              <th style={th}>상태</th>
-              <th style={th}>이메일</th>
-              <th style={th}>내용</th>
-              <th style={th}>처리 메모</th>
-              <th style={th}>생성일</th>
-              <th style={th}>처리일</th>
+            <tr className="text-left text-text-soft">
+              <th className="border-b border-border px-3 py-3 font-semibold">유형</th>
+              <th className="border-b border-border px-3 py-3 font-semibold">상태</th>
+              <th className="border-b border-border px-3 py-3 font-semibold">이메일</th>
+              <th className="border-b border-border px-3 py-3 font-semibold">내용</th>
+              <th className="border-b border-border px-3 py-3 font-semibold">처리 메모</th>
+              <th className="border-b border-border px-3 py-3 font-semibold">생성일</th>
+              <th className="border-b border-border px-3 py-3 font-semibold">처리일</th>
             </tr>
           </thead>
           <tbody>
             {filteredRows.map((row) => (
-              <tr key={row.id}>
-                <td style={td}>{row.report_type}</td>
-                <td style={td}>
-                  <select
+              <tr key={row.id} className="align-top hover:bg-panel-alt/40">
+                <td className="border-b border-border px-3 py-3 font-medium text-text">{row.report_type}</td>
+                <td className="border-b border-border px-3 py-3">
+                  <Select
                     value={row.status}
                     disabled={savingId === row.id}
                     onChange={(e) => updateStatus(row, e.target.value)}
-                    style={{ ...ui.input, padding: '8px 10px', minWidth: 120 }}
+                    className="py-2"
                   >
                     {statusOptions.map((status) => (
-                      <option key={status} value={status}>{status}</option>
+                      <option key={status} value={status}>
+                        {status}
+                      </option>
                     ))}
-                  </select>
+                  </Select>
                 </td>
-                <td style={td}>{row.reporter_email ?? '-'}</td>
-                <td style={td}>{row.message}</td>
-                <td style={td}>
-                  <textarea
+                <td className="border-b border-border px-3 py-3 text-text-soft">{row.reporter_email ?? '-'}</td>
+                <td className="border-b border-border px-3 py-3 text-text-soft">{row.message}</td>
+                <td className="border-b border-border px-3 py-3">
+                  <Textarea
                     defaultValue={row.resolved_note ?? ''}
                     rows={3}
-                    style={{ ...ui.input, width: 220, padding: 8 }}
+                    className="min-h-[84px] w-64"
                     onBlur={(e) => updateResolvedNote(row, e.target.value)}
                   />
                 </td>
-                <td style={td}>{new Date(row.created_at).toLocaleString('ko-KR')}</td>
-                <td style={td}>{row.resolved_at ? new Date(row.resolved_at).toLocaleString('ko-KR') : '-'}</td>
+                <td className="border-b border-border px-3 py-3 text-text-soft">
+                  {new Date(row.created_at).toLocaleString('ko-KR')}
+                </td>
+                <td className="border-b border-border px-3 py-3 text-text-soft">
+                  {row.resolved_at ? new Date(row.resolved_at).toLocaleString('ko-KR') : '-'}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -223,22 +233,9 @@ export function AdminReportsTable() {
 
 function SummaryCard({ label, value }: { label: string; value: number }) {
   return (
-    <div style={ui.subCard}>
-      <div style={{ fontSize: 12, color: colors.textSoft }}>{label}</div>
-      <div style={{ marginTop: 6, fontWeight: 700, fontSize: 20 }}>{value}</div>
+    <div className="rounded-2xl border border-border bg-bg-soft px-4 py-3">
+      <div className="text-xs font-semibold text-text-soft">{label}</div>
+      <div className="mt-1 text-lg font-extrabold text-text">{value}</div>
     </div>
   )
-}
-
-const th: React.CSSProperties = {
-  textAlign: 'left',
-  borderBottom: `1px solid ${colors.border}`,
-  padding: '10px 8px',
-  color: colors.textSoft,
-}
-
-const td: React.CSSProperties = {
-  borderBottom: `1px solid ${colors.border}`,
-  padding: '10px 8px',
-  verticalAlign: 'top',
 }

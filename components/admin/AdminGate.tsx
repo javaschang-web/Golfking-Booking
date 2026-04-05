@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
 import { AdminLogoutButton } from '@/components/admin/AdminLogoutButton'
-import { colors, ui } from '@/lib/design'
+import { Container } from '@/components/ui/container'
+import { Card } from '@/components/ui/card'
 
 export type AdminProfile = {
   id: string
@@ -65,33 +66,66 @@ export function AdminGate({ title, children, navLinks = [], initialProfile = nul
     load()
   }, [router, initialProfile])
 
-  if (loading) return <main style={ui.page}><div style={ui.shell}><p>관리자 세션 확인 중...</p></div></main>
-  if (error || !profile) return <main style={ui.page}><div style={ui.shell}><p style={{ color: colors.danger }}>{error ?? '관리자 접근 권한이 없어.'}</p></div></main>
+  if (loading)
+    return (
+      <main>
+        <Container>
+          <Card>
+            <p className="m-0 text-sm text-text-soft">관리자 세션 확인 중...</p>
+          </Card>
+        </Container>
+      </main>
+    )
+
+  if (error || !profile)
+    return (
+      <main>
+        <Container>
+          <Card>
+            <p className="m-0 text-sm font-semibold text-danger">{error ?? '관리자 접근 권한이 없어.'}</p>
+            <p className="mt-2 text-sm text-text-soft">로그인이 풀렸을 수도 있어. 다시 로그인해줘.</p>
+            <Link href="/admin/login" className="mt-3 inline-block text-sm font-semibold text-primary-strong hover:underline">
+              /admin/login 이동
+            </Link>
+          </Card>
+        </Container>
+      </main>
+    )
 
   return (
-    <main style={ui.page}>
-      <div style={ui.shell}>
-        <section style={ui.hero}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16, flexWrap: 'wrap' }}>
+    <main>
+      <Container>
+        <Card className="bg-gradient-to-br from-panel-alt to-panel shadow-hero">
+          <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <div style={{ ...ui.badge, width: 'fit-content', marginBottom: 10 }}>Admin</div>
-              <h1 style={{ margin: 0 }}>{title}</h1>
-              <p style={{ margin: '8px 0 0 0', color: colors.textSoft }}>관리자: {profile.email} ({profile.role})</p>
+              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-primary-muted px-3 py-1 text-xs font-semibold text-text">
+                Admin
+              </div>
+              <h1 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h1>
+              <p className="mt-2 text-sm text-text-soft">
+                관리자: <span className="font-semibold">{profile.email}</span> ({profile.role})
+              </p>
             </div>
             <AdminLogoutButton />
           </div>
 
           {navLinks.length > 0 ? (
-            <div style={{ marginTop: 16, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <nav className="mt-5 flex flex-wrap gap-2">
               {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} style={ui.link}>{link.label}</Link>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-full border border-border bg-primary-muted px-3 py-1 text-sm font-semibold text-text hover:bg-panel-alt"
+                >
+                  {link.label}
+                </Link>
               ))}
-            </div>
+            </nav>
           ) : null}
-        </section>
+        </Card>
 
-        <div style={{ marginTop: 24 }}>{children}</div>
-      </div>
+        <div className="mt-6">{children}</div>
+      </Container>
     </main>
   )
 }

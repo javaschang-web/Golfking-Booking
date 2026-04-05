@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
-import { colors, ui } from '@/lib/design'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 export function AdminLoginForm() {
   const router = useRouter()
@@ -35,34 +36,22 @@ export function AdminLoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 14, maxWidth: 360 }}>
-      <label style={{ display: 'grid', gap: 8 }}>
-        <div style={{ color: colors.textSoft, fontWeight: 700 }}>이메일</div>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          style={ui.input}
-        />
+    <form onSubmit={handleSubmit} className="grid w-full gap-4">
+      <label className="grid gap-2">
+        <div className="text-sm font-semibold text-text-soft">이메일</div>
+        <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
       </label>
 
-      <label style={{ display: 'grid', gap: 8 }}>
-        <div style={{ color: colors.textSoft, fontWeight: 700 }}>비밀번호</div>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          style={ui.input}
-        />
+      <label className="grid gap-2">
+        <div className="text-sm font-semibold text-text-soft">비밀번호</div>
+        <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
       </label>
 
-      {error ? <p style={{ color: colors.danger, margin: 0 }}>{error}</p> : null}
+      {error ? <p className="m-0 text-sm font-semibold text-danger">{error}</p> : null}
 
-      <button type="submit" disabled={loading} style={ui.buttonPrimary}>
+      <Button type="submit" disabled={loading} className="w-full">
         {loading ? '로그인 중...' : '관리자 로그인'}
-      </button>
+      </Button>
     </form>
   )
 }
