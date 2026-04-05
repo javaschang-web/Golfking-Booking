@@ -3,7 +3,9 @@
 import { useEffect, useState } from 'react'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
 import { logAdminChange } from '@/lib/admin/change-log'
-import { colors, ui } from '@/lib/design'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Select } from '@/components/ui/select'
 
 const statuses = ['draft', 'verified', 'needs_review', 'hidden'] as const
 
@@ -64,34 +66,36 @@ export function AdminCourseVerificationPanel({ courseId }: { courseId: string })
     setMessage(error ? error.message : '검수 상태를 저장했어.')
   }
 
-  if (loading) return <p>검수 정보 불러오는 중...</p>
+  if (loading) return <p className="text-sm text-text-soft">검수 정보 불러오는 중...</p>
 
   return (
-    <div style={{ display: 'grid', gap: 12, maxWidth: 420 }}>
-      <div style={{ display: 'grid', gap: 8 }}>
-        <label style={{ color: colors.textSoft, fontWeight: 700 }}>검수 상태</label>
-        <select value={status} onChange={(e) => setStatus(e.target.value)} style={{ ...ui.input, maxWidth: 240 }}>
+    <div className="grid max-w-md gap-4">
+      <div className="grid gap-2">
+        <label className="text-sm font-semibold text-text-soft">검수 상태</label>
+        <Select value={status} onChange={(e) => setStatus(e.target.value)} className="max-w-xs">
           {statuses.map((item) => (
-            <option key={item} value={item}>{item}</option>
+            <option key={item} value={item}>
+              {item}
+            </option>
           ))}
-        </select>
+        </Select>
       </div>
 
-      <div style={{ display: 'grid', gap: 8 }}>
-        <label style={{ color: colors.textSoft, fontWeight: 700 }}>최근 확인일</label>
-        <input
-          type="datetime-local"
-          value={verifiedAt}
-          onChange={(e) => setVerifiedAt(e.target.value)}
-          style={{ ...ui.input, maxWidth: 280 }}
-        />
+      <div className="grid gap-2">
+        <label className="text-sm font-semibold text-text-soft">최근 확인일</label>
+        <Input type="datetime-local" value={verifiedAt} onChange={(e) => setVerifiedAt(e.target.value)} className="max-w-sm" />
+        <p className="m-0 text-xs text-text-soft">비워두면 최근 확인일은 null로 저장돼.</p>
       </div>
 
-      <button type="button" onClick={save} disabled={saving} style={{ ...ui.buttonPrimary, width: 180 }}>
+      <Button type="button" onClick={save} disabled={saving} className="w-full sm:w-56">
         {saving ? '저장 중...' : '검수 정보 저장'}
-      </button>
+      </Button>
 
-      {message ? <p style={{ margin: 0, color: message.includes('저장') ? colors.primaryStrong : colors.danger }}>{message}</p> : null}
+      {message ? (
+        <p className={`m-0 text-sm font-semibold ${message.includes('저장') ? 'text-primary-strong' : 'text-danger'}`}>
+          {message}
+        </p>
+      ) : null}
     </div>
   )
 }

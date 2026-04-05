@@ -3,7 +3,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
 import { logAdminChange } from '@/lib/admin/change-log'
-import { colors, ui } from '@/lib/design'
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Select } from '@/components/ui/select'
+import { Textarea } from '@/components/ui/textarea'
 
 type PolicyRow = {
   id: string
@@ -72,7 +76,9 @@ export function AdminPolicyManager({ courseId }: { courseId: string }) {
     const supabase = getBrowserSupabaseClient()
     const { data, error } = await supabase
       .from('booking_policies')
-      .select('id, policy_type, policy_summary, source_text, days_before_open, open_weekday, open_time, monthly_open_day, monthly_offset_months, rule_interpretation, manual_open_datetime, is_active, last_verified_at, note')
+      .select(
+        'id, policy_type, policy_summary, source_text, days_before_open, open_weekday, open_time, monthly_open_day, monthly_offset_months, rule_interpretation, manual_open_datetime, is_active, last_verified_at, note'
+      )
       .eq('golf_course_id', courseId)
       .order('created_at', { ascending: false })
 
@@ -173,10 +179,7 @@ export function AdminPolicyManager({ courseId }: { courseId: string }) {
     setError(null)
     setSuccess(null)
     const supabase = getBrowserSupabaseClient()
-    const { error } = await supabase
-      .from('booking_policies')
-      .update({ is_active: !row.is_active })
-      .eq('id', row.id)
+    const { error } = await supabase.from('booking_policies').update({ is_active: !row.is_active }).eq('id', row.id)
 
     if (error) {
       setError(error.message)
@@ -196,113 +199,130 @@ export function AdminPolicyManager({ courseId }: { courseId: string }) {
   }
 
   return (
-    <section style={{ display: 'grid', gap: 24 }}>
+    <section className="grid gap-5">
       <div>
-        <h2>예약 정책 관리</h2>
-        <p style={{ marginTop: 8, color: colors.textSoft }}>골프장별 예약 오픈 규칙을 추가/수정할 수 있어.</p>
+        <h3 className="text-base font-semibold">예약 정책 관리</h3>
+        <p className="mt-1 text-sm text-text-soft">골프장별 예약 오픈 규칙을 추가/수정할 수 있어.</p>
       </div>
 
-      <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 16, maxWidth: 960, ...ui.card }}>
-        <div style={grid2}>
-          <Field label="정책 타입 *">
-            <select value={form.policy_type} onChange={(e) => update('policy_type', e.target.value)} style={inputStyle}>
-              <option value="days_before">days_before</option>
-              <option value="weekday_rule">weekday_rule</option>
-              <option value="monthly_batch">monthly_batch</option>
-              <option value="manual">manual</option>
-              <option value="custom_formula">custom_formula</option>
-            </select>
+      <Card>
+        <form onSubmit={handleSubmit} className="grid gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Field label="정책 타입 *">
+              <Select value={form.policy_type} onChange={(e) => update('policy_type', e.target.value)}>
+                <option value="days_before">days_before</option>
+                <option value="weekday_rule">weekday_rule</option>
+                <option value="monthly_batch">monthly_batch</option>
+                <option value="manual">manual</option>
+                <option value="custom_formula">custom_formula</option>
+              </Select>
+            </Field>
+            <Field label="요약">
+              <Input value={form.policy_summary} onChange={(e) => update('policy_summary', e.target.value)} />
+            </Field>
+          </div>
+
+          <Field label="원문 문구">
+            <Textarea value={form.source_text} onChange={(e) => update('source_text', e.target.value)} rows={3} />
           </Field>
-          <Field label="요약">
-            <input value={form.policy_summary} onChange={(e) => update('policy_summary', e.target.value)} style={inputStyle} />
+
+          <div className="grid gap-4 md:grid-cols-3">
+            <Field label="days_before_open">
+              <Input value={form.days_before_open} onChange={(e) => update('days_before_open', e.target.value)} />
+            </Field>
+            <Field label="open_weekday">
+              <Input value={form.open_weekday} onChange={(e) => update('open_weekday', e.target.value)} />
+            </Field>
+            <Field label="open_time">
+              <Input value={form.open_time} onChange={(e) => update('open_time', e.target.value)} placeholder="09:00" />
+            </Field>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            <Field label="monthly_open_day">
+              <Input value={form.monthly_open_day} onChange={(e) => update('monthly_open_day', e.target.value)} />
+            </Field>
+            <Field label="monthly_offset_months">
+              <Input value={form.monthly_offset_months} onChange={(e) => update('monthly_offset_months', e.target.value)} />
+            </Field>
+            <Field label="manual_open_datetime">
+              <Input
+                value={form.manual_open_datetime}
+                onChange={(e) => update('manual_open_datetime', e.target.value)}
+                placeholder="2026-03-22T09:00:00+09:00"
+              />
+            </Field>
+          </div>
+
+          <Field label="rule_interpretation">
+            <Input value={form.rule_interpretation} onChange={(e) => update('rule_interpretation', e.target.value)} />
           </Field>
+
+          <Field label="운영 메모">
+            <Textarea value={form.note} onChange={(e) => update('note', e.target.value)} rows={3} />
+          </Field>
+
+          <label className="flex items-center gap-2 text-sm text-text-soft">
+            <input type="checkbox" checked={form.is_active} onChange={(e) => update('is_active', e.target.checked)} />
+            활성 정책
+          </label>
+
+          {error ? <p className="m-0 text-sm font-semibold text-danger">{error}</p> : null}
+          {success ? <p className="m-0 text-sm font-semibold text-primary-strong">{success}</p> : null}
+
+          <div className="flex flex-wrap gap-2">
+            <Button type="submit" disabled={!canSubmit || saving}>
+              {saving ? '저장 중...' : isEdit ? '정책 저장' : '정책 추가'}
+            </Button>
+            {isEdit ? (
+              <Button type="button" onClick={resetForm} variant="secondary">
+                편집 취소
+              </Button>
+            ) : null}
+          </div>
+        </form>
+      </Card>
+
+      <Card>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h3 className="text-base font-semibold">등록된 정책</h3>
+            <p className="mt-1 text-sm text-text-soft">정책을 선택해서 수정하거나 활성 상태를 바꿀 수 있어.</p>
+          </div>
         </div>
 
-        <Field label="원문 문구">
-          <textarea value={form.source_text} onChange={(e) => update('source_text', e.target.value)} rows={3} style={textareaStyle} />
-        </Field>
+        {loading ? <p className="mt-3 text-sm text-text-soft">정책 불러오는 중...</p> : null}
+        {!loading && rows.length === 0 ? <p className="mt-3 text-sm text-text-soft">등록된 정책이 아직 없어.</p> : null}
 
-        <div style={grid3}>
-          <Field label="days_before_open">
-            <input value={form.days_before_open} onChange={(e) => update('days_before_open', e.target.value)} style={inputStyle} />
-          </Field>
-          <Field label="open_weekday">
-            <input value={form.open_weekday} onChange={(e) => update('open_weekday', e.target.value)} style={inputStyle} />
-          </Field>
-          <Field label="open_time">
-            <input value={form.open_time} onChange={(e) => update('open_time', e.target.value)} placeholder="09:00" style={inputStyle} />
-          </Field>
-        </div>
-
-        <div style={grid3}>
-          <Field label="monthly_open_day">
-            <input value={form.monthly_open_day} onChange={(e) => update('monthly_open_day', e.target.value)} style={inputStyle} />
-          </Field>
-          <Field label="monthly_offset_months">
-            <input value={form.monthly_offset_months} onChange={(e) => update('monthly_offset_months', e.target.value)} style={inputStyle} />
-          </Field>
-          <Field label="manual_open_datetime">
-            <input value={form.manual_open_datetime} onChange={(e) => update('manual_open_datetime', e.target.value)} placeholder="2026-03-22T09:00:00+09:00" style={inputStyle} />
-          </Field>
-        </div>
-
-        <Field label="rule_interpretation">
-          <input value={form.rule_interpretation} onChange={(e) => update('rule_interpretation', e.target.value)} style={inputStyle} />
-        </Field>
-
-        <Field label="운영 메모">
-          <textarea value={form.note} onChange={(e) => update('note', e.target.value)} rows={3} style={textareaStyle} />
-        </Field>
-
-        <label style={{ display: 'flex', alignItems: 'center', gap: 8, color: colors.textSoft }}>
-          <input type="checkbox" checked={form.is_active} onChange={(e) => update('is_active', e.target.checked)} />
-          활성 정책
-        </label>
-
-        {error ? <p style={{ color: colors.danger, margin: 0 }}>{error}</p> : null}
-        {success ? <p style={{ color: colors.primaryStrong, margin: 0 }}>{success}</p> : null}
-
-        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <button type="submit" disabled={!canSubmit || saving} style={ui.buttonPrimary}>
-            {saving ? '저장 중...' : isEdit ? '정책 저장' : '정책 추가'}
-          </button>
-          {isEdit ? (
-            <button type="button" onClick={resetForm} style={ui.buttonSecondary}>
-              편집 취소
-            </button>
-          ) : null}
-        </div>
-      </form>
-
-      <div style={ui.card}>
-        <h3 style={{ marginTop: 0 }}>등록된 정책</h3>
-        {loading ? <p>정책 불러오는 중...</p> : null}
-        {!loading && rows.length === 0 ? <p>등록된 정책이 아직 없어.</p> : null}
         {!loading && rows.length > 0 ? (
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <div className="mt-3 overflow-x-auto rounded-2xl border border-border bg-panel">
+            <table className="min-w-[720px] w-full border-collapse text-sm">
               <thead>
-                <tr>
-                  <th style={th}>타입</th>
-                  <th style={th}>요약</th>
-                  <th style={th}>활성</th>
-                  <th style={th}>최근 확인</th>
-                  <th style={th}>작업</th>
+                <tr className="text-left text-text-soft">
+                  <th className="border-b border-border px-3 py-3 font-semibold">타입</th>
+                  <th className="border-b border-border px-3 py-3 font-semibold">요약</th>
+                  <th className="border-b border-border px-3 py-3 font-semibold">활성</th>
+                  <th className="border-b border-border px-3 py-3 font-semibold">최근 확인</th>
+                  <th className="border-b border-border px-3 py-3 font-semibold">작업</th>
                 </tr>
               </thead>
               <tbody>
                 {rows.map((row) => (
-                  <tr key={row.id}>
-                    <td style={td}>{row.policy_type}</td>
-                    <td style={td}>{row.policy_summary ?? '-'}</td>
-                    <td style={td}>{row.is_active ? 'Y' : 'N'}</td>
-                    <td style={td}>{row.last_verified_at ? new Date(row.last_verified_at).toLocaleString('ko-KR') : '-'}</td>
-                    <td style={td}>
-                      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                        <button type="button" onClick={() => startEdit(row)} style={{ ...ui.buttonSecondary, padding: '8px 12px' }}>수정</button>
-                        <button type="button" onClick={() => toggleActive(row)} style={{ ...ui.buttonSecondary, padding: '8px 12px' }}>
+                  <tr key={row.id} className="hover:bg-panel-alt/40">
+                    <td className="border-b border-border px-3 py-3 font-medium text-text">{row.policy_type}</td>
+                    <td className="border-b border-border px-3 py-3 text-text-soft">{row.policy_summary ?? '-'}</td>
+                    <td className="border-b border-border px-3 py-3 text-text-soft">{row.is_active ? 'Y' : 'N'}</td>
+                    <td className="border-b border-border px-3 py-3 text-text-soft">
+                      {row.last_verified_at ? new Date(row.last_verified_at).toLocaleString('ko-KR') : '-'}
+                    </td>
+                    <td className="border-b border-border px-3 py-3">
+                      <div className="flex flex-wrap gap-2">
+                        <Button type="button" onClick={() => startEdit(row)} variant="secondary" className="py-2">
+                          수정
+                        </Button>
+                        <Button type="button" onClick={() => toggleActive(row)} variant="secondary" className="py-2">
                           {row.is_active ? '비활성화' : '활성화'}
-                        </button>
+                        </Button>
                       </div>
                     </td>
                   </tr>
@@ -311,15 +331,15 @@ export function AdminPolicyManager({ courseId }: { courseId: string }) {
             </table>
           </div>
         ) : null}
-      </div>
+      </Card>
     </section>
   )
 }
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <label style={{ display: 'grid', gap: 8 }}>
-      <span style={{ color: colors.textSoft, fontWeight: 700 }}>{label}</span>
+    <label className="grid gap-2">
+      <span className="text-sm font-semibold text-text-soft">{label}</span>
       {children}
     </label>
   )
@@ -336,38 +356,3 @@ function numberOrNull(value: string) {
   const parsed = Number(trimmed)
   return Number.isNaN(parsed) ? null : parsed
 }
-
-const grid2: React.CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-  gap: 16,
-}
-
-const grid3: React.CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-  gap: 16,
-}
-
-const inputStyle: React.CSSProperties = {
-  ...ui.input,
-}
-
-const textareaStyle: React.CSSProperties = {
-  ...ui.input,
-  resize: 'vertical',
-}
-
-const th: React.CSSProperties = {
-  textAlign: 'left',
-  borderBottom: `1px solid ${colors.border}`,
-  padding: '10px 8px',
-  color: colors.textSoft,
-}
-
-const td: React.CSSProperties = {
-  borderBottom: `1px solid ${colors.border}`,
-  padding: '10px 8px',
-  verticalAlign: 'top',
-}
-

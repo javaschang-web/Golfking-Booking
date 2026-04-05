@@ -3,7 +3,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
 import { logAdminChange } from '@/lib/admin/change-log'
-import { colors, ui } from '@/lib/design'
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Select } from '@/components/ui/select'
+import { Textarea } from '@/components/ui/textarea'
 
 type PolicyOption = {
   id: string
@@ -137,10 +141,7 @@ export function AdminSourceRecordManager({ courseId }: { courseId: string }) {
     setSuccess(null)
 
     const supabase = getBrowserSupabaseClient()
-    const { error } = await supabase
-      .from('source_records')
-      .update({ is_current: !row.is_current })
-      .eq('id', row.id)
+    const { error } = await supabase.from('source_records').update({ is_current: !row.is_current }).eq('id', row.id)
 
     if (error) {
       setError(error.message)
@@ -160,97 +161,119 @@ export function AdminSourceRecordManager({ courseId }: { courseId: string }) {
   }
 
   return (
-    <section style={{ display: 'grid', gap: 24 }}>
+    <section className="grid gap-5">
       <div>
-        <h2>출처 / 검수 기록</h2>
-        <p style={{ marginTop: 8, color: colors.textSoft }}>정책의 출처 링크와 원문을 관리할 수 있어.</p>
+        <h3 className="text-base font-semibold">출처 / 검수 기록</h3>
+        <p className="mt-1 text-sm text-text-soft">정책의 출처 링크와 원문을 관리할 수 있어.</p>
       </div>
 
-      <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 16, maxWidth: 960, ...ui.card }}>
-        <div style={grid2}>
-          <Field label="출처 타입 *">
-            <select value={form.source_type} onChange={(e) => update('source_type', e.target.value)} style={inputStyle}>
-              <option value="manual">manual</option>
-              <option value="homepage">homepage</option>
-              <option value="reservation_page">reservation_page</option>
-              <option value="notice_page">notice_page</option>
-              <option value="phone_confirmed">phone_confirmed</option>
-              <option value="user_report">user_report</option>
-              <option value="crawler">crawler</option>
-            </select>
+      <Card>
+        <form onSubmit={handleSubmit} className="grid gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Field label="출처 타입 *">
+              <Select value={form.source_type} onChange={(e) => update('source_type', e.target.value)}>
+                <option value="manual">manual</option>
+                <option value="homepage">homepage</option>
+                <option value="reservation_page">reservation_page</option>
+                <option value="notice_page">notice_page</option>
+                <option value="phone_confirmed">phone_confirmed</option>
+                <option value="user_report">user_report</option>
+                <option value="crawler">crawler</option>
+              </Select>
+            </Field>
+
+            <Field label="연결 정책">
+              <Select value={form.booking_policy_id} onChange={(e) => update('booking_policy_id', e.target.value)}>
+                <option value="">정책 미연결</option>
+                {policies.map((policy) => (
+                  <option key={policy.id} value={policy.id}>
+                    {policy.policy_type} {policy.policy_summary ? `- ${policy.policy_summary}` : ''}
+                  </option>
+                ))}
+              </Select>
+            </Field>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Field label="출처 URL">
+              <Input value={form.source_url} onChange={(e) => update('source_url', e.target.value)} />
+            </Field>
+            <Field label="출처 제목">
+              <Input value={form.source_title} onChange={(e) => update('source_title', e.target.value)} />
+            </Field>
+          </div>
+
+          <Field label="캡처 원문">
+            <Textarea value={form.captured_text} onChange={(e) => update('captured_text', e.target.value)} rows={5} />
           </Field>
 
-          <Field label="연결 정책">
-            <select value={form.booking_policy_id} onChange={(e) => update('booking_policy_id', e.target.value)} style={inputStyle}>
-              <option value="">정책 미연결</option>
-              {policies.map((policy) => (
-                <option key={policy.id} value={policy.id}>
-                  {policy.policy_type} {policy.policy_summary ? `- ${policy.policy_summary}` : ''}
-                </option>
-              ))}
-            </select>
+          <Field label="메모">
+            <Textarea value={form.note} onChange={(e) => update('note', e.target.value)} rows={3} />
           </Field>
+
+          <label className="flex items-center gap-2 text-sm text-text-soft">
+            <input type="checkbox" checked={form.is_current} onChange={(e) => update('is_current', e.target.checked)} />
+            현재 유효한 출처로 표시
+          </label>
+
+          {error ? <p className="m-0 text-sm font-semibold text-danger">{error}</p> : null}
+          {success ? <p className="m-0 text-sm font-semibold text-primary-strong">{success}</p> : null}
+
+          <Button type="submit" disabled={!canSubmit || saving} className="w-full sm:w-56">
+            {saving ? '저장 중...' : '출처 기록 추가'}
+          </Button>
+        </form>
+      </Card>
+
+      <Card>
+        <div>
+          <h3 className="text-base font-semibold">등록된 출처 기록</h3>
+          <p className="mt-1 text-sm text-text-soft">현재 여부를 토글해서 최신 출처를 관리해.</p>
         </div>
 
-        <div style={grid2}>
-          <Field label="출처 URL">
-            <input value={form.source_url} onChange={(e) => update('source_url', e.target.value)} style={inputStyle} />
-          </Field>
-          <Field label="출처 제목">
-            <input value={form.source_title} onChange={(e) => update('source_title', e.target.value)} style={inputStyle} />
-          </Field>
-        </div>
+        {loading ? <p className="mt-3 text-sm text-text-soft">출처 기록 불러오는 중...</p> : null}
+        {!loading && rows.length === 0 ? <p className="mt-3 text-sm text-text-soft">등록된 출처 기록이 아직 없어.</p> : null}
 
-        <Field label="캡처 원문">
-          <textarea value={form.captured_text} onChange={(e) => update('captured_text', e.target.value)} rows={5} style={textareaStyle} />
-        </Field>
-
-        <Field label="메모">
-          <textarea value={form.note} onChange={(e) => update('note', e.target.value)} rows={3} style={textareaStyle} />
-        </Field>
-
-        <label style={{ display: 'flex', alignItems: 'center', gap: 8, color: colors.textSoft }}>
-          <input type="checkbox" checked={form.is_current} onChange={(e) => update('is_current', e.target.checked)} />
-          현재 유효한 출처로 표시
-        </label>
-
-        {error ? <p style={{ color: colors.danger, margin: 0 }}>{error}</p> : null}
-        {success ? <p style={{ color: colors.primaryStrong, margin: 0 }}>{success}</p> : null}
-
-        <button type="submit" disabled={!canSubmit || saving} style={{ ...ui.buttonPrimary, width: 220 }}>
-          {saving ? '저장 중...' : '출처 기록 추가'}
-        </button>
-      </form>
-
-      <div style={ui.card}>
-        <h3 style={{ marginTop: 0 }}>등록된 출처 기록</h3>
-        {loading ? <p>출처 기록 불러오는 중...</p> : null}
-        {!loading && rows.length === 0 ? <p>등록된 출처 기록이 아직 없어.</p> : null}
         {!loading && rows.length > 0 ? (
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <div className="mt-3 overflow-x-auto rounded-2xl border border-border bg-panel">
+            <table className="min-w-[860px] w-full border-collapse text-sm">
               <thead>
-                <tr>
-                  <th style={th}>타입</th>
-                  <th style={th}>제목</th>
-                  <th style={th}>URL</th>
-                  <th style={th}>현재</th>
-                  <th style={th}>확인일</th>
-                  <th style={th}>작업</th>
+                <tr className="text-left text-text-soft">
+                  <th className="border-b border-border px-3 py-3 font-semibold">타입</th>
+                  <th className="border-b border-border px-3 py-3 font-semibold">제목</th>
+                  <th className="border-b border-border px-3 py-3 font-semibold">URL</th>
+                  <th className="border-b border-border px-3 py-3 font-semibold">현재</th>
+                  <th className="border-b border-border px-3 py-3 font-semibold">확인일</th>
+                  <th className="border-b border-border px-3 py-3 font-semibold">작업</th>
                 </tr>
               </thead>
               <tbody>
                 {rows.map((row) => (
-                  <tr key={row.id}>
-                    <td style={td}>{row.source_type}</td>
-                    <td style={td}>{row.source_title ?? '-'}</td>
-                    <td style={td}>{row.source_url ? <a href={row.source_url} target="_blank" rel="noreferrer" style={ui.link}>열기</a> : '-'}</td>
-                    <td style={td}>{row.is_current ? 'Y' : 'N'}</td>
-                    <td style={td}>{new Date(row.checked_at).toLocaleString('ko-KR')}</td>
-                    <td style={td}>
-                      <button type="button" onClick={() => toggleCurrent(row)} style={{ ...ui.buttonSecondary, padding: '8px 12px' }}>
+                  <tr key={row.id} className="hover:bg-panel-alt/40">
+                    <td className="border-b border-border px-3 py-3 font-medium text-text">{row.source_type}</td>
+                    <td className="border-b border-border px-3 py-3 text-text-soft">{row.source_title ?? '-'}</td>
+                    <td className="border-b border-border px-3 py-3">
+                      {row.source_url ? (
+                        <a
+                          href={row.source_url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-sm font-semibold text-primary-strong hover:underline"
+                        >
+                          열기
+                        </a>
+                      ) : (
+                        <span className="text-text-soft">-</span>
+                      )}
+                    </td>
+                    <td className="border-b border-border px-3 py-3 text-text-soft">{row.is_current ? 'Y' : 'N'}</td>
+                    <td className="border-b border-border px-3 py-3 text-text-soft">
+                      {new Date(row.checked_at).toLocaleString('ko-KR')}
+                    </td>
+                    <td className="border-b border-border px-3 py-3">
+                      <Button type="button" onClick={() => toggleCurrent(row)} variant="secondary" className="py-2">
                         {row.is_current ? '현재 해제' : '현재로 지정'}
-                      </button>
+                      </Button>
                     </td>
                   </tr>
                 ))}
@@ -258,15 +281,15 @@ export function AdminSourceRecordManager({ courseId }: { courseId: string }) {
             </table>
           </div>
         ) : null}
-      </div>
+      </Card>
     </section>
   )
 }
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <label style={{ display: 'grid', gap: 8 }}>
-      <span style={{ color: colors.textSoft, fontWeight: 700 }}>{label}</span>
+    <label className="grid gap-2">
+      <span className="text-sm font-semibold text-text-soft">{label}</span>
       {children}
     </label>
   )
@@ -275,32 +298,4 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 function emptyToNull(value: string) {
   const trimmed = value.trim()
   return trimmed.length ? trimmed : null
-}
-
-const grid2: React.CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-  gap: 16,
-}
-
-const inputStyle: React.CSSProperties = {
-  ...ui.input,
-}
-
-const textareaStyle: React.CSSProperties = {
-  ...ui.input,
-  resize: 'vertical',
-}
-
-const th: React.CSSProperties = {
-  textAlign: 'left',
-  borderBottom: `1px solid ${colors.border}`,
-  padding: '10px 8px',
-  color: colors.textSoft,
-}
-
-const td: React.CSSProperties = {
-  borderBottom: `1px solid ${colors.border}`,
-  padding: '10px 8px',
-  verticalAlign: 'top',
 }
