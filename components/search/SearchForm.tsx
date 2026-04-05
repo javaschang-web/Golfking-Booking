@@ -2,7 +2,9 @@
 
 import { useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
-import { colors, ui } from '@/lib/design'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Select } from '@/components/ui/select'
 
 type Props = {
   initialDate?: string
@@ -60,62 +62,51 @@ export function SearchForm({ initialDate = '', initialRegion = '' }: Props) {
     if (typeof input.showPicker === 'function') input.showPicker()
   }
 
-  const fieldStyle = {
-    display: 'grid',
-    gap: 8,
-    alignContent: 'start',
-  } as const
-
-  const helperStyle = {
-    margin: 0,
-    minHeight: 20,
-    fontSize: 13,
-    color: colors.textSoft,
-  } as const
-
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 18, maxWidth: 860 }}>
-      <div
-        style={{
-          display: 'grid',
-          gap: 16,
-          gridTemplateColumns: 'minmax(260px, 1.2fr) minmax(220px, 1fr) auto',
-          alignItems: 'end',
-        }}
-      >
-        <div style={fieldStyle}>
-          <label htmlFor="date" style={{ color: colors.textSoft, fontWeight: 700 }}>플레이 날짜</label>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 10, alignItems: 'center' }}>
-            <input
+    <form onSubmit={handleSubmit} className="grid w-full gap-4">
+      <div className="grid gap-4 md:grid-cols-[1.2fr_1fr_160px] md:items-end">
+        <div className="grid gap-2">
+          <label htmlFor="date" className="text-sm font-semibold text-text-soft">
+            플레이 날짜
+          </label>
+
+          <div className="grid grid-cols-[1fr_auto] items-center gap-2">
+            <Input
               ref={dateRef}
               id="date"
               type="date"
               value={playDate}
               onChange={(e) => setPlayDate(e.target.value)}
               onClick={openCalendar}
-              style={{ ...ui.input, minHeight: 52 }}
             />
-            <button type="button" onClick={openCalendar} style={{ ...ui.buttonSecondary, minHeight: 52, whiteSpace: 'nowrap' }}>
+            <Button type="button" variant="secondary" onClick={openCalendar} className="whitespace-nowrap">
               달력 보기
-            </button>
+            </Button>
           </div>
-          <p style={helperStyle}>브라우저 달력에서 바로 날짜를 고를 수 있어.</p>
+
+          <p className="m-0 min-h-5 text-xs text-text-soft">브라우저 달력에서 날짜를 고르면 편해.</p>
         </div>
 
-        <div style={fieldStyle}>
-          <label htmlFor="region" style={{ color: colors.textSoft, fontWeight: 700 }}>지역(시/도)</label>
-          <select id="region" value={region} onChange={(e) => setRegion(e.target.value)} style={{ ...ui.input, minHeight: 52 }}>
+        <div className="grid gap-2">
+          <label htmlFor="region" className="text-sm font-semibold text-text-soft">
+            지역(시/도)
+          </label>
+          <Select id="region" value={region} onChange={(e) => setRegion(e.target.value)}>
             <option value="">전체</option>
             {REGION_OPTIONS.filter(Boolean).map((item) => (
-              <option key={item} value={item}>{item}</option>
+              <option key={item} value={item}>
+                {item}
+              </option>
             ))}
-          </select>
-          <p style={helperStyle}>지역을 선택하면 해당 권역 골프장만 추려서 보여줘.</p>
+          </Select>
+          <p className="m-0 min-h-5 text-xs text-text-soft">지역을 고르면 해당 권역 골프장만 보여줘.</p>
         </div>
 
-        <div style={{ display: 'grid', gap: 10, alignSelf: 'stretch' }}>
-          <button type="submit" style={{ ...ui.buttonPrimary, minWidth: 140, minHeight: 52 }}>검색</button>
-          <button type="button" onClick={handleReset} style={{ ...ui.buttonSecondary, minWidth: 140, minHeight: 52 }}>초기화</button>
+        <div className="grid gap-2">
+          <Button type="submit">검색</Button>
+          <Button type="button" variant="secondary" onClick={handleReset}>
+            초기화
+          </Button>
         </div>
       </div>
     </form>

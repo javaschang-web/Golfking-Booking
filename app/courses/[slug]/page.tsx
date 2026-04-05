@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { CourseDetailView } from '@/components/search/CourseDetailView'
 import { getPublicCourseDetail } from '@/lib/queries/course-detail'
-import { ui } from '@/lib/design'
+import { Container } from '@/components/ui/container'
 
 type Props = {
   params: { slug: string }
@@ -22,14 +22,19 @@ export default async function CourseDetailPage({ params, searchParams }: Props) 
   const backToSearch = `/search${qs.toString() ? `?${qs.toString()}` : ''}`
 
   return (
-    <main style={ui.page}>
-      <div style={ui.shell}>
-        <div style={{ marginBottom: 24, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <Link href="/" style={ui.link}>홈</Link>
-          <Link href={backToSearch} style={ui.link}>검색 결과</Link>
+    <main>
+      <Container>
+        <div className="mb-6 flex flex-wrap gap-3 text-sm">
+          <Link href="/" className="font-semibold text-primary-strong hover:underline">
+            홈
+          </Link>
+          <span className="text-text-soft">/</span>
+          <Link href={backToSearch} className="font-semibold text-primary-strong hover:underline">
+            검색 결과
+          </Link>
         </div>
         <CourseDetailView course={course} playDate={searchParams.date} />
-      </div>
+      </Container>
     </main>
   )
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-import { colors } from '@/lib/design'
+import './globals.css'
 
 export const metadata: Metadata = {
   title: '골프왕부킹',
@@ -10,9 +10,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
-      <body style={{ margin: 0, fontFamily: 'Arial, sans-serif', background: colors.bg, color: colors.text }}>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   )
 }

@@ -24,20 +24,20 @@ export const ui = {
   shell: {
     maxWidth: 1120,
     margin: '0 auto',
-    padding: '32px 20px 64px',
+    padding: '24px 16px 64px',
   } satisfies CSSProperties,
   hero: {
     border: `1px solid ${colors.border}`,
     background: `linear-gradient(135deg, ${colors.panelAlt} 0%, ${colors.panel} 100%)`,
     borderRadius: 24,
-    padding: 28,
+    padding: 22,
     boxShadow: '0 18px 50px rgba(0,0,0,0.28)',
   } satisfies CSSProperties,
   card: {
     border: `1px solid ${colors.border}`,
     background: colors.panel,
     borderRadius: 20,
-    padding: 20,
+    padding: 18,
     boxShadow: '0 12px 32px rgba(0,0,0,0.22)',
   } satisfies CSSProperties,
   subCard: {
@@ -48,16 +48,16 @@ export const ui = {
   } satisfies CSSProperties,
   input: {
     width: '100%',
-    padding: '14px 16px',
-    borderRadius: 14,
+    padding: '12px 14px',
+    borderRadius: 12,
     border: `1px solid ${colors.border}`,
     background: '#0c1b12',
     color: colors.text,
     outline: 'none',
   } satisfies CSSProperties,
   buttonPrimary: {
-    padding: '14px 18px',
-    borderRadius: 14,
+    padding: '12px 16px',
+    borderRadius: 12,
     border: 'none',
     background: colors.primary,
     color: '#06240e',
@@ -65,8 +65,8 @@ export const ui = {
     cursor: 'pointer',
   } satisfies CSSProperties,
   buttonSecondary: {
-    padding: '14px 18px',
-    borderRadius: 14,
+    padding: '12px 16px',
+    borderRadius: 12,
     border: `1px solid ${colors.border}`,
     background: colors.primaryMuted,
     color: colors.text,
@@ -84,6 +84,7 @@ export const ui = {
     color: colors.text,
     fontSize: 12,
     fontWeight: 700,
+    letterSpacing: 0.2,
   } satisfies CSSProperties,
   link: {
     color: colors.primaryStrong,

@@ -1,9 +1,10 @@
 import { SearchForm } from '@/components/search/SearchForm'
 import { SearchResultsList } from '@/components/search/SearchResultsList'
 import { SearchSummary } from '@/components/search/SearchSummary'
+import { Card } from '@/components/ui/card'
+import { Container } from '@/components/ui/container'
 import { calculateOpenDatetime } from '@/lib/booking-rules/calculate'
 import { getPublicCourses } from '@/lib/queries/courses'
-import { colors, ui } from '@/lib/design'
 
 export const dynamic = 'force-dynamic'
 
@@ -60,31 +61,38 @@ export default async function SearchPage({
     .sort((a, b) => a.dateKey.localeCompare(b.dateKey))
 
   return (
-    <main style={ui.page}>
-      <div style={ui.shell}>
-        <section style={ui.hero}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+    <main>
+      <Container>
+        <Card className="bg-gradient-to-br from-panel-alt to-panel shadow-hero">
+          <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <div style={ui.badge}>검색 결과</div>
-              <h2 style={{ marginBottom: 8 }}>지역 필터: {region || '전체'}</h2>
-              <p style={{ margin: 0, color: colors.textSoft }}>원하는 날짜와 지역으로 결과를 다시 좁힐 수 있어.</p>
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-primary-muted px-3 py-1 text-xs font-semibold text-text">
+                검색 결과
+              </div>
+              <h1 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
+                지역 필터: <span className="text-primary-strong">{region || '전체'}</span>
+              </h1>
+              <p className="mt-2 text-sm text-text-soft">원하는 날짜와 지역으로 결과를 다시 좁힐 수 있어.</p>
             </div>
-            <a href="/" style={ui.link}>홈으로</a>
+
+            <a href="/" className="text-sm font-semibold text-primary-strong hover:underline">
+              홈으로
+            </a>
           </div>
 
-          <div style={{ marginTop: 24 }}>
+          <div className="mt-6">
             <SearchForm initialDate={playDate} initialRegion={region} />
           </div>
-        </section>
+        </Card>
 
-        <div style={{ marginTop: 24 }}>
+        <div className="mt-6">
           <SearchSummary total={courses.length} region={region} playDate={playDate} entries={calendarEntries} />
         </div>
 
-        <div style={{ marginTop: 24 }}>
+        <div className="mt-6">
           <SearchResultsList courses={courses} playDate={playDate} region={region} />
         </div>
-      </div>
+      </Container>
     </main>
   )
 }
