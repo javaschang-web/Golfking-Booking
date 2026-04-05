@@ -19,7 +19,7 @@ export default async function AdminCourseEditPage({ params }: { params: { id: st
         { href: '/admin/courses/new', label: '신규 등록' },
       ]}
     >
-      <div style={{ display: 'grid', gap: 20 }}>
+      <div className="grid gap-5">
         <AdminSectionCard title="기본 정보 수정" description="골프장 기본 정보와 공개 상태를 수정할 수 있어.">
           <AdminCourseEditForm courseId={params.id} />
         </AdminSectionCard>

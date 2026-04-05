@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { getBrowserSupabaseClient } from '@/lib/supabase/client'
-import { colors, ui } from '@/lib/design'
+import { Select } from '@/components/ui/select'
 
 type ChangeLogRow = {
   id: string
@@ -62,55 +62,69 @@ export function AdminChangeLogsTable() {
     }
   }, [rows.length, filteredRows.length, entityOptions.length, actionOptions.length])
 
-  if (loading) return <p>변경 이력 불러오는 중...</p>
-  if (error) return <p style={{ color: colors.danger }}>불러오기 실패: {error}</p>
-  if (rows.length === 0) return <p>아직 기록된 변경 이력이 없어.</p>
+  if (loading) return <p className="text-sm text-text-soft">변경 이력 불러오는 중...</p>
+  if (error) return <p className="text-sm font-semibold text-danger">불러오기 실패: {error}</p>
+  if (rows.length === 0) return <p className="text-sm text-text-soft">아직 기록된 변경 이력이 없어.</p>
 
   return (
-    <div style={{ display: 'grid', gap: 12 }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 12 }}>
+    <div className="grid gap-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <SummaryCard label="전체 로그" value={summary.total} />
         <SummaryCard label="현재 필터 결과" value={summary.visible} />
         <SummaryCard label="엔티티 종류" value={summary.entities} />
         <SummaryCard label="액션 종류" value={summary.actions} />
       </div>
 
-      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-        <select value={entityFilter} onChange={(e) => setEntityFilter(e.target.value)} style={ui.input}>
+      <div className="grid gap-3 sm:grid-cols-2">
+        <Select value={entityFilter} onChange={(e) => setEntityFilter(e.target.value)}>
           {entityOptions.map((item) => (
-            <option key={item} value={item}>{item}</option>
+            <option key={item} value={item}>
+              {item}
+            </option>
           ))}
-        </select>
-        <select value={actionFilter} onChange={(e) => setActionFilter(e.target.value)} style={ui.input}>
+        </Select>
+        <Select value={actionFilter} onChange={(e) => setActionFilter(e.target.value)}>
           {actionOptions.map((item) => (
-            <option key={item} value={item}>{item}</option>
+            <option key={item} value={item}>
+              {item}
+            </option>
           ))}
-        </select>
+        </Select>
       </div>
 
-      <div style={{ overflowX: 'auto', ...ui.card }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <div className="overflow-x-auto rounded-2xl border border-border bg-panel">
+        <table className="min-w-[1100px] w-full border-collapse text-sm">
           <thead>
-            <tr>
-              <th style={th}>시각</th>
-              <th style={th}>엔티티</th>
-              <th style={th}>액션</th>
-              <th style={th}>대상 ID</th>
-              <th style={th}>Actor</th>
-              <th style={th}>변경 필드</th>
-              <th style={th}>메모</th>
+            <tr className="text-left text-text-soft">
+              <th className="border-b border-border px-3 py-3 font-semibold">시각</th>
+              <th className="border-b border-border px-3 py-3 font-semibold">엔티티</th>
+              <th className="border-b border-border px-3 py-3 font-semibold">액션</th>
+              <th className="border-b border-border px-3 py-3 font-semibold">대상 ID</th>
+              <th className="border-b border-border px-3 py-3 font-semibold">Actor</th>
+              <th className="border-b border-border px-3 py-3 font-semibold">변경 필드</th>
+              <th className="border-b border-border px-3 py-3 font-semibold">메모</th>
             </tr>
           </thead>
           <tbody>
             {filteredRows.map((row) => (
-              <tr key={row.id}>
-                <td style={td}>{new Date(row.created_at).toLocaleString('ko-KR')}</td>
-                <td style={td}>{row.entity_type}</td>
-                <td style={td}>{row.action_type}</td>
-                <td style={td}><code>{row.entity_id}</code></td>
-                <td style={td}><code>{row.actor_id ?? '-'}</code></td>
-                <td style={td}><pre style={pre}>{row.changed_fields ? JSON.stringify(row.changed_fields, null, 2) : '-'}</pre></td>
-                <td style={td}>{row.note ?? '-'}</td>
+              <tr key={row.id} className="align-top hover:bg-panel-alt/40">
+                <td className="border-b border-border px-3 py-3 text-text-soft">
+                  {new Date(row.created_at).toLocaleString('ko-KR')}
+                </td>
+                <td className="border-b border-border px-3 py-3 font-medium text-text">{row.entity_type}</td>
+                <td className="border-b border-border px-3 py-3 text-text-soft">{row.action_type}</td>
+                <td className="border-b border-border px-3 py-3 text-text-soft">
+                  <code className="text-xs">{row.entity_id}</code>
+                </td>
+                <td className="border-b border-border px-3 py-3 text-text-soft">
+                  <code className="text-xs">{row.actor_id ?? '-'}</code>
+                </td>
+                <td className="border-b border-border px-3 py-3">
+                  <pre className="m-0 max-w-[520px] whitespace-pre-wrap break-words text-xs text-text-soft">
+                    {row.changed_fields ? JSON.stringify(row.changed_fields, null, 2) : '-'}
+                  </pre>
+                </td>
+                <td className="border-b border-border px-3 py-3 text-text-soft">{row.note ?? '-'}</td>
               </tr>
             ))}
           </tbody>
@@ -122,31 +136,9 @@ export function AdminChangeLogsTable() {
 
 function SummaryCard({ label, value }: { label: string; value: number }) {
   return (
-    <div style={ui.subCard}>
-      <div style={{ fontSize: 12, color: colors.textSoft }}>{label}</div>
-      <div style={{ marginTop: 6, fontWeight: 700, fontSize: 20 }}>{value}</div>
+    <div className="rounded-2xl border border-border bg-bg-soft px-4 py-3">
+      <div className="text-xs font-semibold text-text-soft">{label}</div>
+      <div className="mt-1 text-lg font-extrabold text-text">{value}</div>
     </div>
   )
-}
-
-const th: React.CSSProperties = {
-  textAlign: 'left',
-  borderBottom: `1px solid ${colors.border}`,
-  padding: '10px 8px',
-  color: colors.textSoft,
-  verticalAlign: 'top',
-}
-
-const td: React.CSSProperties = {
-  borderBottom: `1px solid ${colors.border}`,
-  padding: '10px 8px',
-  verticalAlign: 'top',
-}
-
-const pre: React.CSSProperties = {
-  margin: 0,
-  whiteSpace: 'pre-wrap',
-  wordBreak: 'break-word',
-  fontSize: 12,
-  color: colors.textSoft,
 }
