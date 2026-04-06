@@ -18,21 +18,26 @@ export function AdminLoginForm() {
     setLoading(true)
     setError(null)
 
-    const supabase = getBrowserSupabaseClient()
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
+    try {
+      const supabase = getBrowserSupabaseClient()
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
 
-    setLoading(false)
+      setLoading(false)
 
-    if (error) {
-      setError(error.message)
-      return
+      if (error) {
+        setError(error.message)
+        return
+      }
+
+      router.push('/admin')
+      router.refresh()
+    } catch (e: unknown) {
+      setLoading(false)
+      setError(e instanceof Error ? e.message : '로그인 중 오류가 발생했어.')
     }
-
-    router.push('/admin')
-    router.refresh()
   }
 
   return (
