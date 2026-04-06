@@ -61,7 +61,7 @@ export async function getPublicCourses(region?: string) {
       )
     `)
     .eq('status', 'active')
-    .eq('verification_status', 'verified')
+    // Public site: show all active courses regardless of verification_status.
     .order('name', { ascending: true })
 
   if (region?.trim()) {
