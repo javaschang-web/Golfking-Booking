@@ -21,10 +21,11 @@ module.exports = {
         glass: '0 12px 32px rgba(0,0,0,0.22)',
         hero: '0 18px 50px rgba(0,0,0,0.28)',
       },
+      // Make UI "boxes" square (keep `rounded-full` pills/circles as-is).
       borderRadius: {
-        xl: '16px',
-        '2xl': '20px',
-        '3xl': '24px',
+        xl: '0px',
+        '2xl': '0px',
+        '3xl': '0px',
       },
     },
   },
