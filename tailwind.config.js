@@ -22,7 +22,12 @@ module.exports = {
         hero: '0 18px 50px rgba(0,0,0,0.28)',
       },
       // Make UI "boxes" square (keep `rounded-full` pills/circles as-is).
+      // This affects `rounded`, `rounded-sm/md/lg/xl/...`.
       borderRadius: {
+        DEFAULT: '0px',
+        sm: '0px',
+        md: '0px',
+        lg: '0px',
         xl: '0px',
         '2xl': '0px',
         '3xl': '0px',
