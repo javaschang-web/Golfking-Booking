@@ -66,6 +66,10 @@ function normalizeForCompare(s) {
     .trim()
 }
 
+function isTruthy(value) {
+  return value !== null && value !== undefined && String(value).trim() !== ''
+}
+
 async function main() {
   // load env from .env.local if present, but do not print
   try {
@@ -90,10 +94,15 @@ async function main() {
     auth: { autoRefreshToken: false, persistSession: false },
   })
 
+  console.log('[realistic-dry-run] env', {
+    REALISTIC_DRY_RUN_IGNORE_FIELDS: process.env.REALISTIC_DRY_RUN_IGNORE_FIELDS || '',
+    REALISTIC_DRY_RUN_IGNORE_INACTIVE: process.env.REALISTIC_DRY_RUN_IGNORE_INACTIVE || '(unset)',
+  })
+
   console.log('[realistic-dry-run] fetching existing golf_courses and booking_policies from staging')
   const { data: courses, error: coursesErr } = await supabase
     .from('golf_courses')
-    .select(`id, slug, name, region_primary, region_secondary, address, phone, booking_note`)
+    .select(`id, slug, name, region_primary, region_secondary, address, phone, booking_note, verification_status, status`)
 
   if (coursesErr) {
     console.error('[realistic-dry-run] failed to fetch golf_courses:', coursesErr.message)
@@ -111,6 +120,11 @@ async function main() {
 
   const courseMap = new Map()
   for (const c of courses) {
+    // If ignoring inactive, exclude them from comparisons entirely.
+    if (String(process.env.REALISTIC_DRY_RUN_IGNORE_INACTIVE || 'true').toLowerCase() === 'true') {
+      const status = (c.status ?? '').toString().trim().toLowerCase()
+      if (status !== 'active') continue
+    }
     courseMap.set(c.slug, c)
   }
 
@@ -152,13 +166,37 @@ async function main() {
     name_mismatches: [],
   }
 
+  const ignoreSlugs = new Set(
+    String(process.env.REALISTIC_DRY_RUN_IGNORE_SLUGS || '')
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean)
+  )
+
   for (const row of importCourses) {
     const slug = row.slug
+
+    if (ignoreSlugs.has(slug)) {
+      report.courses_no_change.push({ slug, note: 'ignored (REALISTIC_DRY_RUN_IGNORE_SLUGS)' })
+      continue
+    }
+
     const existing = courseMap.get(slug)
     if (!existing) {
       report.courses_inserts.push({ slug, name: row.name })
       continue
     }
+
+    // Optionally ignore non-active courses (useful when staging contains deactivated duplicates).
+    if (String(process.env.REALISTIC_DRY_RUN_IGNORE_INACTIVE || 'true').toLowerCase() === 'true') {
+      // Treat anything not explicitly active as ignorable (some rows may have null status).
+      const status = (existing.status ?? '').toString().trim().toLowerCase()
+      if (status !== 'active') {
+        report.courses_no_change.push({ slug, note: `ignored (status=${existing.status ?? 'null'})` })
+        continue
+      }
+    }
+
 
     const diffs = []
     // compare key fields; for name we use a normalized comparison to avoid surface-level suffix/format differences
@@ -174,6 +212,19 @@ async function main() {
     for (const f of fieldsToCheck) {
       const incoming = emptyToNull(row[f])
       const current = emptyToNull(existing[f])
+
+      // If course is verified, ignore diffs where incoming is empty (we intentionally preserve curated values).
+      if (existing.verification_status === 'verified') {
+        const verifiedIgnore = new Set(
+          String(process.env.REALISTIC_DRY_RUN_VERIFIED_IGNORE_FIELDS || 'region_primary,region_secondary,address,phone,homepage_url,booking_url,map_url')
+            .split(',')
+            .map((s) => s.trim())
+            .filter(Boolean)
+        )
+        if (verifiedIgnore.has(f) && !isTruthy(incoming)) {
+          continue
+        }
+      }
       if (f === 'name') {
         const inNorm = normalizeForCompare(incoming ?? '')
         const curNorm = normalizeForCompare(current ?? '')

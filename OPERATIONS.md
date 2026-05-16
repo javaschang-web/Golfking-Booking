@@ -11,6 +11,17 @@
 - Service Role Key rotate 상태 확인
 
 ## 2. 운영자가 자주 하는 일
+
+### 데이터 배치 반영(템플릿 import) & 검증
+- 배치 템플릿 import: `node scripts/bulk-import.mjs <templatesDir> [--dry-run]`
+- staging 비교 검증(리얼리틱 드라이런):
+  - (Windows cmd)
+    - `set REALISTIC_DRY_RUN_IGNORE_FIELDS=booking_note`
+    - `set REALISTIC_DRY_RUN_IGNORE_INACTIVE=true`
+    - `set REALISTIC_DRY_RUN_IGNORE_SLUGS=clubd-geumgang`
+    - `node scripts/realistic-dry-run.mjs`
+  - 목적: 템플릿(incoming) vs staging(current) 비교 시 **노이즈(booking_note)**와 **비활성/중복 슬러그**를 제외하고 실질 변경만 확인
+
 ### 골프장 추가
 1. `/admin/courses/new` 접속
 2. 기본 정보 입력 후 저장

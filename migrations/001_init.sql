@@ -74,6 +74,11 @@ create index if not exists idx_bp_golf_course on booking_policies(golf_course_id
 create index if not exists idx_bp_type_active on booking_policies(policy_type, is_active);
 create index if not exists idx_bp_active_partial on booking_policies(golf_course_id) where is_active = true;
 
+-- Prevent duplicate active policies per course+type (needed for safe upsert/import reruns)
+create unique index if not exists uq_bp_course_type_active
+  on booking_policies(golf_course_id, policy_type)
+  where is_active = true;
+
 -- Table: source_records
 create table if not exists source_records (
   id uuid primary key default gen_random_uuid(),
@@ -93,6 +98,11 @@ create table if not exists source_records (
 create index if not exists idx_sr_course_checked on source_records(golf_course_id, checked_at desc);
 create index if not exists idx_sr_policy on source_records(booking_policy_id);
 create index if not exists idx_sr_type on source_records(source_type);
+
+-- Prevent duplicate "current" sources per course+type+url on reruns
+create unique index if not exists uq_sr_course_type_url_current
+  on source_records(golf_course_id, source_type, source_url)
+  where is_current = true;
 
 -- Table: change_logs
 create table if not exists change_logs (

@@ -5,6 +5,22 @@ import { createClient } from '@supabase/supabase-js'
 const baseDir = process.argv[2] || path.resolve('data', 'templates')
 const dryRun = process.argv.includes('--dry-run')
 
+function getFlagValue(flag) {
+  const idx = process.argv.indexOf(flag)
+  if (idx === -1) return null
+  const value = process.argv[idx + 1]
+  if (!value || value.startsWith('--')) return null
+  return value
+}
+
+const coursesOverride = getFlagValue('--courses')
+const policiesOverride = getFlagValue('--policies')
+const sourcesOverride = getFlagValue('--sources')
+
+import dotenv from 'dotenv'
+
+dotenv.config({ path: 'C:/Users/javas/.openclaw/workspace-javes/.env.local' })
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
 
@@ -25,9 +41,15 @@ async function main() {
   console.log(`[bulk-import] baseDir=${baseDir}`)
   console.log(`[bulk-import] mode=${dryRun ? 'dry-run' : 'apply'}`)
 
-  const coursesFile = resolveTemplatePath(baseDir, 'golf_courses_20_template.csv', 'golf_courses_sample.csv')
-  const policiesFile = resolveTemplatePath(baseDir, 'booking_policies_20_template.csv', 'booking_policies_sample.csv')
-  const sourcesFile = resolveTemplatePath(baseDir, 'source_records_20_template.csv', 'source_records_sample.csv')
+  const coursesFile = coursesOverride
+    ? path.join(baseDir, coursesOverride)
+    : resolveTemplatePath(baseDir, 'golf_courses_20_template.csv', 'golf_courses_sample.csv')
+  const policiesFile = policiesOverride
+    ? path.join(baseDir, policiesOverride)
+    : resolveTemplatePath(baseDir, 'booking_policies_20_template.csv', 'booking_policies_sample.csv')
+  const sourcesFile = sourcesOverride
+    ? path.join(baseDir, sourcesOverride)
+    : resolveTemplatePath(baseDir, 'source_records_20_template.csv', 'source_records_sample.csv')
 
   console.log(`[bulk-import] coursesFile=${path.basename(coursesFile)}`)
   console.log(`[bulk-import] policiesFile=${path.basename(policiesFile)}`)
@@ -164,7 +186,19 @@ function printSummary(courses, policies, sources) {
 
 async function importCourses(rows) {
   for (const row of rows) {
-    const payload = {
+    const { data: existing, error: existingErr } = await supabase
+      .from('golf_courses')
+      .select(
+        'id,slug,verification_status,region_primary,region_secondary,address,phone,homepage_url,booking_url,map_url,membership_note,booking_note,status'
+      )
+      .eq('slug', row.slug)
+      .maybeSingle()
+
+    if (existingErr) throw existingErr
+
+    const isVerified = existing?.verification_status === 'verified'
+
+    const incoming = {
       slug: row.slug,
       name: row.name,
       english_name: emptyToNull(row.english_name),
@@ -181,6 +215,29 @@ async function importCourses(rows) {
       status: row.status || 'active',
       verification_status: row.verification_status || 'draft',
     }
+
+    // Null/empty overwrite protection for curated identity fields.
+    // If existing course is verified, also preserve region/address/urls unless we have a concrete incoming value.
+    const keepIfEmpty = (field) => {
+      if (incoming[field] == null || incoming[field] === '') {
+        if (existing && Object.prototype.hasOwnProperty.call(existing, field)) {
+          incoming[field] = existing[field] ?? null
+        }
+      }
+    }
+
+    for (const f of ['region_secondary', 'address', 'phone', 'homepage_url', 'booking_url', 'map_url', 'membership_note']) {
+      keepIfEmpty(f)
+    }
+
+    if (isVerified) {
+      // Protect verified courses from region churn.
+      if (existing?.region_primary) incoming.region_primary = existing.region_primary
+      // Never downgrade verification_status.
+      incoming.verification_status = existing.verification_status
+    }
+
+    const payload = incoming
 
     const { error } = await supabase.from('golf_courses').upsert(payload, { onConflict: 'slug' })
     if (error) throw error
@@ -214,9 +271,11 @@ async function importPolicies(rows) {
       note: emptyToNull(row.note),
     }
 
-    const { error } = await supabase.from('booking_policies').insert(payload)
+    const { error } = await supabase
+      .from('booking_policies')
+      .upsert(payload, { onConflict: 'golf_course_id,policy_type', ignoreDuplicates: false })
     if (error) throw error
-    console.log(`[policies] insert ${row.course_slug}:${row.policy_type}`)
+    console.log(`[policies] upsert ${row.course_slug}:${row.policy_type}`)
   }
 }
 
@@ -253,9 +312,11 @@ async function importSources(rows) {
       note: emptyToNull(row.note),
     }
 
-    const { error } = await supabase.from('source_records').insert(payload)
+    const { error } = await supabase
+      .from('source_records')
+      .upsert(payload, { onConflict: 'golf_course_id,source_type,source_url', ignoreDuplicates: false })
     if (error) throw error
-    console.log(`[sources] insert ${row.course_slug}:${row.source_type}`)
+    console.log(`[sources] upsert ${row.course_slug}:${row.source_type}`)
   }
 }
 

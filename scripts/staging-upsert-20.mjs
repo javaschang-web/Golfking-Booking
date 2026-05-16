@@ -121,17 +121,39 @@ for (const item of testset) {
   if (existingCourseError) throw existingCourseError
   if (existingCourse) backup.before_courses.push(existingCourse)
 
+  // Build payload carefully: do NOT overwrite curated fields with nulls.
+  // If a course is already verified, also avoid overwriting region/address unless we have a non-empty incoming value.
+  const isVerified = existingCourse?.verification_status === 'verified'
+
   const payload = {
     slug,
     name: src.name,
-    region_primary: src.region,
-    region_secondary: regionSecondaryFromAddress(src.addr, src.region),
-    address: emptyToNull(src.addr),
+    // If verified, keep curated region unless we have a non-empty incoming value.
+    region_primary: isVerified ? (existingCourse.region_primary ?? src.region) : src.region,
+    region_secondary: (() => {
+      const incoming = regionSecondaryFromAddress(src.addr, src.region)
+      if (!incoming) return existingCourse?.region_secondary ?? null
+      return incoming
+    })(),
+    address: (() => {
+      const incoming = emptyToNull(src.addr)
+      if (!incoming) return existingCourse?.address ?? null
+      return incoming
+    })(),
     membership_required: membershipRequiredFromType(src.type),
-    membership_note: emptyToNull(src.type),
+    membership_note: (() => {
+      const incoming = emptyToNull(src.type)
+      if (!incoming) return existingCourse?.membership_note ?? null
+      return incoming
+    })(),
     booking_note: emptyToNull(`odcloud pilot import / holes=${src.holes} / source_count=${src.source_count}`),
     status: 'active',
     verification_status: existingCourse?.verification_status ?? 'draft',
+  }
+
+  // If verified, keep curated region even if odcloud differs.
+  if (isVerified) {
+    payload.region_primary = existingCourse?.region_primary ?? payload.region_primary
   }
 
   results.push({ mode: item.mode, slug, name: payload.name, action: existingCourse ? 'UPSERT_UPDATE' : 'UPSERT_INSERT' })

@@ -8,55 +8,41 @@ This doc tracks remaining `policy_conflicts` after normalization attempts.
 
 ## Remaining conflicts (slugs)
 
-### 1) golfzon-county-cheonan
+### 1) golfzon-county-cheonan (ONLY REMAINING)
+- Status: **still conflicting by design** (A-strategy: template left blank until official text is captured)
 - Staging has:
-  - open_weekday: 1 (Mon)
+  - days_before_open: 28
   - open_time: 09:00:00
   - policy_summary mentions: "매주 월요일 09:00, 4주 뒤(월~일) 오픈"
 - Template currently:
-  - days_before_open / open_weekday / open_time: empty
-  - source_text says rule text is not visible
+  - days_before_open / open_weekday / open_time: **blank**
+  - source_text: "공식 홈페이지 공개 페이지에서 예약 오픈 규칙 텍스트를 확인하지 못함. 로그인/앱 화면 캡처 필요."
 - Action needed:
-  - Confirm official rule text (mobile/booking policy screen). If confirmed, set:
-    - open_weekday=1, open_time=09:00:00, days_before_open=28 (if the "4주" is correct)
+  - Capture official rule text (screenshot from logged-in web/app).
+  - Once captured, fill template accordingly to remove the conflict.
 
-### 2) sky72-ocean
-- Staging has:
-  - days_before_open: 14
-  - open_time: 09:00:00
-- Template currently: empty numeric/time
-- Action needed:
-  - Confirm Ocean course booking open rule (Club72 notice likely refers to other courses).
-  - If legacy is correct: days_before_open=14, open_time=09:00:00
+## Resolved (official source confirmed)
 
-### 3) solmoro
-- Staging has:
-  - open_weekday: 1
-  - open_time: 09:00:00
-  - policy_summary mentions: "정회원 기준 4주 전 월요일 09:00"
-- Template currently: empty numeric/time
-- Action needed:
-  - Confirm whether Solmoro is actually "4 weeks before Monday 09:00" or a different process.
-  - If correct: open_weekday=1, open_time=09:00:00, days_before_open=28
+### sky72-ocean
+- Confirmed via official SKY72 reservation info:
+  - "매일 오전 9시에 당일 포함한 14일 이후 일자의 예약 티타임이 오픈됩니다."
+  - NOTE: User decided to keep **Club72 notice (28 days)** as the canonical rule for our templates.
 
-### 4) lotte-skyhill-jeju
-- Staging has:
-  - open_weekday: 2
-  - open_time: 10:00:00
-  - policy_summary mentions: "8~9주 전 화요일 10:00"
-- Template currently: empty numeric/time
-- Action needed:
-  - Confirm official rule. If confirmed, decide policy:
-    - lower-bound strategy: days_before_open=56 (8 weeks)
-    - or store range separately (future enhancement)
+### solmoro
+- Confirmed via official notice:
+  - "평일 - 4주전 월요일 오전 9시(월,화,수,목)"
+  - Source: https://www.solmoro.com/Board/BoardView?board_idx=1&bd_main_seq=143
 
-### 5) clubd-geumgang
-- Template now has:
-  - days_before_open=3 (derived from cancellation rule text)
-- Staging policy is "unknown" (null)
-- Action needed:
-  - Decide whether cancellation days can be used as open-rule proxy.
-  - Recommended: treat as **unconfirmed** until official booking open rule is found.
+### lotte-skyhill-jeju
+- Confirmed via official reservation guide:
+  - "예약일 60일 전부터 가능"
+  - Applied to template (days_before_open=60)
+  - Also updated staging DB (days_before_open=60) and deactivated duplicate days_before policies.
+
+### clubd-geumgang
+- Confirmed via official use guide:
+  - "인터넷 오픈일 : 5주전 월요일 AM09:00"
+  - Source: https://www.clubd.com/geumgang/guide/useGuide.do
 
 ## Notes
 - If we want to reduce noise, we can update realistic-dry-run policy comparison logic to normalize:
